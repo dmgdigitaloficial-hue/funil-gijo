@@ -478,129 +478,21 @@ function renderFunil(p){
 
 function renderPagina(p,expert,ticket,credencial){
   const pg=p.pagina||{};
-  const cor='#00e5a0';
-  const html=`
-<div style="font-family:system-ui,sans-serif;background:#0a0a0a;color:#fff;max-width:800px;margin:0 auto">
-
-<section style="background:#0a0a0a;padding:80px 32px;text-align:center">
-  <div style="font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:${cor};margin-bottom:16px">${pg.d1_nome||p.nome||''}</div>
-  <h1 style="font-size:2.2rem;font-weight:800;line-height:1.15;margin-bottom:20px;max-width:680px;margin-left:auto;margin-right:auto">${pg.d1_headline||''}</h1>
-  <p style="font-size:1.1rem;color:#aaa;max-width:560px;margin:0 auto 32px">${pg.d1_subtitulo||''}</p>
-  <div style="background:#1a1a1a;border:1px dashed #333;border-radius:12px;padding:40px;display:inline-block;color:#555;font-size:13px">📦 Inserir mockup do produto aqui<br><span style="font-size:11px">Dimensoes sugeridas: 400x300px</span></div>
-</section>
-
-<section style="background:#1a1a1a;padding:80px 32px;text-align:center">
-  <h2 style="font-size:1.6rem;font-weight:700;margin-bottom:8px">${pg.d2_headline||'Mais de 500 pessoas ja transformaram seus resultados'}</h2>
-  <p style="color:#aaa;margin-bottom:40px">${pg.d2_copy||'Confira o que estao dizendo:'}</p>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:600px;margin:0 auto">
-    ${[1,2,3,4].map(n=>`<div style="background:#252525;border-radius:12px;padding:16px;box-shadow:0 4px 12px rgba(0,0,0,.3);color:#555;font-size:13px">💬 Print de WhatsApp ${n}</div>`).join('')}
-  </div>
-</section>
-
-<section style="background:#0a0a0a;padding:80px 32px">
-  <div style="max-width:680px;margin:0 auto">
-    <h2 style="font-size:1.6rem;font-weight:700;margin-bottom:32px;text-align:center">${pg.d3_headline||'A cada dia que passa voce continua nessa situacao...'}</h2>
-    ${(pg.d3_vozes||[]).map(v=>`<div style="background:#1f1f1f;border-left:3px solid ${cor};border-radius:0 8px 8px 0;padding:20px 24px;margin-bottom:12px;font-style:italic;color:#ddd">"${v}"</div>`).join('')}
-  </div>
-</section>
-
-<section style="background:#1a1a1a;padding:80px 32px">
-  <div style="max-width:680px;margin:0 auto">
-    <div style="font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:${cor};margin-bottom:8px;text-align:center">${pg.d4_overline||'ENTENDA DE UMA VEZ POR TODAS'}</div>
-    <h2 style="font-size:1.6rem;font-weight:700;margin-bottom:8px;text-align:center">${pg.d4_headline||'O problema nao esta em voce'}</h2>
-    <div style="display:flex;flex-direction:column;gap:12px;margin:32px 0">
-      ${(pg.d4_razoes||[]).map(r=>`<div style="background:#252525;border-radius:8px;padding:24px"><div style="font-weight:700;color:#fff;margin-bottom:6px">${r.titulo}</div><div style="color:#aaa;font-size:.9rem">${r.desc}</div></div>`).join('')}
-    </div>
-    <p style="text-align:center;color:${cor};font-weight:700;font-size:1.1rem">${pg.d4_cta||''}</p>
-  </div>
-</section>
-
-<section style="background:#0a0a0a;padding:80px 32px">
-  <div style="max-width:680px;margin:0 auto">
-    <h2 style="font-size:1.6rem;font-weight:700;margin-bottom:40px;text-align:center">${pg.d5_headline||'Estes sao os passos para voce ter resultado:'}</h2>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-      ${(pg.d5_passos||[]).map(s=>`<div style="background:#1a1a1a;border-radius:12px;padding:24px"><div style="font-size:2rem;font-weight:800;color:${cor};margin-bottom:12px">${s.num}</div><div style="font-weight:700;margin-bottom:8px">${s.titulo}</div><div style="color:#aaa;font-size:.9rem">➡ ${s.desc}</div></div>`).join('')}
-    </div>
-  </div>
-</section>
-
-<section style="background:#1a1a1a;padding:80px 32px">
-  <div style="max-width:680px;margin:0 auto">
-    <h2 style="font-size:1.6rem;font-weight:700;margin-bottom:8px;text-align:center">TUDO QUE VOCE VAI RECEBER</h2>
-    <p style="color:#aaa;text-align:center;margin-bottom:32px">${pg.d6_headline||''}</p>
-    ${(pg.d6_entregaveis||[]).map(e=>`<div style="padding:16px 0;border-bottom:1px solid #333;display:flex;gap:12px;align-items:center"><span style="color:#22c55e;font-weight:700;font-size:1.1rem">✓</span><span>${e}</span></div>`).join('')}
-  </div>
-</section>
-
-<section style="background:#0a0a0a;padding:80px 32px">
-  <div style="max-width:680px;margin:0 auto">
-    <h2 style="font-size:1.6rem;font-weight:700;margin-bottom:32px;text-align:center">${pg.d7_headline||'O produto e para voce que...'}</h2>
-    ${(pg.d7_situacoes||[]).map(s=>`<div style="display:flex;gap:12px;align-items:flex-start;padding:10px 0"><span style="color:#22c55e;font-weight:700">✓</span><span>${s}</span></div>`).join('')}
-    <div style="background:rgba(0,229,160,.08);border:1px solid ${cor};border-radius:8px;padding:20px;margin-top:24px;text-align:center;color:#ddd">${pg.d7_card||'Se voce se identifica com ao menos 2 itens acima, esse produto e para voce!'}</div>
-  </div>
-</section>
-
-<section style="background:#1a1a1a;padding:80px 32px">
-  <div style="max-width:680px;margin:0 auto">
-    <h2 style="font-size:1.6rem;font-weight:700;margin-bottom:32px;text-align:center">${pg.d8_headline||'Recapitulando tudo que voce vai receber:'}</h2>
-    <div style="background:#252525;border-radius:12px;overflow:hidden">
-      ${(pg.d8_itens||[]).map(it=>`<div style="display:flex;justify-content:space-between;padding:16px 24px;border-bottom:1px solid #333"><span>${it.nome}</span><span style="color:${cor};font-weight:500">${it.valor}</span></div>`).join('')}
-      <div style="display:flex;justify-content:space-between;padding:20px 24px;background:#1a1a1a"><span style="font-weight:700;font-size:1.1rem">TOTAL</span><span style="color:${cor};font-weight:800;font-size:1.2rem;text-decoration:line-through">${pg.d8_total||'R$295,00'}</span></div>
-    </div>
-  </div>
-</section>
-
-<section style="background:#0a0a0a;padding:80px 32px">
-  <div style="max-width:500px;margin:0 auto;text-align:center">
-    <p style="color:#aaa;margin-bottom:24px">${pg.d9_copy_intro||'Mas hoje voce vai ter acesso por apenas:'}</p>
-    <div style="background:#1f1f1f;border:2px solid ${cor};border-radius:16px;padding:40px">
-      <div style="font-size:.9rem;color:#aaa;margin-bottom:4px">Oferta Especial</div>
-      <div style="font-size:1rem;color:#aaa;margin-bottom:4px">${pg.d9_parcelado||'12x de R$ 6,70'}</div>
-      <div style="font-size:3rem;font-weight:800;color:${cor};line-height:1;margin-bottom:24px">${pg.d9_avista||'R$ '+ticket}</div>
-      <a href="#" style="display:block;background:${cor};color:#000;font-weight:700;padding:18px;border-radius:8px;text-decoration:none;font-size:1.1rem;margin-bottom:16px">${pg.d9_botao||'QUERO ACESSO AGORA'}</a>
-      <div style="display:flex;gap:16px;justify-content:center;font-size:.8rem;color:#888">
-        <span>✓ Acesso imediato</span><span>✓ Garantia 7 dias</span><span>✓ Compra segura</span>
-      </div>
-    </div>
-    <div style="margin-top:32px;text-align:left;color:#aaa;font-size:.9rem">
-      <p style="font-weight:600;color:#fff;margin-bottom:8px">Como funciona:</p>
-      <p>1. Voce realiza a compra</p><p>2. O acesso e enviado por e-mail</p><p>3. Acesse o material completo</p>
-    </div>
-  </div>
-</section>
-
-<section style="background:#1a1a1a;padding:80px 32px">
-  <div style="max-width:680px;margin:0 auto;text-align:center">
-    <h2 style="font-size:1.6rem;font-weight:700;margin-bottom:24px">${pg.d10_headline||'Quanto voce esta perdendo por nao resolver isso?'}</h2>
-    <p style="color:#aaa;line-height:1.7">${pg.d10_copy||''}</p>
-  </div>
-</section>
-
-<section style="background:#0a0a0a;padding:80px 32px">
-  <div style="max-width:680px;margin:0 auto;text-align:center">
-    <h2 style="font-size:1.6rem;font-weight:700;margin-bottom:16px">${pg.d11_headline||expert+' e quem criou esse produto'}</h2>
-    <p style="color:#aaa;margin-bottom:16px">${pg.d11_credenciais||credencial||''}</p>
-    <p style="font-style:italic;color:#ccc;border-left:3px solid ${cor};padding-left:20px;text-align:left;margin-bottom:40px">"${pg.d11_depoimento||''}"</p>
-    <div style="background:#1f1f1f;border:2px solid ${cor};border-radius:16px;padding:32px">
-      <div style="font-size:2rem;font-weight:800;color:${cor};margin-bottom:16px">${pg.d9_avista||'R$ '+ticket}</div>
-      <a href="#" style="display:block;background:${cor};color:#000;font-weight:700;padding:16px;border-radius:8px;text-decoration:none;font-size:1rem">${pg.d9_botao||'QUERO ACESSO AGORA'}</a>
-    </div>
-  </div>
-</section>
-
-<section style="background:#1a1a1a;padding:80px 32px">
-  <div style="max-width:680px;margin:0 auto">
-    <h2 style="font-size:1.6rem;font-weight:700;margin-bottom:32px;text-align:center">Perguntas Frequentes</h2>
-    ${(pg.d12_faqs||[]).map(faq=>`<div style="background:#252525;border-radius:8px;padding:20px 24px;margin-bottom:8px"><div style="font-weight:600;margin-bottom:8px">▼ ${faq.p}</div><div style="color:#aaa;font-size:.9rem">${faq.r}</div></div>`).join('')}
-  </div>
-</section>
-
-<footer style="background:#0a0a0a;padding:40px 32px;text-align:center;border-top:1px solid #222">
-  <p style="color:#444;font-size:.8rem;line-height:1.8">Criado por ${expert}<br>${credencial||''}<br><br>Todos os Direitos Reservados &copy; ${new Date().getFullYear()}</p>
-</footer>
-
-</div>`;
-  document.getElementById('pv-preview').innerHTML=html;
+  const dobras=[
+    {n:'Dobra 1',t:'Headline + promessa',body:[pg.d1_nome||'',pg.d1_headline||'',pg.d1_subtitulo||''].filter(Boolean).join(' | ')},
+    {n:'Dobra 2',t:'Prova social',body:pg.d2_headline||''},
+    {n:'Dobra 3',t:'Pedra no sapato — vozes na cabeca',body:(pg.d3_headline||'')+(pg.d3_vozes&&pg.d3_vozes.length?' | Vozes: '+pg.d3_vozes.join(' | '):'')},
+    {n:'Dobra 4',t:'Diagnostico — razoes externas',body:(pg.d4_overline||'')+(pg.d4_headline?' | '+pg.d4_headline:'')+(pg.d4_razoes&&pg.d4_razoes.length?' | '+pg.d4_razoes.map(r=>r.titulo+': '+r.desc).join(' | '):'')+(pg.d4_cta?' | '+pg.d4_cta:'')},
+    {n:'Dobra 5',t:'Modo de preparo — passos',body:(pg.d5_headline||'')+(pg.d5_passos&&pg.d5_passos.length?' | '+pg.d5_passos.map(s=>s.num+'. '+s.titulo+': '+s.desc).join(' | '):'')},
+    {n:'Dobra 6',t:'Entregaveis',body:(pg.d6_headline||'')+(pg.d6_entregaveis&&pg.d6_entregaveis.length?' | '+pg.d6_entregaveis.join(' | '):'')},
+    {n:'Dobra 7',t:'Para quem e',body:(pg.d7_headline||'')+(pg.d7_situacoes&&pg.d7_situacoes.length?' | '+pg.d7_situacoes.join(' | '):'')+(pg.d7_card?' | '+pg.d7_card:'')},
+    {n:'Dobra 8',t:'Ancoragem — tabela de valores',body:(pg.d8_headline||'')+(pg.d8_itens&&pg.d8_itens.length?' | '+pg.d8_itens.map(i=>i.nome+': '+i.valor).join(' | '):'')+(pg.d8_total?' | Total: '+pg.d8_total:'')},
+    {n:'Dobra 9',t:'Preco + botao (PRIMEIRA APARICAO)',body:[pg.d9_copy_intro,pg.d9_parcelado,pg.d9_avista||'R$'+ticket,pg.d9_botao].filter(Boolean).join(' | ')},
+    {n:'Dobra 10',t:'Conversa seria',body:(pg.d10_headline||'')+(pg.d10_copy?' | '+pg.d10_copy:'')},
+    {n:'Dobra 11',t:'Autoridade + preco repetido',body:[pg.d11_headline,pg.d11_credenciais||credencial,pg.d11_depoimento].filter(Boolean).join(' | ')},
+    {n:'Dobra 12',t:'FAQ + rodape',body:pg.d12_faqs&&pg.d12_faqs.length?pg.d12_faqs.map(f=>'P: '+f.p+' R: '+f.r).join(' | '):''}
+  ];
+  document.getElementById('pv-dobras').innerHTML=dobras.map(d=>'<div class=dobra><div class=dobra-num>'+d.n+'</div><div class=dobra-title>'+d.t+'</div><div class=dobra-body>'+(d.body||'')+'</div></div>').join('');
 }
 
 function renderTrafego(p){
@@ -662,8 +554,8 @@ function copiarFunil(){
 
 function copiarPagina(){
   if(!dadosGerados)return;
-  const html=document.getElementById('pv-preview').innerHTML;
-  navigator.clipboard.writeText(html).then(()=>toast('HTML da pagina copiado!'));
+  
+  const dobras=Array.from(document.querySelectorAll('#pv-dobras .dobra')).map(d=>(d.querySelector('.dobra-num').textContent+' - '+d.querySelector('.dobra-title').textContent+': '+d.querySelector('.dobra-body').textContent)).join(String.fromCharCode(10)+String.fromCharCode(10));navigator.clipboard.writeText(dobras).then(()=>toast('Pagina copiada!'));
 }
 
 function copiarTudo(){
