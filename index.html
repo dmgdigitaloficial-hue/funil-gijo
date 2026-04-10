@@ -415,15 +415,28 @@ async function gerar(){
   const steps=[[10,'Identificando ruminação mental...'],[22,'Criando nome e produto tangível...'],[35,'Estruturando oferta e bumps...'],[48,'Gerando ganchos e script do criativo...'],[60,'Escrevendo as 12 dobras da página...'],[72,'Calculando score do produto...'],[85,'Gerando entregável completo...'],[93,'Montando plano de tráfego...']];
   let si=0;
   const iv=setInterval(()=>{if(si<steps.length){setP(steps[si][0],steps[si][1]);si++}},1500);
-  const userMsg=`Nicho: ${nicho}\nFormato: ${formato}\nTicket: R$${ticket}\nVerba: R$${verba}/dia\nPlataforma: ${plataforma}\n${publico?'Público: '+publico:''}\nExpert: ${expert}${credencial?' — '+credencial:''}\n\nGere funil completo com score detalhado e entregável completo com no mínimo 15 seções.`;
+  const userMsg=`Nicho: ${nicho}\nFormato: ${formato}\nTicket: R$${ticket}\nVerba: R$${verba}/dia\nPlataforma: ${plataforma}\n${publico?'Público: '+publico:''}\nExpert: ${expert}${credencial?' — '+credencial:''}\n\nGere o funil completo. No entregável, gere no máximo 8 seções objetivas e diretas. Priorize qualidade sobre quantidade. O JSON deve estar completo e válido.`;
   try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:4000,system:SYSTEM,messages:[{role:'user',content:userMsg}]})});
+    let res, tentativa=0, maxTentativas=4;
+    while(tentativa<maxTentativas){
+      tentativa++;
+      if(tentativa>1){
+        const espera=tentativa*8000;
+        setP(Math.min(si*12,88),`Servidor ocupado — tentando novamente (${tentativa}/${maxTentativas})... aguarde ${espera/1000}s`);
+        await new Promise(r=>setTimeout(r,espera));
+      }
+      res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:8000,system:SYSTEM,messages:[{role:'user',content:userMsg}]})});
+      if(res.status!==529&&res.status!==529){break}
+      const eBody=await res.json().catch(()=>({}));
+      if(eBody?.error?.type!=='overloaded_error'&&res.status!==529)break;
+      if(tentativa===maxTentativas)throw new Error('Servidor sobrecarregado. Tente em alguns minutos.');
+    }
     clearInterval(iv);
     if(!res.ok){const e=await res.json().catch(()=>({}));throw new Error(e.error?.message||'Erro '+res.status)}
     const data=await res.json();
     const raw=data.content.map(b=>b.text||'').join('');
     const clean=raw.replace(/```json|```/g,'').trim();
-    let p;try{p=JSON.parse(clean)}catch(e){throw new Error('Resposta inválida. Tente novamente.')}
+    let p;try{p=JSON.parse(clean)}catch(e){const s=clean.indexOf('{');const e2=clean.lastIndexOf('}');if(s!==-1&&e2!==-1){try{p=JSON.parse(clean.slice(s,e2+1))}catch(e3){throw new Error('Resposta incompleta. Tente novamente.')}}else{throw new Error('Resposta inválida. Tente novamente.')}}
     dadosGerados={p,nicho,expert,ticket,data:new Date().toLocaleDateString('pt-BR')};
     setP(100,'Funil gerado com sucesso!');
     renderFunil(p);renderPagina(p,expert);renderTrafego(p);renderScore(p);renderEntregavel(p);
