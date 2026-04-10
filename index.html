@@ -3,663 +3,202 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Funil LT — Gerador</title>
+<title>Funil LT — Metodologia GiJo</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet"/>
 <style>
-:root {
-  --bg: #0c0c0e;
-  --s1: #141416;
-  --s2: #1c1c1f;
-  --s3: #242428;
-  --border: rgba(255,255,255,0.07);
-  --border2: rgba(255,255,255,0.13);
-  --accent: #00e5a0;
-  --accent2: rgba(0,229,160,0.08);
-  --accent3: rgba(0,229,160,0.15);
-  --text: #efefef;
-  --muted: #888;
-  --dim: #444;
-  --warn: #f5a623;
-  --warn2: rgba(245,166,35,0.08);
-  --danger: #e24b4a;
-  --info: #4a9eff;
-  --r: 12px;
-  --r-sm: 8px;
-  --r-xs: 6px;
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  font-size: 14px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ── SCROLLBAR ── */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--dim); border-radius: 2px; }
-
-/* ── LOGIN SCREEN ── */
-#login-screen {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  background: var(--bg);
-}
-.login-box {
-  width: 100%;
-  max-width: 380px;
-  animation: fadeUp .4s ease both;
-}
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.login-logo {
-  font-family: 'Syne', sans-serif;
-  font-weight: 800;
-  font-size: 22px;
-  letter-spacing: -.03em;
-  color: var(--text);
-  margin-bottom: 6px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.logo-dot {
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  background: var(--accent);
-  animation: blink 2.5s ease-in-out infinite;
-}
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
-.login-sub {
-  font-size: 13px;
-  color: var(--muted);
-  margin-bottom: 2rem;
-}
-.login-card {
-  background: var(--s1);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  padding: 1.75rem;
-}
-.login-label {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 8px;
-  display: block;
-}
-.login-input {
-  width: 100%;
-  background: var(--s2);
-  border: 1px solid var(--border);
-  border-radius: var(--r-sm);
-  color: var(--text);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  padding: 12px 14px;
-  outline: none;
-  transition: border-color .15s;
-  letter-spacing: .06em;
-}
-.login-input:focus { border-color: var(--accent); }
-.login-input.error { border-color: var(--danger); }
-.login-error {
-  font-size: 12px;
-  color: var(--danger);
-  margin-top: 8px;
-  display: none;
-}
-.login-error.show { display: block; }
-.btn-login {
-  width: 100%;
-  margin-top: 16px;
-  padding: 13px;
-  background: var(--accent);
-  color: #000;
-  border: none;
-  border-radius: var(--r-sm);
-  font-family: 'Syne', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  letter-spacing: .01em;
-  transition: opacity .15s, transform .1s;
-}
-.btn-login:hover { opacity: .88; }
-.btn-login:active { transform: scale(.98); }
-
-/* ── APP SHELL ── */
-#app { display: none; }
-#app.visible { display: block; }
-
-/* ── HEADER ── */
-header {
-  height: 56px;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1.5rem;
-  position: sticky;
-  top: 0;
-  background: rgba(12,12,14,.9);
-  backdrop-filter: blur(16px);
-  z-index: 100;
-}
-.header-logo {
-  font-family: 'Syne', sans-serif;
-  font-weight: 800;
-  font-size: 15px;
-  letter-spacing: -.02em;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.header-right { display: flex; align-items: center; gap: 10px; }
-.user-badge {
-  font-size: 11px;
-  padding: 4px 12px;
-  border-radius: 20px;
-  border: 1px solid var(--border2);
-  color: var(--muted);
-}
-.btn-logout {
-  font-size: 11px;
-  padding: 4px 10px;
-  border: 1px solid var(--border);
-  border-radius: var(--r-xs);
-  background: transparent;
-  color: var(--dim);
-  cursor: pointer;
-  transition: color .15s, border-color .15s;
-}
-.btn-logout:hover { color: var(--muted); border-color: var(--border2); }
-
-/* ── NAV TABS ── */
-.nav-wrap {
-  border-bottom: 1px solid var(--border);
-  padding: 0 1.5rem;
-  display: flex;
-  gap: 0;
-  overflow-x: auto;
-}
-.nav-tab {
-  padding: 14px 16px;
-  font-size: 13px;
-  font-weight: 400;
-  color: var(--muted);
-  cursor: pointer;
-  border: none;
-  background: transparent;
-  border-bottom: 2px solid transparent;
-  transition: color .15s, border-color .15s;
-  white-space: nowrap;
-  font-family: 'DM Sans', sans-serif;
-}
-.nav-tab:hover { color: var(--text); }
-.nav-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-
-/* ── MAIN ── */
-main { max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
-.screen { display: none; }
-.screen.active { display: block; }
-
-/* ── FORM ELEMENTS ── */
-.field { margin-bottom: 14px; }
-.field label {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: var(--muted);
-  display: block;
-  margin-bottom: 6px;
-}
-.field input, .field select, .field textarea {
-  width: 100%;
-  background: var(--s1);
-  border: 1px solid var(--border);
-  border-radius: var(--r-sm);
-  color: var(--text);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  padding: 10px 13px;
-  outline: none;
-  transition: border-color .15s;
-  appearance: none;
-}
-.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--border2); }
-.field textarea { resize: vertical; min-height: 70px; line-height: 1.5; }
-.field select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 12px center;
-  padding-right: 32px;
-  cursor: pointer;
-}
-.field select option { background: #1c1c1f; }
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-
-/* ── SECTION SEPARATOR ── */
-.sep {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--dim);
-  margin: 24px 0 14px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.sep-num {
-  width: 20px; height: 20px;
-  border-radius: 50%;
-  background: var(--s3);
-  color: var(--muted);
-  font-size: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* ── BUTTONS ── */
-.btn-primary {
-  width: 100%;
-  padding: 13px;
-  background: var(--accent);
-  color: #000;
-  border: none;
-  border-radius: var(--r-sm);
-  font-family: 'Syne', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: opacity .15s, transform .1s;
-  letter-spacing: .01em;
-  margin-top: 8px;
-}
-.btn-primary:hover { opacity: .85; }
-.btn-primary:active { transform: scale(.98); }
-.btn-primary:disabled { opacity: .3; cursor: not-allowed; }
-.btn-secondary {
-  padding: 10px 16px;
-  background: transparent;
-  border: 1px solid var(--border2);
-  border-radius: var(--r-sm);
-  color: var(--muted);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  cursor: pointer;
-  transition: color .15s, border-color .15s;
-}
-.btn-secondary:hover { color: var(--text); border-color: var(--border2); }
-.btn-row { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
-
-/* ── PROGRESS ── */
-.prog-wrap { margin-top: 16px; display: none; }
-.prog-wrap.active { display: block; }
-.prog-msg { font-size: 12px; color: var(--muted); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-.spinner { width: 14px; height: 14px; border: 2px solid var(--border2); border-top-color: var(--accent); border-radius: 50%; animation: spin .6s linear infinite; flex-shrink: 0; }
-@keyframes spin { to { transform: rotate(360deg); } }
-.prog-bar { height: 2px; background: var(--s3); border-radius: 1px; overflow: hidden; }
-.prog-fill { height: 100%; background: var(--accent); border-radius: 1px; width: 0%; transition: width .5s ease; }
-
-/* ── RESULT BLOCKS ── */
-.rblock {
-  background: var(--s1);
-  border: 1px solid var(--border);
-  border-radius: var(--r-sm);
-  padding: 14px;
-  margin-bottom: 8px;
-}
-.rblock-lbl {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--dim);
-  margin-bottom: 8px;
-}
-.rblock-val {
-  font-size: 13px;
-  color: var(--text);
-  line-height: 1.65;
-  white-space: pre-wrap;
-}
-.rblock-val.hero {
-  font-family: 'Syne', sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: -.02em;
-  line-height: 1.2;
-  color: var(--accent);
-}
-.rblock-val.price {
-  font-family: 'Syne', sans-serif;
-  font-size: 24px;
-  font-weight: 800;
-  color: var(--accent);
-}
-.rblock-val.muted { font-style: italic; color: var(--muted); }
-
-/* ── GANCHOS ── */
-.gancho {
-  background: var(--s1);
-  border: 1px solid var(--border);
-  border-left: 2px solid var(--accent);
-  border-radius: 0 var(--r-sm) var(--r-sm) 0;
-  padding: 12px 14px;
-  margin-bottom: 6px;
-  font-size: 13px;
-  color: var(--text);
-  line-height: 1.55;
-  cursor: pointer;
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  transition: background .12s;
-}
-.gancho:hover { background: var(--accent2); }
-.gancho-n { font-size: 10px; font-weight: 600; color: var(--accent); min-width: 14px; margin-top: 2px; }
-.gancho-hint { font-size: 11px; color: var(--dim); text-align: center; margin-top: 6px; }
-
-/* ── PÁGINA DE VENDAS ── */
-.dobra {
-  border-bottom: 1px solid var(--border);
-  padding: 18px 0;
-}
-.dobra:last-child { border-bottom: none; }
-.dobra-num {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 4px;
-}
-.dobra-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 10px; }
-.dobra-body { font-size: 13px; color: var(--muted); line-height: 1.7; white-space: pre-wrap; }
-
-/* ── FASES TRÁFEGO ── */
-.fase {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--border);
-}
-.fase:last-child { border-bottom: none; }
-.fase-n {
-  width: 28px; height: 28px;
-  border-radius: 50%;
-  background: var(--accent2);
-  border: 1px solid var(--accent3);
-  color: var(--accent);
-  font-family: 'Syne', sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-.fase-title { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
-.fase-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
-
-/* ── METRICS PILLS ── */
-.pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
-.pill {
-  font-size: 11px;
-  font-weight: 500;
-  padding: 4px 12px;
-  border-radius: 20px;
-  border: 1px solid;
-}
-.pill-ok { background: rgba(0,229,160,.07); border-color: rgba(0,229,160,.2); color: var(--accent); }
-.pill-warn { background: var(--warn2); border-color: rgba(245,166,35,.2); color: var(--warn); }
-
-/* ── CARD ── */
-.card {
-  background: var(--s1);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  padding: 1.5rem;
-  margin-bottom: 12px;
-}
-
-/* ── CONFIG SCREEN ── */
-.config-notice {
-  background: var(--warn2);
-  border: 1px solid rgba(245,166,35,.15);
-  border-radius: var(--r-sm);
-  padding: 12px 14px;
-  font-size: 12px;
-  color: var(--warn);
-  line-height: 1.55;
-  margin-bottom: 16px;
-}
-.saved-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  color: var(--accent);
-  background: var(--accent2);
-  border: 1px solid var(--accent3);
-  border-radius: 20px;
-  padding: 4px 12px;
-  margin-top: 10px;
-  opacity: 0;
-  transition: opacity .3s;
-}
-.saved-badge.show { opacity: 1; }
-
-/* ── TOAST ── */
-.toast {
-  position: fixed;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%) translateY(80px);
-  background: var(--text);
-  color: var(--bg);
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 500;
-  transition: transform .25s ease;
-  z-index: 999;
-  pointer-events: none;
-  white-space: nowrap;
-}
-.toast.show { transform: translateX(-50%) translateY(0); }
-
-/* ── RESPONSIVE ── */
-@media(max-width:540px) {
-  .grid-2, .grid-3 { grid-template-columns: 1fr; }
-  main { padding: 1.5rem 1rem 4rem; }
-  header { padding: 0 1rem; }
-}
+:root{--bg:#0c0c0e;--s1:#141416;--s2:#1c1c1f;--s3:#242428;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);--accent:#00e5a0;--accent2:rgba(0,229,160,0.08);--accent3:rgba(0,229,160,0.15);--text:#efefef;--muted:#888;--dim:#444;--warn:#f5a623;--warn2:rgba(245,166,35,0.08);--danger:#e24b4a;--danger2:rgba(226,75,74,0.08);--r:12px;--r-sm:8px;--r-xs:6px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--dim);border-radius:2px}
+#login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem}
+.login-box{width:100%;max-width:380px;animation:fadeUp .4s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.login-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:22px;letter-spacing:-.03em;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.logo-dot{width:10px;height:10px;border-radius:50%;background:var(--accent);animation:blink 2.5s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.login-sub{font-size:13px;color:var(--muted);margin-bottom:2rem}
+.login-card{background:var(--s1);border:1px solid var(--border);border-radius:var(--r);padding:1.75rem}
+.login-label{font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:block}
+.login-input{width:100%;background:var(--s2);border:1px solid var(--border);border-radius:var(--r-sm);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;padding:12px 14px;outline:none;transition:border-color .15s;letter-spacing:.06em}
+.login-input:focus{border-color:var(--accent)}.login-input.error{border-color:var(--danger)}
+.login-error{font-size:12px;color:var(--danger);margin-top:8px;display:none}.login-error.show{display:block}
+.btn-login{width:100%;margin-top:16px;padding:13px;background:var(--accent);color:#000;border:none;border-radius:var(--r-sm);font-family:'Syne',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:opacity .15s,transform .1s}
+.btn-login:hover{opacity:.88}.btn-login:active{transform:scale(.98)}
+#app{display:none}#app.visible{display:block}
+header{height:56px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;position:sticky;top:0;background:rgba(12,12,14,.9);backdrop-filter:blur(16px);z-index:100}
+.header-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.header-right{display:flex;align-items:center;gap:10px}
+.user-badge{font-size:11px;padding:4px 12px;border-radius:20px;border:1px solid var(--border2);color:var(--muted)}
+.btn-logout{font-size:11px;padding:4px 10px;border:1px solid var(--border);border-radius:var(--r-xs);background:transparent;color:var(--dim);cursor:pointer;transition:color .15s}
+.btn-logout:hover{color:var(--muted)}
+.nav-wrap{border-bottom:1px solid var(--border);padding:0 1.5rem;display:flex;overflow-x:auto}
+.nav-tab{padding:14px 15px;font-size:13px;color:var(--muted);cursor:pointer;border:none;background:transparent;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;white-space:nowrap;font-family:'DM Sans',sans-serif}
+.nav-tab:hover{color:var(--text)}.nav-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.nav-badge{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:var(--accent);color:#000;font-size:9px;font-weight:700;margin-left:4px}
+main{max-width:820px;margin:0 auto;padding:2rem 1.5rem 5rem}
+.screen{display:none}.screen.active{display:block}
+.field{margin-bottom:14px}
+.field label{font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
+.field input,.field select,.field textarea{width:100%;background:var(--s1);border:1px solid var(--border);border-radius:var(--r-sm);color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;padding:10px 13px;outline:none;transition:border-color .15s;appearance:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--border2)}
+.field textarea{resize:vertical;min-height:70px;line-height:1.5}
+.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;cursor:pointer}
+.field select option{background:#1c1c1f}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.sep{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin:24px 0 14px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.sep-num{width:20px;height:20px;border-radius:50%;background:var(--s3);color:var(--muted);font-size:10px;display:flex;align-items:center;justify-content:center}
+.btn-primary{width:100%;padding:13px;background:var(--accent);color:#000;border:none;border-radius:var(--r-sm);font-family:'Syne',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:opacity .15s,transform .1s;margin-top:8px}
+.btn-primary:hover{opacity:.85}.btn-primary:active{transform:scale(.98)}.btn-primary:disabled{opacity:.3;cursor:not-allowed}
+.btn-secondary{padding:10px 16px;background:transparent;border:1px solid var(--border2);border-radius:var(--r-sm);color:var(--muted);font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;transition:color .15s}
+.btn-secondary:hover{color:var(--text)}
+.btn-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.prog-wrap{margin-top:16px;display:none}.prog-wrap.active{display:block}
+.prog-msg{font-size:12px;color:var(--muted);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.spinner{width:14px;height:14px;border:2px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin .6s linear infinite;flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+.prog-bar{height:2px;background:var(--s3);border-radius:1px;overflow:hidden}
+.prog-fill{height:100%;background:var(--accent);border-radius:1px;width:0%;transition:width .5s ease}
+.rblock{background:var(--s1);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px;margin-bottom:8px}
+.rblock-lbl{font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
+.rblock-val{font-size:13px;color:var(--text);line-height:1.65;white-space:pre-wrap}
+.rblock-val.hero{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.2;color:var(--accent)}
+.rblock-val.price{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:var(--accent)}
+.rblock-val.muted{font-style:italic;color:var(--muted)}
+.gancho{background:var(--s1);border:1px solid var(--border);border-left:2px solid var(--accent);border-radius:0 var(--r-sm) var(--r-sm) 0;padding:12px 14px;margin-bottom:6px;font-size:13px;color:var(--text);line-height:1.55;cursor:pointer;display:flex;gap:12px;align-items:flex-start;transition:background .12s}
+.gancho:hover{background:var(--accent2)}
+.gancho-n{font-size:10px;font-weight:600;color:var(--accent);min-width:14px;margin-top:2px}
+.gancho-hint{font-size:11px;color:var(--dim);text-align:center;margin-top:6px}
+.dobra{border-bottom:1px solid var(--border);padding:18px 0}.dobra:last-child{border-bottom:none}
+.dobra-num{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.dobra-title{font-size:14px;font-weight:500;color:var(--text);margin-bottom:10px}
+.dobra-body{font-size:13px;color:var(--muted);line-height:1.7;white-space:pre-wrap}
+.fase{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--border)}.fase:last-child{border-bottom:none}
+.fase-n{width:28px;height:28px;border-radius:50%;background:var(--accent2);border:1px solid var(--accent3);color:var(--accent);font-family:'Syne',sans-serif;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.fase-title{font-size:13px;font-weight:500;color:var(--text);margin-bottom:6px}
+.fase-desc{font-size:12px;color:var(--muted);line-height:1.6}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.pill{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;border:1px solid}
+.pill-ok{background:rgba(0,229,160,.07);border-color:rgba(0,229,160,.2);color:var(--accent)}
+.pill-warn{background:var(--warn2);border-color:rgba(245,166,35,.2);color:var(--warn)}
+.card{background:var(--s1);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;margin-bottom:12px}
+.score-wrap{background:var(--s1);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;margin-bottom:12px}
+.score-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.score-number{font-family:'Syne',sans-serif;font-size:48px;font-weight:800;line-height:1}
+.score-number.high{color:var(--accent)}.score-number.mid{color:var(--warn)}.score-number.low{color:var(--danger)}
+.score-bar-wrap{height:6px;background:var(--s3);border-radius:3px;overflow:hidden;margin-bottom:1.5rem}
+.score-bar{height:100%;border-radius:3px;transition:width .8s ease}
+.score-item{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border)}.score-item:last-child{border-bottom:none}
+.score-icon{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;margin-top:1px}
+.si-ok{background:rgba(0,229,160,.12);color:var(--accent)}.si-warn{background:var(--warn2);color:var(--warn)}.si-bad{background:var(--danger2);color:var(--danger)}
+.score-item-title{font-size:13px;font-weight:500;color:var(--text);margin-bottom:2px}
+.score-item-desc{font-size:12px;color:var(--muted);line-height:1.5}
+.entregavel-section{background:var(--s2);border-radius:var(--r-sm);padding:14px;margin-bottom:10px}
+.entregavel-title{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.entregavel-body{font-size:13px;color:var(--text);line-height:1.7;white-space:pre-wrap}
+.hist-item{background:var(--s1);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px;margin-bottom:8px;cursor:pointer;transition:border-color .15s}
+.hist-item:hover{border-color:var(--border2)}
+.hist-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px}
+.hist-nome{font-size:14px;font-weight:500;color:var(--accent)}
+.hist-data{font-size:11px;color:var(--dim)}
+.hist-meta{display:flex;gap:8px;flex-wrap:wrap}
+.hist-tag{font-size:11px;padding:2px 8px;border-radius:20px;background:var(--s2);color:var(--muted);border:1px solid var(--border)}
+.hist-empty{text-align:center;padding:3rem 1rem;color:var(--dim);font-size:13px}
+.config-notice{background:var(--warn2);border:1px solid rgba(245,166,35,.15);border-radius:var(--r-sm);padding:12px 14px;font-size:12px;color:var(--warn);line-height:1.55;margin-bottom:16px}
+.saved-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--accent);background:var(--accent2);border:1px solid var(--accent3);border-radius:20px;padding:4px 12px;margin-top:10px;opacity:0;transition:opacity .3s}
+.saved-badge.show{opacity:1}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--text);color:var(--bg);padding:10px 20px;border-radius:20px;font-size:13px;font-weight:500;transition:transform .25s ease;z-index:999;pointer-events:none;white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0)}
+@media(max-width:540px){.grid-2,.grid-3{grid-template-columns:1fr}main{padding:1.5rem 1rem 4rem}header{padding:0 1rem}}
 </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════ LOGIN ═══════════════════════════════ -->
 <div id="login-screen">
   <div class="login-box">
-    <div class="login-logo">
-      <span class="logo-dot"></span>
-      Funil LT
-    </div>
+    <div class="login-logo"><span class="logo-dot"></span>Funil LT</div>
     <p class="login-sub">Metodologia GiJo — acesso restrito</p>
     <div class="login-card">
       <label class="login-label">Senha de acesso</label>
-      <input
-        class="login-input"
-        type="password"
-        id="login-input"
-        placeholder="••••••••"
-        autocomplete="off"
-        onkeydown="if(event.key==='Enter')doLogin()"
-      />
+      <input class="login-input" type="password" id="login-input" placeholder="••••••••" autocomplete="off" onkeydown="if(event.key==='Enter')doLogin()"/>
       <p class="login-error" id="login-error">Senha incorreta. Tente novamente.</p>
       <button class="btn-login" onclick="doLogin()">Entrar</button>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════ APP ═══════════════════════════════ -->
 <div id="app">
   <header>
-    <div class="header-logo">
-      <span class="logo-dot"></span>
-      Funil LT
-    </div>
+    <div class="header-logo"><span class="logo-dot"></span>Funil LT <span style="font-size:10px;color:var(--muted);margin-left:6px;font-family:'DM Sans',sans-serif;font-weight:400">v2.0</span></div>
     <div class="header-right">
       <span class="user-badge" id="user-badge">usuário</span>
       <button class="btn-logout" onclick="logout()">sair</button>
     </div>
   </header>
-
   <div class="nav-wrap">
-    <button class="nav-tab active" onclick="goTab('gerar')">Gerar funil</button>
-    <button class="nav-tab" onclick="goTab('funil')" id="tab-funil">Produto + Criativos</button>
-    <button class="nav-tab" onclick="goTab('pagina')" id="tab-pagina">Página de vendas</button>
-    <button class="nav-tab" onclick="goTab('trafego')" id="tab-trafego">Tráfego</button>
+    <button class="nav-tab active" onclick="goTab('gerar')">Gerar</button>
+    <button class="nav-tab" onclick="goTab('funil')">Produto + Criativos</button>
+    <button class="nav-tab" onclick="goTab('pagina')">Página</button>
+    <button class="nav-tab" onclick="goTab('trafego')">Tráfego</button>
+    <button class="nav-tab" onclick="goTab('score')">Score</button>
+    <button class="nav-tab" onclick="goTab('entregavel')">Entregável</button>
+    <button class="nav-tab" onclick="goTab('historico')">Histórico <span class="nav-badge" id="hist-count">0</span></button>
     <button class="nav-tab" onclick="goTab('config')">Config</button>
   </div>
-
   <main>
 
-    <!-- ── GERAR ── -->
     <div class="screen active" id="screen-gerar">
-
       <div class="sep"><span class="sep-num">1</span> Sobre o produto</div>
-
       <div class="grid-2">
-        <div class="field">
-          <label>Nicho</label>
+        <div class="field"><label>Nicho</label>
           <select id="i-nicho">
             <option value="">Selecione...</option>
-            <option>Finanças pessoais</option>
-            <option>Emagrecimento / nutrição</option>
-            <option>Secretárias / escritório</option>
-            <option>Gestores de tráfego</option>
-            <option>Mães / organização doméstica</option>
-            <option>Pets e veterinária</option>
-            <option>Construção civil</option>
-            <option>Advocacia / jurídico</option>
-            <option>Fotografia</option>
-            <option>Design gráfico</option>
-            <option>Saúde mental / ansiedade</option>
-            <option>Concursos públicos</option>
+            <option>Finanças pessoais</option><option>Emagrecimento / nutrição</option>
+            <option>Secretárias / escritório</option><option>Gestores de tráfego</option>
+            <option>Mães / organização doméstica</option><option>Pets e veterinária</option>
+            <option>Construção civil</option><option>Advocacia / jurídico</option>
+            <option>Fotografia</option><option>Design gráfico</option>
+            <option>Saúde mental / ansiedade</option><option>Concursos públicos</option>
             <option>Outro (escrever abaixo)</option>
           </select>
         </div>
-        <div class="field">
-          <label>Formato do produto</label>
+        <div class="field"><label>Formato</label>
           <select id="i-formato">
-            <option>Planilha</option>
-            <option>Cartilha (PDF)</option>
-            <option>Pack / kit de templates</option>
-            <option>Checklist / protocolo</option>
-            <option>Rotina / calendário</option>
-            <option>Scripts prontos</option>
+            <option>Planilha</option><option>Cartilha (PDF)</option>
+            <option>Pack / kit de templates</option><option>Checklist / protocolo</option>
+            <option>Rotina / calendário</option><option>Scripts prontos</option>
             <option>Mini-curso (máx 2h)</option>
           </select>
         </div>
       </div>
-
-      <div class="field">
-        <label>Nicho personalizado (se selecionou "Outro")</label>
-        <input id="i-nicho-custom" placeholder="Ex: nutricionistas autônomos, fotógrafos de casamento..."/>
-      </div>
-
-      <div class="field">
-        <label>Público-alvo específico (opcional — quanto mais específico, melhor)</label>
-        <input id="i-publico" placeholder="Ex: mulheres 30-45 que não conseguem manter a dieta e pensam nisso todo dia"/>
-      </div>
-
+      <div class="field"><label>Nicho personalizado</label><input id="i-nicho-custom" placeholder="Ex: nutricionistas autônomos..."/></div>
+      <div class="field"><label>Público-alvo específico (opcional)</label><input id="i-publico" placeholder="Ex: mulheres 30-45 que não conseguem manter a dieta e pensam nisso todo dia"/></div>
       <div class="sep"><span class="sep-num">2</span> Sobre a oferta</div>
-
       <div class="grid-3">
-        <div class="field">
-          <label>Ticket principal</label>
-          <select id="i-ticket">
-            <option value="67">R$67 (recomendado)</option>
-            <option value="47">R$47</option>
-            <option value="97">R$97</option>
-            <option value="37">R$37</option>
-          </select>
+        <div class="field"><label>Ticket</label>
+          <select id="i-ticket"><option value="67">R$67 (recomendado)</option><option value="47">R$47</option><option value="97">R$97</option><option value="37">R$37</option></select>
         </div>
-        <div class="field">
-          <label>Verba diária disponível</label>
-          <select id="i-verba">
-            <option value="50">R$50/dia</option>
-            <option value="100">R$100/dia</option>
-            <option value="200">R$200/dia</option>
-            <option value="500">R$500/dia</option>
-            <option value="1000">R$1.000/dia</option>
-          </select>
+        <div class="field"><label>Verba diária</label>
+          <select id="i-verba"><option value="50">R$50/dia</option><option value="100">R$100/dia</option><option value="200">R$200/dia</option><option value="500">R$500/dia</option><option value="1000">R$1.000/dia</option></select>
         </div>
-        <div class="field">
-          <label>Plataforma de venda</label>
-          <select id="i-plataforma">
-            <option>Kiwify</option>
-            <option>Hotmart</option>
-            <option>Eduzz</option>
-            <option>Monetizze</option>
-          </select>
+        <div class="field"><label>Plataforma</label>
+          <select id="i-plataforma"><option>Kiwify</option><option>Hotmart</option><option>Eduzz</option><option>Monetizze</option></select>
         </div>
       </div>
-
       <div class="sep"><span class="sep-num">3</span> Sobre o expert</div>
-
       <div class="grid-2">
-        <div class="field">
-          <label>Nome do expert / marca</label>
-          <input id="i-expert" placeholder="Ex: Dra. Ana Costa"/>
-        </div>
-        <div class="field">
-          <label>Credencial resumida</label>
-          <input id="i-credencial" placeholder="Ex: nutricionista há 8 anos, +2.000 pacientes"/>
-        </div>
+        <div class="field"><label>Nome do expert / marca</label><input id="i-expert" placeholder="Ex: Dra. Ana Costa"/></div>
+        <div class="field"><label>Credencial resumida</label><input id="i-credencial" placeholder="Ex: nutricionista há 8 anos, +2.000 pacientes"/></div>
       </div>
-
-      <button class="btn-primary" id="btn-gerar" onclick="gerar()">
-        Gerar funil completo + página de vendas →
-      </button>
-
+      <button class="btn-primary" id="btn-gerar" onclick="gerar()">Gerar funil completo + score + entregável →</button>
       <div class="prog-wrap" id="prog-wrap">
-        <div class="prog-msg">
-          <div class="spinner"></div>
-          <span id="prog-msg">Gerando...</span>
-        </div>
-        <div class="prog-bar">
-          <div class="prog-fill" id="prog-fill"></div>
-        </div>
+        <div class="prog-msg"><div class="spinner"></div><span id="prog-msg">Gerando...</span></div>
+        <div class="prog-bar"><div class="prog-fill" id="prog-fill"></div></div>
       </div>
-
       <p id="err-msg" style="font-size:12px;color:var(--danger);margin-top:10px;display:none"></p>
     </div>
 
-    <!-- ── FUNIL ── -->
     <div class="screen" id="screen-funil">
       <div class="sep">Produto</div>
       <div class="rblock"><div class="rblock-lbl">Nome do produto</div><div class="rblock-val hero" id="r-nome"></div></div>
@@ -667,49 +206,39 @@ main { max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
         <div class="rblock"><div class="rblock-lbl">Formato tangível</div><div class="rblock-val" id="r-formato"></div></div>
         <div class="rblock"><div class="rblock-lbl">Preço</div><div class="rblock-val price" id="r-preco"></div></div>
       </div>
-      <div class="rblock"><div class="rblock-lbl">Ruminação mental — o que a persona repete todo dia</div><div class="rblock-val muted" id="r-rum"></div></div>
-      <div class="rblock"><div class="rblock-lbl">Como tangibilizar no criativo — dedo na tela</div><div class="rblock-val" id="r-tang"></div></div>
-
-      <div class="sep">Oferta completa</div>
-      <div class="rblock"><div class="rblock-lbl">Order bump — adicionar SOMENTE após ROAS 2.0 validado</div><div class="rblock-val" id="r-bump"></div></div>
+      <div class="rblock"><div class="rblock-lbl">Ruminação mental</div><div class="rblock-val muted" id="r-rum"></div></div>
+      <div class="rblock"><div class="rblock-lbl">Como tangibilizar — dedo na tela</div><div class="rblock-val" id="r-tang"></div></div>
+      <div class="sep">Oferta</div>
+      <div class="rblock"><div class="rblock-lbl">Order bump — somente após ROAS 2.0</div><div class="rblock-val" id="r-bump"></div></div>
       <div class="rblock"><div class="rblock-lbl">Upsell pós-compra</div><div class="rblock-val" id="r-upsell"></div></div>
-
-      <div class="sep">5 ganchos para criativos — clique para copiar</div>
+      <div class="sep">5 ganchos — clique para copiar</div>
       <div id="r-ganchos"></div>
       <p class="gancho-hint">Clique em qualquer gancho para copiar</p>
-
+      <div class="sep">Script completo do vídeo criativo (60s)</div>
+      <div class="rblock"><div class="rblock-lbl">Abertura + meio + fechamento com marcações de tempo</div><div class="rblock-val" id="r-script"></div></div>
       <div class="btn-row">
         <button class="btn-secondary" onclick="copiarFunil()">Copiar funil</button>
-        <button class="btn-secondary" onclick="goTab('pagina')">Ver página de vendas →</button>
+        <button class="btn-secondary" onclick="goTab('score')">Ver score →</button>
       </div>
     </div>
 
-    <!-- ── PÁGINA ── -->
     <div class="screen" id="screen-pagina">
       <div class="sep">Página de vendas — 12 dobras</div>
-      <div class="card">
-        <div id="pv-dobras"></div>
-      </div>
+      <div class="card"><div id="pv-dobras"></div></div>
       <div class="btn-row">
         <button class="btn-secondary" onclick="copiarPagina()">Copiar página completa</button>
         <button class="btn-secondary" onclick="goTab('trafego')">Ver tráfego →</button>
       </div>
     </div>
 
-    <!-- ── TRÁFEGO ── -->
     <div class="screen" id="screen-trafego">
       <div class="sep">Estrutura de tráfego — 3 fases (Metodologia GiJo)</div>
-      <div class="card">
-        <div id="r-trafego"></div>
-      </div>
+      <div class="card"><div id="r-trafego"></div></div>
       <div class="pills">
-        <span class="pill pill-ok">CPV meta ≤ R$2,70</span>
-        <span class="pill pill-ok">Checkout meta ≤ R$23</span>
-        <span class="pill pill-ok">ROAS mín. escala 2.0</span>
-        <span class="pill pill-ok">Escala = 10× ticket/dia</span>
-        <span class="pill pill-warn">Excluir campanhas ruins</span>
-        <span class="pill pill-warn">Bump só após ROAS 2.0</span>
-        <span class="pill pill-warn">Regra dos 20% no criativo</span>
+        <span class="pill pill-ok">CPV meta ≤ R$2,70</span><span class="pill pill-ok">Checkout ≤ R$23</span>
+        <span class="pill pill-ok">ROAS mín. 2.0</span><span class="pill pill-ok">Escala = 10× ticket/dia</span>
+        <span class="pill pill-warn">Excluir campanhas ruins</span><span class="pill pill-warn">Bump só após ROAS 2.0</span>
+        <span class="pill pill-warn">Regra 20% no criativo</span>
       </div>
       <div class="btn-row" style="margin-top:16px">
         <button class="btn-secondary" onclick="copiarTudo()">Copiar tudo</button>
@@ -717,505 +246,339 @@ main { max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
       </div>
     </div>
 
-    <!-- ── CONFIG ── -->
+    <div class="screen" id="screen-score">
+      <div class="sep">Score do produto — análise de viabilidade</div>
+      <div class="score-wrap">
+        <div class="score-header">
+          <div><div class="score-number" id="score-num">—</div><div style="font-size:11px;color:var(--muted);margin-top:4px">de 10 pontos</div></div>
+          <div style="text-align:right">
+            <div style="font-size:14px;font-weight:500" id="score-status">Gere um funil primeiro</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:2px" id="score-resumo"></div>
+          </div>
+        </div>
+        <div class="score-bar-wrap"><div class="score-bar" id="score-bar"></div></div>
+        <div id="score-itens"></div>
+      </div>
+      <div class="btn-row"><button class="btn-secondary" onclick="goTab('entregavel')">Ver entregável →</button></div>
+    </div>
+
+    <div class="screen" id="screen-entregavel">
+      <div class="sep">Entregável — conteúdo completo do produto</div>
+      <div id="entregavel-container"><p style="text-align:center;color:var(--dim);font-size:13px;padding:3rem 0">Gere um funil primeiro para ver o entregável completo.</p></div>
+      <div class="btn-row" id="entregavel-btns" style="display:none">
+        <button class="btn-secondary" onclick="copiarEntregavel()">Copiar entregável completo</button>
+        <button class="btn-secondary" onclick="novoFunil()">Novo nicho</button>
+      </div>
+    </div>
+
+    <div class="screen" id="screen-historico">
+      <div class="sep">Histórico de funis gerados</div>
+      <div id="hist-lista"></div>
+      <div class="btn-row" style="margin-top:8px">
+        <button class="btn-secondary" onclick="limparHistorico()" style="color:var(--danger);border-color:rgba(226,75,74,.3)">Limpar histórico</button>
+      </div>
+    </div>
+
     <div class="screen" id="screen-config">
       <div class="sep">Configuração do administrador</div>
-      <div class="config-notice">
-        Estas configurações são visíveis apenas para o administrador que tem acesso a esta tela. Cole aqui a API key da Anthropic e defina as senhas de acesso. Salvo localmente no navegador.
-      </div>
-
+      <div class="config-notice">Configurações salvas localmente no navegador. Visível apenas para o administrador.</div>
       <div class="card">
-        <div class="field">
-          <label>API key da Anthropic (centralizada)</label>
-          <input type="password" id="cfg-apikey" placeholder="sk-ant-api03-..."/>
-        </div>
-        <div class="field">
-          <label>Senha de administrador (para acessar esta tela de config)</label>
-          <input type="password" id="cfg-admin-pass" placeholder="senha do admin"/>
-        </div>
-        <div class="sep">Senhas de acesso para sócios</div>
-        <div class="field">
-          <label>Senha 1 — Sócio A</label>
-          <input type="text" id="cfg-pass1" placeholder="ex: socio-joao-2025"/>
-        </div>
-        <div class="field">
-          <label>Senha 2 — Sócio B</label>
-          <input type="text" id="cfg-pass2" placeholder="ex: socio-maria-2025"/>
-        </div>
-        <div class="field">
-          <label>Senha 3 — Sócio C</label>
-          <input type="text" id="cfg-pass3" placeholder="ex: socio-pedro-2025"/>
-        </div>
-        <div class="field">
-          <label>Senha 4 (opcional)</label>
-          <input type="text" id="cfg-pass4" placeholder=""/>
-        </div>
-        <div class="field">
-          <label>Senha 5 (opcional)</label>
-          <input type="text" id="cfg-pass5" placeholder=""/>
-        </div>
-        <button class="btn-primary" onclick="salvarConfig()" style="margin-top:4px">Salvar configurações</button>
-        <div class="saved-badge" id="saved-badge">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Salvo com sucesso
-        </div>
-      </div>
-
-      <div class="card" style="margin-top:0">
-        <p style="font-size:13px;font-weight:500;margin-bottom:10px">Como distribuir</p>
-        <p style="font-size:12px;color:var(--muted);line-height:1.7">
-          1. Salve as configurações acima (API key + senhas)<br>
-          2. Hospede este arquivo no GitHub Pages ou Vercel (grátis)<br>
-          3. Envie o link + a senha individual para cada sócio<br>
-          4. Cada sócio acessa com a própria senha — você controla quem entra<br>
-          5. Para revogar acesso: limpe a senha do sócio e salve novamente
-        </p>
+        <div class="field"><label>API key da Anthropic</label><input type="password" id="cfg-apikey" placeholder="sk-ant-api03-..."/></div>
+        <div class="field"><label>Senha de administrador</label><input type="password" id="cfg-admin-pass" placeholder="senha do admin"/></div>
+        <div class="sep">Senhas dos sócios</div>
+        <div class="field"><label>Senha 1 — Sócio A</label><input type="text" id="cfg-pass1" placeholder="ex: socio-joao-2025"/></div>
+        <div class="field"><label>Senha 2 — Sócio B</label><input type="text" id="cfg-pass2" placeholder="ex: socio-maria-2025"/></div>
+        <div class="field"><label>Senha 3 — Sócio C</label><input type="text" id="cfg-pass3"/></div>
+        <div class="field"><label>Senha 4 (opcional)</label><input type="text" id="cfg-pass4"/></div>
+        <div class="field"><label>Senha 5 (opcional)</label><input type="text" id="cfg-pass5"/></div>
+        <button class="btn-primary" onclick="salvarConfig()">Salvar configurações</button>
+        <div class="saved-badge" id="saved-badge"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Salvo com sucesso</div>
       </div>
     </div>
 
   </main>
 </div>
-
 <div class="toast" id="toast"></div>
 
 <script>
-// ═══════════════════════════════════════════
-// CONFIGURAÇÃO PADRÃO — edite antes de distribuir
-// ═══════════════════════════════════════════
-const DEFAULT_CONFIG = {
-  apiKey: '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',           // cole sua API key aqui: sk-ant-api03-...
-  adminPass: 'admin',   // senha do administrador (acessa tela de config)
-  passes: [
-    'socio1',           // senha do sócio 1
-    'socio2',           // senha do sócio 2
-    'socio3',           // senha do sócio 3
-  ]
-};
+const DEFAULT_CONFIG={apiKey:'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',adminPass:'admin',passes:['socio1','socio2','socio3']};
 
-// ═══════════════════════════════════════════
-// SYSTEM PROMPT — metodologia completa embutida
-// ═══════════════════════════════════════════
-const SYSTEM = `Você é o maior especialista em produtos low ticket do Brasil, aplicando a Metodologia GiJo.
+const SYSTEM=`Você é o maior especialista em produtos low ticket do Brasil, aplicando a Metodologia GiJo.
 
 PRINCÍPIOS INVIOLÁVEIS:
-1. TANGIBILIZAÇÃO: NUNCA "e-book" ou "curso". Sempre: cartilha, kit, rotina, protocolo, planilha, pack, calendário. Sensação de toque — a pessoa tem que "comer com o olho".
-2. RUMINAÇÃO MENTAL: dor que a persona rumina TODOS OS DIAS sem parar. Não qualquer dor — o pensamento que volta várias vezes por dia. Ex: mulher que toda vez que veste roupa pensa na barriga inchada.
-3. NO-BRAIN PURCHASE: compra sem pensar, sem consultar ninguém. Se precisar ligar pra alguém antes, o produto falhou.
-4. DEDO NA TELA: criativo mostra literalmente o produto sendo usado — dedo apontando na planilha aberta, calendário na geladeira, cartilha na mão. QUANDO COLOCA O DEDO NO CRIATIVO, O ROAS ESCALA.
-5. NOME TIPO "DADINHO DE TAPIOCA": simples, autoexplicativo, irresistível. Estrutura: Gancho + Palavra-chave + Fechamento. NUNCA: método, fórmula, programa, sigla, nome criativo. EXEMPLOS BONS: "Emagrecendo 1kg por semana", "Protocolo Tchau Barriga", "Planilha Financeira do Casal", "60 Scripts de Anúncio para Meta Ads".
-6. UMA ÚNICA DOR de ruminação — resolve UMA fome, não a vida toda.
-7. ORDER BUMP: só após ROAS 2.0 validado. Antes disso, leva ao estado de julgamento e derruba conversão. Conversão mínima do bump: 30%.
-8. PRODUTO INSTANTÂNEO: consumido em até 48h, sem curva de aprendizado, pessoa usa sozinha.
-9. FUNIL: Produto (R$67) → Bump 1 (R$21,90) → Bump 2 (R$21,90) → Upsell (R$197).
+1. TANGIBILIZAÇÃO: NUNCA e-book ou curso. Sempre: cartilha, kit, rotina, protocolo, planilha, pack, calendário.
+2. RUMINAÇÃO MENTAL: dor que a persona rumina TODOS OS DIAS. O pensamento que volta várias vezes por dia.
+3. NO-BRAIN PURCHASE: compra sem pensar, sem consultar ninguém.
+4. DEDO NA TELA: criativo mostra literalmente o produto sendo usado.
+5. NOME TIPO DADINHO DE TAPIOCA: simples, autoexplicativo, irresistível. NUNCA: método, fórmula, programa, sigla.
+6. UMA ÚNICA DOR de ruminação.
+7. ORDER BUMP: só após ROAS 2.0. Conversão mínima 30%.
+8. PRODUTO INSTANTÂNEO: consumido em até 48h.
+9. FUNIL: Produto R$67 → Bump 1 R$21,90 → Bump 2 R$21,90 → Upsell R$197.
 
-TRÁFEGO — 3 FASES (MÁXIMA):
-Fase1=ABO 1x1x1 (10 conjuntos isolados, 1 criativo por conjunto, 40% do ticket por conjunto/dia, 3 dias, meta: 4 criativos ROAS 2.5+)
-Fase2=ABO Gramado (5 campanhas IGUAIS, 1 conjunto cada, todos top criativos juntos, ticket em R$/dia, busca cluster pocket, 5 dias)
-Fase3=Escala com estrutura vencedora + regra 20% (máx 20% verba em criativo novo, escala = 10x ticket/dia)
-IMPORTANTE: campanhas ruins EXCLUIR (não só desativar) — histório da conta contamina novas campanhas. CPV>R$2,70=problema criativo. Checkout>R$23=problema página.
+TRÁFEGO 3 FASES:
+Fase1=ABO 1x1x1 (10 conjuntos, 1 criativo cada, 40% ticket/dia, 3 dias, meta 4 criativos ROAS 2.5+)
+Fase2=ABO Gramado (5 campanhas iguais buscando cluster pocket, ticket R$/dia, 5 dias)
+Fase3=Escala + regra 20% criativo (10x ticket/dia)
+Campanhas ruins: EXCLUIR não desativar.
 
-PÁGINA DE VENDAS — 12 DOBRAS (preço SÓ na dobra 9):
-D1=Promessa principal (nome+benefício+tempo, mockup, SEM preço)
-D2=Prova social (prints WhatsApp, depoimentos de RESULTADO não de elogio)
-D3=Apertar na pedra (vozes na cabeça, "Você já se pegou pensando...", palavras EXATAS da persona)
-D4=Transição dor→solução (5 motivos EXTERNOS — culpa não é da persona)
-D5=Passo a passo (máx 3 passos: baixe→personalize→use hoje)
-D6=Tudo que vai receber (ícone+nome+desc 1 linha, bônus destacado)
-D7=Para quem serve (É pra você que... / Não é pra você que...)
-D8=Ancoragem (recapitula TUDO, "Tudo isso por apenas...", mockup tudão)
-D9=Preço+Botão PRIMEIRA VEZ (De R$197 → R$67, ou 12x R$6,70, CTA: QUERO ACESSAR AGORA, Acesso imediato • Garantia 7 dias)
-D10=Conversa séria (custo de NÃO resolver, calcula horas perdidas por semana)
-D11=Autoridade (SÓ AQUI aparece o expert, foto natural, bio 2-3 linhas focada em resultados+números)
-D12=Repetição+FAQ (preço igual D9 + 5 perguntas: acesso, garantia, prazo, objeção do nicho, formas de pagamento) + rodapé com CNPJ/e-mail/endereço/termos
+PÁGINA 12 DOBRAS (preço SÓ dobra 9):
+D1=Promessa, D2=Prova social, D3=Apertar pedra (vozes na cabeça), D4=Transição dor-solução, D5=Passo a passo, D6=O que recebe, D7=Para quem, D8=Ancoragem, D9=Preço+CTA, D10=Conversa séria, D11=Autoridade, D12=Repetição+FAQ
 
-Responda SOMENTE JSON válido, zero texto fora do JSON, zero markdown, zero backticks:
-{
-  "nome": "nome estilo dadinho de tapioca",
-  "formato": "como é fisicamente o produto",
-  "preco": "R$67",
-  "ruminacao": "frase exata 1ª pessoa que persona pensa todo dia",
-  "tangibilizacao": "instrução exata do que mostrar no criativo com dedo na tela",
-  "bump_nome": "nome do order bump",
-  "bump_desc": "o que é e por que complementa",
-  "upsell_nome": "nome do upsell",
-  "upsell_desc": "descrição e preço sugerido",
-  "ganchos": ["gancho 1","gancho 2","gancho 3","gancho 4","gancho 5"],
-  "pagina": {
-    "d1": "título da promessa + subtítulo separados por \\n",
-    "d2": "texto da prova social — como apresentar depoimentos",
-    "d3": "dobra apertar na pedra — vozes na cabeça completas",
-    "d4": "5 motivos externos — culpa não é da persona",
-    "d5": "3 passos simples para usar o produto",
-    "d6": "lista completa do que vai receber com bônus",
-    "d7": "é pra você que... e não é pra você que...",
-    "d8": "recapitulação completa antes do preço",
-    "d9": "apresentação do preço com CTA e garantia",
-    "d10": "conversa séria — custo de não resolver",
-    "d11": "mini bio do expert focada em resultados",
-    "d12": "FAQ com 5 perguntas e respostas + rodapé"
-  },
-  "trafego": {
-    "fase1": "instrução completa fase 1 para esse nicho — verba, segmentação sugerida, o que testar",
-    "fase2": "instrução fase 2 ABO Gramado adaptada ao produto",
-    "fase3": "instrução fase 3 escala + regra 20% para esse produto"
-  }
-}`;
+SCORE (avalie 0 a 10):
+- Nome (0-2): dadinho de tapioca? autoexplicativo? irresistível?
+- Ruminação (0-2): dor real que rumina todo dia?
+- Tangibilização (0-2): dá para mostrar com dedo na tela?
+- Formato (0-2): resolve em menos de 48h sem curva de aprendizado?
+- Oferta (0-2): bump e upsell complementam bem?
 
-// ═══════════════════════════════════════════
-// STATE
-// ═══════════════════════════════════════════
-let cfg = {};
-let currentUser = null;
-let dadosGerados = null;
+ENTREGÁVEL: gere o conteúdo COMPLETO e DETALHADO do produto com no mínimo 15 seções ricas em conteúdo real e aplicável.
 
-function loadConfig() {
-  try {
-    const saved = localStorage.getItem('lt_cfg');
-    if (saved) cfg = { ...DEFAULT_CONFIG, ...JSON.parse(saved) };
-    else cfg = { ...DEFAULT_CONFIG };
-  } catch(e) { cfg = { ...DEFAULT_CONFIG }; }
-}
+SCRIPT CRIATIVO (60s): abertura 0-5s gancho visual, problema 5-20s ruminação com palavras exatas, solução 20-45s produto sendo usado dedo na tela resultado específico, CTA 45-60s chamada urgente.
 
-function saveConfig() {
-  localStorage.setItem('lt_cfg', JSON.stringify(cfg));
-}
+Responda SOMENTE JSON válido zero texto fora zero markdown:
+{"nome":"","formato":"","preco":"R$67","ruminacao":"","tangibilizacao":"","bump_nome":"","bump_desc":"","upsell_nome":"","upsell_desc":"","ganchos":["","","","",""],"script_criativo":"","pagina":{"d1":"","d2":"","d3":"","d4":"","d5":"","d6":"","d7":"","d8":"","d9":"","d10":"","d11":"","d12":""},"trafego":{"fase1":"","fase2":"","fase3":""},"score":{"total":8,"status":"","resumo":"","itens":[{"categoria":"Nome","nota":2,"max":2,"status":"ok","titulo":"","desc":""},{"categoria":"Ruminação","nota":2,"max":2,"status":"ok","titulo":"","desc":""},{"categoria":"Tangibilização","nota":2,"max":2,"status":"ok","titulo":"","desc":""},{"categoria":"Formato","nota":2,"max":2,"status":"ok","titulo":"","desc":""},{"categoria":"Oferta","nota":2,"max":2,"status":"ok","titulo":"","desc":""}]},"entregavel":{"titulo":"","intro":"","secoes":[{"titulo":"","conteudo":""}]}}`;
 
-// ═══════════════════════════════════════════
-// AUTH
-// ═══════════════════════════════════════════
-function doLogin() {
+let cfg={},currentUser=null,dadosGerados=null;
+
+function loadConfig(){try{const s=localStorage.getItem('lt_cfg');cfg=s?{...DEFAULT_CONFIG,...JSON.parse(s)}:{...DEFAULT_CONFIG}}catch(e){cfg={...DEFAULT_CONFIG}}}
+function saveConfig(){localStorage.setItem('lt_cfg',JSON.stringify(cfg))}
+
+function doLogin(){
   loadConfig();
-  const val = document.getElementById('login-input').value.trim();
-  const input = document.getElementById('login-input');
-  const err = document.getElementById('login-error');
-
-  const allPasses = [
-    cfg.adminPass || DEFAULT_CONFIG.adminPass,
-    ...(cfg.passes || DEFAULT_CONFIG.passes)
-  ].filter(Boolean);
-
-  if (allPasses.includes(val)) {
-    currentUser = val;
-    input.classList.remove('error');
-    err.classList.remove('show');
-    document.getElementById('login-screen').style.display = 'none';
+  const val=document.getElementById('login-input').value.trim();
+  const allPasses=[cfg.adminPass||DEFAULT_CONFIG.adminPass,...(cfg.passes||DEFAULT_CONFIG.passes)].filter(Boolean);
+  if(allPasses.includes(val)){
+    currentUser=val;
+    document.getElementById('login-input').classList.remove('error');
+    document.getElementById('login-error').classList.remove('show');
+    document.getElementById('login-screen').style.display='none';
     document.getElementById('app').classList.add('visible');
-    document.getElementById('user-badge').textContent = val === (cfg.adminPass || DEFAULT_CONFIG.adminPass) ? 'admin' : 'sócio';
-    if (val === (cfg.adminPass || DEFAULT_CONFIG.adminPass)) loadConfigScreen();
-  } else {
-    input.classList.add('error');
-    err.classList.add('show');
-    input.value = '';
+    document.getElementById('user-badge').textContent=val===(cfg.adminPass||DEFAULT_CONFIG.adminPass)?'admin':'sócio';
+    if(val===(cfg.adminPass||DEFAULT_CONFIG.adminPass))loadConfigScreen();
+    atualizarHistBadge();
+  }else{
+    document.getElementById('login-input').classList.add('error');
+    document.getElementById('login-error').classList.add('show');
+    document.getElementById('login-input').value='';
   }
 }
 
-function logout() {
-  currentUser = null;
+function logout(){
+  currentUser=null;
   document.getElementById('app').classList.remove('visible');
-  document.getElementById('login-screen').style.display = 'flex';
-  document.getElementById('login-input').value = '';
+  document.getElementById('login-screen').style.display='flex';
+  document.getElementById('login-input').value='';
   document.getElementById('login-input').classList.remove('error');
   document.getElementById('login-error').classList.remove('show');
 }
 
-function loadConfigScreen() {
-  document.getElementById('cfg-apikey').value = cfg.apiKey || '';
-  document.getElementById('cfg-admin-pass').value = cfg.adminPass || DEFAULT_CONFIG.adminPass;
-  const passes = cfg.passes || DEFAULT_CONFIG.passes;
-  for (let i = 1; i <= 5; i++) {
-    const el = document.getElementById('cfg-pass' + i);
-    if (el) el.value = passes[i-1] || '';
-  }
+function loadConfigScreen(){
+  document.getElementById('cfg-apikey').value=cfg.apiKey||'';
+  document.getElementById('cfg-admin-pass').value=cfg.adminPass||'admin';
+  const passes=cfg.passes||[];
+  for(let i=1;i<=5;i++){const el=document.getElementById('cfg-pass'+i);if(el)el.value=passes[i-1]||''}
 }
 
-function salvarConfig() {
-  const passes = [];
-  for (let i = 1; i <= 5; i++) {
-    const v = document.getElementById('cfg-pass'+i)?.value?.trim();
-    if (v) passes.push(v);
-  }
-  cfg.apiKey = document.getElementById('cfg-apikey').value.trim();
-  cfg.adminPass = document.getElementById('cfg-admin-pass').value.trim() || 'admin';
-  cfg.passes = passes;
-  saveConfig();
-  const badge = document.getElementById('saved-badge');
-  badge.classList.add('show');
-  setTimeout(() => badge.classList.remove('show'), 2500);
+function salvarConfig(){
+  const passes=[];
+  for(let i=1;i<=5;i++){const v=document.getElementById('cfg-pass'+i)?.value?.trim();if(v)passes.push(v)}
+  cfg.apiKey=document.getElementById('cfg-apikey').value.trim();
+  cfg.adminPass=document.getElementById('cfg-admin-pass').value.trim()||'admin';
+  cfg.passes=passes;saveConfig();
+  const b=document.getElementById('saved-badge');b.classList.add('show');setTimeout(()=>b.classList.remove('show'),2500);
 }
 
-// ═══════════════════════════════════════════
-// NAVIGATION
-// ═══════════════════════════════════════════
-function goTab(id) {
-  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  const tabs = ['gerar','funil','pagina','trafego','config'];
-  tabs.forEach((t, i) => {
-    if (t === id) document.querySelectorAll('.nav-tab')[i].classList.add('active');
-  });
+const TABS=['gerar','funil','pagina','trafego','score','entregavel','historico','config'];
+function goTab(id){
+  document.querySelectorAll('.nav-tab').forEach((t,i)=>t.classList.toggle('active',TABS[i]===id));
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById('screen-'+id).classList.add('active');
+  if(id==='historico')renderHistorico();
 }
 
-// ═══════════════════════════════════════════
-// GENERATE
-// ═══════════════════════════════════════════
-async function gerar() {
-  const apiKey = cfg.apiKey || DEFAULT_CONFIG.apiKey;
-  if (!apiKey || !apiKey.startsWith('sk-ant')) {
-    showErr('API key não configurada. Acesse a aba Config como administrador.');
-    return;
-  }
-
-  const nicho = document.getElementById('i-nicho-custom').value.trim() || document.getElementById('i-nicho').value;
-  if (!nicho) { showErr('Selecione ou escreva um nicho para continuar.'); return; }
-
-  const formato = document.getElementById('i-formato').value;
-  const publico = document.getElementById('i-publico').value.trim();
-  const ticket = document.getElementById('i-ticket').value;
-  const verba = document.getElementById('i-verba').value;
-  const plataforma = document.getElementById('i-plataforma').value;
-  const expert = document.getElementById('i-expert').value.trim() || 'o especialista';
-  const credencial = document.getElementById('i-credencial').value.trim();
-
+async function gerar(){
+  const apiKey=cfg.apiKey||DEFAULT_CONFIG.apiKey;
+  if(!apiKey||!apiKey.startsWith('sk-ant')){showErr('API key não configurada. Acesse Config como administrador.');return}
+  const nicho=document.getElementById('i-nicho-custom').value.trim()||document.getElementById('i-nicho').value;
+  if(!nicho){showErr('Selecione ou escreva um nicho.');return}
+  const formato=document.getElementById('i-formato').value;
+  const publico=document.getElementById('i-publico').value.trim();
+  const ticket=document.getElementById('i-ticket').value;
+  const verba=document.getElementById('i-verba').value;
+  const plataforma=document.getElementById('i-plataforma').value;
+  const expert=document.getElementById('i-expert').value.trim()||'o especialista';
+  const credencial=document.getElementById('i-credencial').value.trim();
   hideErr();
-  document.getElementById('btn-gerar').disabled = true;
+  document.getElementById('btn-gerar').disabled=true;
   document.getElementById('prog-wrap').classList.add('active');
-
-  const steps = [
-    [12, 'Identificando ruminação mental...'],
-    [25, 'Criando produto tangível e nome...'],
-    [40, 'Estruturando order bump e upsell...'],
-    [55, 'Gerando 5 ganchos com dedo na tela...'],
-    [70, 'Escrevendo as 12 dobras da página...'],
-    [85, 'Montando estrutura de tráfego 3 fases...'],
-  ];
-  let si = 0;
-  const iv = setInterval(() => {
-    if (si < steps.length) { setP(steps[si][0], steps[si][1]); si++; }
-  }, 1500);
-
-  const userMsg = `Nicho: ${nicho}
-Formato: ${formato}
-Ticket: R$${ticket}
-Verba diária: R$${verba}
-Plataforma: ${plataforma}
-${publico ? 'Público-alvo: ' + publico : ''}
-Expert: ${expert}${credencial ? ' — ' + credencial : ''}
-
-Gere o funil completo seguindo todos os princípios da metodologia.`;
-
-  try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-access': 'true'
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 3000,
-        system: SYSTEM,
-        messages: [{ role: 'user', content: userMsg }]
-      })
-    });
-
+  const steps=[[10,'Identificando ruminação mental...'],[22,'Criando nome e produto tangível...'],[35,'Estruturando oferta e bumps...'],[48,'Gerando ganchos e script do criativo...'],[60,'Escrevendo as 12 dobras da página...'],[72,'Calculando score do produto...'],[85,'Gerando entregável completo...'],[93,'Montando plano de tráfego...']];
+  let si=0;
+  const iv=setInterval(()=>{if(si<steps.length){setP(steps[si][0],steps[si][1]);si++}},1500);
+  const userMsg=`Nicho: ${nicho}\nFormato: ${formato}\nTicket: R$${ticket}\nVerba: R$${verba}/dia\nPlataforma: ${plataforma}\n${publico?'Público: '+publico:''}\nExpert: ${expert}${credencial?' — '+credencial:''}\n\nGere funil completo com score detalhado e entregável completo com no mínimo 15 seções.`;
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:4000,system:SYSTEM,messages:[{role:'user',content:userMsg}]})});
     clearInterval(iv);
-
-    if (!res.ok) {
-      const e = await res.json().catch(() => ({}));
-      throw new Error(e.error?.message || 'Erro ' + res.status + ' — verifique a API key na Config.');
-    }
-
-    const data = await res.json();
-    const raw = data.content.map(b => b.text || '').join('');
-    const clean = raw.replace(/```json|```/g, '').trim();
-    let p;
-    try { p = JSON.parse(clean); } catch(e) { throw new Error('Resposta inválida. Tente novamente.'); }
-
-    dadosGerados = { p, nicho, expert, ticket };
-    setP(100, 'Funil gerado com sucesso!');
-
-    renderFunil(p);
-    renderPagina(p, expert);
-    renderTrafego(p);
-
-    setTimeout(() => {
-      document.getElementById('prog-wrap').classList.remove('active');
-      goTab('funil');
-    }, 600);
-
-  } catch(e) {
-    clearInterval(iv);
-    document.getElementById('prog-wrap').classList.remove('active');
-    showErr('Erro: ' + e.message);
-  }
-  document.getElementById('btn-gerar').disabled = false;
+    if(!res.ok){const e=await res.json().catch(()=>({}));throw new Error(e.error?.message||'Erro '+res.status)}
+    const data=await res.json();
+    const raw=data.content.map(b=>b.text||'').join('');
+    const clean=raw.replace(/```json|```/g,'').trim();
+    let p;try{p=JSON.parse(clean)}catch(e){throw new Error('Resposta inválida. Tente novamente.')}
+    dadosGerados={p,nicho,expert,ticket,data:new Date().toLocaleDateString('pt-BR')};
+    setP(100,'Funil gerado com sucesso!');
+    renderFunil(p);renderPagina(p,expert);renderTrafego(p);renderScore(p);renderEntregavel(p);
+    salvarNoHistorico(dadosGerados);
+    setTimeout(()=>{document.getElementById('prog-wrap').classList.remove('active');goTab('funil')},600);
+  }catch(e){clearInterval(iv);document.getElementById('prog-wrap').classList.remove('active');showErr('Erro: '+e.message)}
+  document.getElementById('btn-gerar').disabled=false;
 }
 
-function setP(pct, msg) {
-  document.getElementById('prog-fill').style.width = pct + '%';
-  document.getElementById('prog-msg').textContent = msg;
-}
-function showErr(msg) { const el = document.getElementById('err-msg'); el.textContent = msg; el.style.display = 'block'; }
-function hideErr() { document.getElementById('err-msg').style.display = 'none'; }
+function setP(pct,msg){document.getElementById('prog-fill').style.width=pct+'%';document.getElementById('prog-msg').textContent=msg}
+function showErr(msg){const el=document.getElementById('err-msg');el.textContent=msg;el.style.display='block'}
+function hideErr(){document.getElementById('err-msg').style.display='none'}
 
-// ═══════════════════════════════════════════
-// RENDER
-// ═══════════════════════════════════════════
-function renderFunil(p) {
-  document.getElementById('r-nome').textContent = p.nome || '';
-  document.getElementById('r-formato').textContent = p.formato || '';
-  document.getElementById('r-preco').textContent = p.preco || 'R$67';
-  document.getElementById('r-rum').textContent = '"' + (p.ruminacao || '') + '"';
-  document.getElementById('r-tang').textContent = p.tangibilizacao || '';
-  document.getElementById('r-bump').textContent = (p.bump_nome || '') + ' — ' + (p.bump_desc || '');
-  document.getElementById('r-upsell').textContent = (p.upsell_nome || '') + ' — ' + (p.upsell_desc || '');
-
-  const gc = document.getElementById('r-ganchos');
-  gc.innerHTML = '';
-  (p.ganchos || []).forEach((g, i) => {
-    const d = document.createElement('div');
-    d.className = 'gancho';
-    d.innerHTML = `<span class="gancho-n">${i+1}</span><span>${g}</span>`;
-    d.onclick = () => { navigator.clipboard.writeText(g); toast('Gancho copiado!'); };
-    gc.appendChild(d);
-  });
+function renderFunil(p){
+  document.getElementById('r-nome').textContent=p.nome||'';
+  document.getElementById('r-formato').textContent=p.formato||'';
+  document.getElementById('r-preco').textContent=p.preco||'R$67';
+  document.getElementById('r-rum').textContent='"'+(p.ruminacao||'')+'"';
+  document.getElementById('r-tang').textContent=p.tangibilizacao||'';
+  document.getElementById('r-bump').textContent=(p.bump_nome||'')+' — '+(p.bump_desc||'');
+  document.getElementById('r-upsell').textContent=(p.upsell_nome||'')+' — '+(p.upsell_desc||'');
+  document.getElementById('r-script').textContent=p.script_criativo||'';
+  const gc=document.getElementById('r-ganchos');gc.innerHTML='';
+  (p.ganchos||[]).forEach((g,i)=>{const d=document.createElement('div');d.className='gancho';d.innerHTML=`<span class="gancho-n">${i+1}</span><span>${g}</span>`;d.onclick=()=>{navigator.clipboard.writeText(g);toast('Gancho copiado!')};gc.appendChild(d)});
 }
 
-function renderPagina(p, expert) {
-  const pg = p.pagina || {};
-  const dobras = [
-    { n:'Dobra 1', t:'Promessa principal', body: pg.d1 },
-    { n:'Dobra 2', t:'Prova social', body: pg.d2 },
-    { n:'Dobra 3', t:'Apertar na pedra — vozes na cabeça', body: pg.d3 },
-    { n:'Dobra 4', t:'Transição dor → solução', body: pg.d4 },
-    { n:'Dobra 5', t:'Passo a passo', body: pg.d5 },
-    { n:'Dobra 6', t:'Tudo que vai receber', body: pg.d6 },
-    { n:'Dobra 7', t:'Para quem serve', body: pg.d7 },
-    { n:'Dobra 8', t:'Ancoragem — "tudo isso por apenas..."', body: pg.d8 },
-    { n:'Dobra 9', t:'Preço + botão de compra (primeira aparição)', body: pg.d9 },
-    { n:'Dobra 10', t:'Conversa séria — custo de não resolver', body: pg.d10 },
-    { n:'Dobra 11', t:'Autoridade — ' + expert, body: pg.d11 },
-    { n:'Dobra 12', t:'Repetição do preço + FAQ', body: pg.d12 },
-  ];
-  document.getElementById('pv-dobras').innerHTML = dobras.map(d => `
-    <div class="dobra">
-      <div class="dobra-num">${d.n}</div>
-      <div class="dobra-title">${d.t}</div>
-      <div class="dobra-body">${d.body || ''}</div>
-    </div>
-  `).join('');
+function renderPagina(p,expert){
+  const pg=p.pagina||{};
+  const dobras=[{n:'Dobra 1',t:'Promessa principal',body:pg.d1},{n:'Dobra 2',t:'Prova social',body:pg.d2},{n:'Dobra 3',t:'Apertar na pedra — vozes na cabeça',body:pg.d3},{n:'Dobra 4',t:'Transição dor → solução',body:pg.d4},{n:'Dobra 5',t:'Passo a passo',body:pg.d5},{n:'Dobra 6',t:'Tudo que vai receber',body:pg.d6},{n:'Dobra 7',t:'Para quem serve',body:pg.d7},{n:'Dobra 8',t:'Ancoragem',body:pg.d8},{n:'Dobra 9',t:'Preço + botão (primeira aparição)',body:pg.d9},{n:'Dobra 10',t:'Conversa séria',body:pg.d10},{n:'Dobra 11',t:'Autoridade — '+expert,body:pg.d11},{n:'Dobra 12',t:'Repetição + FAQ',body:pg.d12}];
+  document.getElementById('pv-dobras').innerHTML=dobras.map(d=>`<div class="dobra"><div class="dobra-num">${d.n}</div><div class="dobra-title">${d.t}</div><div class="dobra-body">${d.body||''}</div></div>`).join('');
 }
 
-function renderTrafego(p) {
-  const tf = p.trafego || {};
-  document.getElementById('r-trafego').innerHTML = [
-    { n:1, t:'Fase 1 — Teste de criativo (ABO 1×1×1)', d: tf.fase1 },
-    { n:2, t:'Fase 2 — Teste de estrutura (ABO Gramado, 5 campanhas iguais)', d: tf.fase2 },
-    { n:3, t:'Fase 3 — Escala + regra dos 20% no criativo', d: tf.fase3 },
-  ].map(f => `
-    <div class="fase">
-      <div class="fase-n">${f.n}</div>
-      <div>
-        <div class="fase-title">${f.t}</div>
-        <div class="fase-desc">${f.d || ''}</div>
+function renderTrafego(p){
+  const tf=p.trafego||{};
+  document.getElementById('r-trafego').innerHTML=[{n:1,t:'Fase 1 — Teste de criativo (ABO 1×1×1)',d:tf.fase1},{n:2,t:'Fase 2 — Teste de estrutura (ABO Gramado)',d:tf.fase2},{n:3,t:'Fase 3 — Escala + regra dos 20%',d:tf.fase3}].map(f=>`<div class="fase"><div class="fase-n">${f.n}</div><div><div class="fase-title">${f.t}</div><div class="fase-desc">${f.d||''}</div></div></div>`).join('');
+}
+
+function renderScore(p){
+  const sc=p.score||{};
+  const total=sc.total||0;
+  const el=document.getElementById('score-num');
+  el.textContent=total;
+  el.className='score-number '+(total>=8?'high':total>=5?'mid':'low');
+  document.getElementById('score-status').textContent=sc.status||'';
+  document.getElementById('score-resumo').textContent=sc.resumo||'';
+  const bar=document.getElementById('score-bar');
+  bar.style.width=(total/10*100)+'%';
+  bar.style.background=total>=8?'var(--accent)':total>=5?'var(--warn)':'var(--danger)';
+  const iconMap={ok:'✓',warn:'!',bad:'×'};
+  const classMap={ok:'si-ok',warn:'si-warn',bad:'si-bad'};
+  document.getElementById('score-itens').innerHTML=(sc.itens||[]).map(it=>`
+    <div class="score-item">
+      <div class="score-icon ${classMap[it.status]||'si-warn'}">${iconMap[it.status]||'!'}</div>
+      <div style="flex:1">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px">
+          <div class="score-item-title">${it.titulo||it.categoria}</div>
+          <div style="font-size:12px;font-weight:500;color:${it.nota===it.max?'var(--accent)':it.nota>0?'var(--warn)':'var(--danger)'}">${it.nota}/${it.max}</div>
+        </div>
+        <div class="score-item-desc">${it.desc||''}</div>
       </div>
-    </div>
-  `).join('');
+    </div>`).join('');
 }
 
-// ═══════════════════════════════════════════
-// COPY
-// ═══════════════════════════════════════════
-function copiarFunil() {
-  if (!dadosGerados) return;
-  const p = dadosGerados.p;
-  const txt = `FUNIL LOW TICKET — ${p.nome}
-${'─'.repeat(44)}
-Formato: ${p.formato} | Preço: ${p.preco}
-Ruminação: "${p.ruminacao}"
-Tangibilização: ${p.tangibilizacao}
-
-OFERTA
-Bump: ${p.bump_nome} — ${p.bump_desc}
-Upsell: ${p.upsell_nome} — ${p.upsell_desc}
-
-5 GANCHOS DE CRIATIVO
-${(p.ganchos||[]).map((g,i)=>`${i+1}. ${g}`).join('\n')}`;
-  navigator.clipboard.writeText(txt).then(() => toast('Funil copiado!'));
+function renderEntregavel(p){
+  const en=p.entregavel||{};
+  const container=document.getElementById('entregavel-container');
+  if(!en.titulo&&!(en.secoes&&en.secoes.length)){container.innerHTML='<p style="text-align:center;color:var(--dim);font-size:13px;padding:3rem 0">Entregável não gerado. Tente novamente.</p>';return}
+  container.innerHTML=`
+    <div class="entregavel-section"><div class="entregavel-title">Título</div><div class="entregavel-body" style="font-size:16px;font-weight:500;color:var(--accent)">${en.titulo||''}</div></div>
+    <div class="entregavel-section"><div class="entregavel-title">Introdução</div><div class="entregavel-body">${en.intro||''}</div></div>
+    ${(en.secoes||[]).map((s,i)=>`<div class="entregavel-section"><div class="entregavel-title">Seção ${i+1} — ${s.titulo||''}</div><div class="entregavel-body">${s.conteudo||''}</div></div>`).join('')}`;
+  document.getElementById('entregavel-btns').style.display='flex';
 }
 
-function copiarPagina() {
-  if (!dadosGerados) return;
-  const pg = dadosGerados.p.pagina || {};
-  const txt = `PÁGINA DE VENDAS — ${dadosGerados.p.nome}
-${'─'.repeat(44)}
-DOBRA 1 — PROMESSA\n${pg.d1}
-\nDOBRA 2 — PROVA SOCIAL\n${pg.d2}
-\nDOBRA 3 — APERTAR NA PEDRA\n${pg.d3}
-\nDOBRA 4 — TRANSIÇÃO\n${pg.d4}
-\nDOBRA 5 — PASSO A PASSO\n${pg.d5}
-\nDOBRA 6 — O QUE VAI RECEBER\n${pg.d6}
-\nDOBRA 7 — PARA QUEM\n${pg.d7}
-\nDOBRA 8 — ANCORAGEM\n${pg.d8}
-\nDOBRA 9 — PREÇO\n${pg.d9}
-\nDOBRA 10 — CONVERSA SÉRIA\n${pg.d10}
-\nDOBRA 11 — AUTORIDADE\n${pg.d11}
-\nDOBRA 12 — FAQ\n${pg.d12}`;
-  navigator.clipboard.writeText(txt).then(() => toast('Página copiada!'));
+function salvarNoHistorico(dados){
+  try{
+    const hist=JSON.parse(localStorage.getItem('lt_hist')||'[]');
+    hist.unshift({id:Date.now(),nome:dados.p.nome,nicho:dados.nicho,formato:dados.p.formato,preco:dados.p.preco,score:dados.p.score?.total||0,data:dados.data,dados:dados.p});
+    if(hist.length>50)hist.pop();
+    localStorage.setItem('lt_hist',JSON.stringify(hist));
+    atualizarHistBadge();
+  }catch(e){}
 }
 
-function copiarTudo() {
-  if (!dadosGerados) return;
-  const p = dadosGerados.p;
-  const pg = p.pagina || {};
-  const tf = p.trafego || {};
-  const txt = `FUNIL COMPLETO — ${p.nome}
-${'═'.repeat(44)}
-PRODUTO: ${p.nome} | ${p.formato} | ${p.preco}
-Ruminação: "${p.ruminacao}"
-Tangibilização: ${p.tangibilizacao}
-Bump: ${p.bump_nome} — ${p.bump_desc}
-Upsell: ${p.upsell_nome} — ${p.upsell_desc}
-
-GANCHOS\n${(p.ganchos||[]).map((g,i)=>`${i+1}. ${g}`).join('\n')}
-
-PÁGINA
-D1: ${pg.d1}\nD2: ${pg.d2}\nD3: ${pg.d3}\nD4: ${pg.d4}
-D5: ${pg.d5}\nD6: ${pg.d6}\nD7: ${pg.d7}\nD8: ${pg.d8}
-D9: ${pg.d9}\nD10: ${pg.d10}\nD11: ${pg.d11}\nD12: ${pg.d12}
-
-TRÁFEGO
-Fase 1: ${tf.fase1}
-Fase 2: ${tf.fase2}
-Fase 3: ${tf.fase3}`;
-  navigator.clipboard.writeText(txt).then(() => toast('Tudo copiado!'));
+function atualizarHistBadge(){
+  try{const hist=JSON.parse(localStorage.getItem('lt_hist')||'[]');document.getElementById('hist-count').textContent=hist.length}catch(e){}
 }
 
-function novoFunil() {
-  dadosGerados = null;
-  goTab('gerar');
-  ['i-nicho','i-nicho-custom','i-publico','i-expert','i-credencial'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.value = '';
-  });
+function renderHistorico(){
+  try{
+    const hist=JSON.parse(localStorage.getItem('lt_hist')||'[]');
+    const lista=document.getElementById('hist-lista');
+    if(!hist.length){lista.innerHTML='<div class="hist-empty">Nenhum funil gerado ainda.<br>Gere seu primeiro funil para ver o histórico.</div>';return}
+    lista.innerHTML=hist.map(h=>`
+      <div class="hist-item" onclick="carregarDoHistorico(${h.id})">
+        <div class="hist-header">
+          <div class="hist-nome">${h.nome||'Sem nome'}</div>
+          <div class="hist-data">${h.data||''}</div>
+        </div>
+        <div class="hist-meta">
+          <span class="hist-tag">${h.nicho||''}</span>
+          <span class="hist-tag">${h.formato||''}</span>
+          <span class="hist-tag">${h.preco||''}</span>
+          <span class="hist-tag" style="color:${(h.score||0)>=8?'var(--accent)':(h.score||0)>=5?'var(--warn)':'var(--danger)'}">Score: ${h.score||0}/10</span>
+        </div>
+      </div>`).join('');
+  }catch(e){}
 }
 
-// ═══════════════════════════════════════════
-// TOAST
-// ═══════════════════════════════════════════
-function toast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2200);
+function carregarDoHistorico(id){
+  try{
+    const hist=JSON.parse(localStorage.getItem('lt_hist')||'[]');
+    const item=hist.find(h=>h.id===id);
+    if(!item)return;
+    dadosGerados={p:item.dados,nicho:item.nicho,expert:'o especialista',ticket:'67',data:item.data};
+    renderFunil(item.dados);renderPagina(item.dados,'o especialista');renderTrafego(item.dados);renderScore(item.dados);renderEntregavel(item.dados);
+    goTab('funil');toast('Funil carregado do histórico!');
+  }catch(e){}
 }
 
-// ═══════════════════════════════════════════
-// INIT
-// ═══════════════════════════════════════════
+function limparHistorico(){
+  if(confirm('Limpar todo o histórico?')){localStorage.removeItem('lt_hist');atualizarHistBadge();renderHistorico();toast('Histórico limpo!')}
+}
+
+function copiarFunil(){
+  if(!dadosGerados)return;
+  const p=dadosGerados.p;
+  navigator.clipboard.writeText(`FUNIL — ${p.nome}\n${'─'.repeat(40)}\nFormato: ${p.formato} | Preço: ${p.preco}\nRuminação: "${p.ruminacao}"\nTangibilização: ${p.tangibilizacao}\nBump: ${p.bump_nome} — ${p.bump_desc}\nUpsell: ${p.upsell_nome} — ${p.upsell_desc}\n\nGANCHOS\n${(p.ganchos||[]).map((g,i)=>`${i+1}. ${g}`).join('\n')}\n\nSCRIPT CRIATIVO\n${p.script_criativo||''}`).then(()=>toast('Funil copiado!'));
+}
+
+function copiarPagina(){
+  if(!dadosGerados)return;
+  const pg=dadosGerados.p.pagina||{};
+  navigator.clipboard.writeText(`PÁGINA — ${dadosGerados.p.nome}\n${'─'.repeat(40)}\nD1: ${pg.d1}\nD2: ${pg.d2}\nD3: ${pg.d3}\nD4: ${pg.d4}\nD5: ${pg.d5}\nD6: ${pg.d6}\nD7: ${pg.d7}\nD8: ${pg.d8}\nD9: ${pg.d9}\nD10: ${pg.d10}\nD11: ${pg.d11}\nD12: ${pg.d12}`).then(()=>toast('Página copiada!'));
+}
+
+function copiarEntregavel(){
+  if(!dadosGerados)return;
+  const en=dadosGerados.p.entregavel||{};
+  navigator.clipboard.writeText(`${en.titulo||''}\n${'═'.repeat(40)}\n${en.intro||''}\n\n${(en.secoes||[]).map((s,i)=>`SEÇÃO ${i+1}: ${s.titulo}\n${'─'.repeat(30)}\n${s.conteudo}`).join('\n\n')}`).then(()=>toast('Entregável copiado!'));
+}
+
+function copiarTudo(){
+  if(!dadosGerados)return;
+  const p=dadosGerados.p;const pg=p.pagina||{};const tf=p.trafego||{};const en=p.entregavel||{};
+  navigator.clipboard.writeText(`FUNIL COMPLETO — ${p.nome}\n${'═'.repeat(40)}\n${p.nome} | ${p.formato} | ${p.preco}\nScore: ${p.score?.total||0}/10\nRuminação: "${p.ruminacao}"\nTangibilização: ${p.tangibilizacao}\nBump: ${p.bump_nome} — ${p.bump_desc}\nUpsell: ${p.upsell_nome} — ${p.upsell_desc}\n\nGANCHOS\n${(p.ganchos||[]).map((g,i)=>`${i+1}. ${g}`).join('\n')}\n\nSCRIPT\n${p.script_criativo||''}\n\nPÁGINA\nD1: ${pg.d1}\nD2: ${pg.d2}\nD3: ${pg.d3}\nD4: ${pg.d4}\nD5: ${pg.d5}\nD6: ${pg.d6}\nD7: ${pg.d7}\nD8: ${pg.d8}\nD9: ${pg.d9}\nD10: ${pg.d10}\nD11: ${pg.d11}\nD12: ${pg.d12}\n\nTRÁFEGO\nFase1: ${tf.fase1}\nFase2: ${tf.fase2}\nFase3: ${tf.fase3}\n\nENTREGÁVEL\n${en.titulo||''}\n${en.intro||''}\n${(en.secoes||[]).map((s,i)=>`\nSEÇÃO ${i+1}: ${s.titulo}\n${s.conteudo}`).join('')}`).then(()=>toast('Tudo copiado!'));
+}
+
+function novoFunil(){
+  dadosGerados=null;goTab('gerar');
+  ['i-nicho','i-nicho-custom','i-publico','i-expert','i-credencial'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=''});
+}
+
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
+
 loadConfig();
 </script>
 </body>
