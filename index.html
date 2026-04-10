@@ -451,7 +451,7 @@ async function gerar(){
     setP(100,'Funil gerado com sucesso!');
     dadosGerados={p,nicho,expert,ticket,data:new Date().toLocaleDateString('pt-BR')};
     renderFunil(p);
-    renderPagina(p,expert,ticket);
+    renderPagina(p,expert,ticket,credencial);
     renderTrafego(p);
     salvarNoHistorico(dadosGerados);
     setTimeout(()=>{document.getElementById('prog-wrap').classList.remove('active');goTab('funil')},600);
@@ -476,7 +476,7 @@ function renderFunil(p){
   (p.ganchos||[]).forEach((g,i)=>{const d=document.createElement('div');d.className='gancho';d.innerHTML='<span class="gancho-n">'+(i+1)+'</span><span>'+g+'</span>';d.onclick=()=>{navigator.clipboard.writeText(g);toast('Gancho copiado!')};gc.appendChild(d)});
 }
 
-function renderPagina(p,expert,ticket){
+function renderPagina(p,expert,ticket,credencial){
   const pg=p.pagina||{};
   const cor='#00e5a0';
   const html=`
@@ -642,7 +642,7 @@ function carregarDoHistorico(id){
     if(!item)return;
     dadosGerados={p:item.dados,nicho:item.nicho,expert:'o especialista',ticket:'67',data:item.data};
     renderFunil(item.dados);
-    renderPagina(item.dados,'o especialista','67');
+    renderPagina(item.dados,'o especialista','67','');
     renderTrafego(item.dados);
     goTab('funil');toast('Funil carregado do historico!');
   }catch(e){}
