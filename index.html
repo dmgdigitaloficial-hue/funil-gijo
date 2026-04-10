@@ -303,41 +303,24 @@ main{max-width:820px;margin:0 auto;padding:2rem 1.5rem 5rem}
 <script>
 const DEFAULT_CONFIG={apiKey:'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',adminPass:'admin',passes:['socio1','socio2','socio3']};
 
-const SYSTEM=`Você é o maior especialista em produtos low ticket do Brasil, aplicando a Metodologia GiJo.
+const SYSTEM=`Voce e o maior especialista em produtos low ticket do Brasil, aplicando a Metodologia GiJo.
 
-PRINCÍPIOS INVIOLÁVEIS:
-1. TANGIBILIZAÇÃO: NUNCA e-book ou curso. Sempre: cartilha, kit, rotina, protocolo, planilha, pack, calendário.
-2. RUMINAÇÃO MENTAL: dor que a persona rumina TODOS OS DIAS. O pensamento que volta várias vezes por dia.
-3. NO-BRAIN PURCHASE: compra sem pensar, sem consultar ninguém.
-4. DEDO NA TELA: criativo mostra literalmente o produto sendo usado.
-5. NOME TIPO DADINHO DE TAPIOCA: simples, autoexplicativo, irresistível. NUNCA: método, fórmula, programa, sigla.
-6. UMA ÚNICA DOR de ruminação.
-7. ORDER BUMP: só após ROAS 2.0. Conversão mínima 30%.
-8. PRODUTO INSTANTÂNEO: consumido em até 48h.
-9. FUNIL: Produto R$67 → Bump 1 R$21,90 → Bump 2 R$21,90 → Upsell R$197.
+PRINCIPIOS: 1.TANGIBILIZACAO: NUNCA e-book ou curso. Sempre: cartilha, kit, rotina, protocolo, planilha, pack, calendario. 2.RUMINACAO MENTAL: dor que a persona rumina TODOS OS DIAS. 3.NO-BRAIN PURCHASE: compra sem pensar. 4.DEDO NA TELA: criativo mostra produto sendo usado. 5.NOME TIPO DADINHO DE TAPIOCA: simples, autoexplicativo. NUNCA metodo, formula, programa, sigla. 6.UMA UNICA DOR. 7.ORDER BUMP: so apos ROAS 2.0. 8.PRODUTO INSTANTANEO: consumido em ate 48h. 9.FUNIL: R$67 → Bump R$21,90 → Upsell R$197.
 
-TRÁFEGO 3 FASES:
-Fase1=ABO 1x1x1 (10 conjuntos, 1 criativo cada, 40% ticket/dia, 3 dias, meta 4 criativos ROAS 2.5+)
-Fase2=ABO Gramado (5 campanhas iguais buscando cluster pocket, ticket R$/dia, 5 dias)
-Fase3=Escala + regra 20% criativo (10x ticket/dia)
-Campanhas ruins: EXCLUIR não desativar.
+TRAFEGO: Fase1=ABO 1x1x1(10 conjuntos,1 criativo,40% ticket/dia,3 dias,meta 4 criativos ROAS 2.5+). Fase2=ABO Gramado(5 campanhas iguais,cluster pocket,5 dias). Fase3=Escala+regra 20%(10x ticket/dia). Campanhas ruins: EXCLUIR.
 
-PÁGINA 12 DOBRAS (preço SÓ dobra 9):
-D1=Promessa, D2=Prova social, D3=Apertar pedra (vozes na cabeça), D4=Transição dor-solução, D5=Passo a passo, D6=O que recebe, D7=Para quem, D8=Ancoragem, D9=Preço+CTA, D10=Conversa séria, D11=Autoridade, D12=Repetição+FAQ
+PAGINA 12 DOBRAS(preco SO dobra 9): D1=Promessa,D2=Prova social,D3=Apertar pedra,D4=Transicao,D5=Passo a passo,D6=O que recebe,D7=Para quem,D8=Ancoragem,D9=Preco+CTA,D10=Conversa seria,D11=Autoridade,D12=Repeticao+FAQ.
 
-SCORE (avalie 0 a 10):
-- Nome (0-2): dadinho de tapioca? autoexplicativo? irresistível?
-- Ruminação (0-2): dor real que rumina todo dia?
-- Tangibilização (0-2): dá para mostrar com dedo na tela?
-- Formato (0-2): resolve em menos de 48h sem curva de aprendizado?
-- Oferta (0-2): bump e upsell complementam bem?
+SCORE(0-10): Nome(0-2),Ruminacao(0-2),Tangibilizacao(0-2),Formato(0-2),Oferta(0-2).
+SCRIPT CRIATIVO 60s: abertura 0-5s gancho, problema 5-20s ruminacao, solucao 20-45s dedo na tela, CTA 45-60s.
 
-ENTREGÁVEL: gere o conteúdo COMPLETO e DETALHADO do produto com no mínimo 15 seções ricas em conteúdo real e aplicável.
+Responda SOMENTE JSON valido zero texto fora zero markdown:
+{"nome":"","formato":"","preco":"R$67","ruminacao":"","tangibilizacao":"","bump_nome":"","bump_desc":"","upsell_nome":"","upsell_desc":"","ganchos":["","","","",""],"script_criativo":"","pagina":{"d1":"","d2":"","d3":"","d4":"","d5":"","d6":"","d7":"","d8":"","d9":"","d10":"","d11":"","d12":""},"trafego":{"fase1":"","fase2":"","fase3":""},"score":{"total":8,"status":"","resumo":"","itens":[{"categoria":"Nome","nota":2,"max":2,"status":"ok","titulo":"","desc":""},{"categoria":"Ruminacao","nota":2,"max":2,"status":"ok","titulo":"","desc":""},{"categoria":"Tangibilizacao","nota":2,"max":2,"status":"ok","titulo":"","desc":""},{"categoria":"Formato","nota":2,"max":2,"status":"ok","titulo":"","desc":""},{"categoria":"Oferta","nota":2,"max":2,"status":"ok","titulo":"","desc":""}]}}`;
 
-SCRIPT CRIATIVO (60s): abertura 0-5s gancho visual, problema 5-20s ruminação com palavras exatas, solução 20-45s produto sendo usado dedo na tela resultado específico, CTA 45-60s chamada urgente.
-
-Responda SOMENTE JSON válido zero texto fora zero markdown:
-{"nome":"","formato":"","preco":"R$67","ruminacao":"","tangibilizacao":"","bump_nome":"","bump_desc":"","upsell_nome":"","upsell_desc":"","ganchos":["","","","",""],"script_criativo":"","pagina":{"d1":"","d2":"","d3":"","d4":"","d5":"","d6":"","d7":"","d8":"","d9":"","d10":"","d11":"","d12":""},"trafego":{"fase1":"","fase2":"","fase3":""},"score":{"total":8,"status":"","resumo":"","itens":[{"categoria":"Nome","nota":2,"max":2,"status":"ok","titulo":"","desc":""},{"categoria":"Ruminação","nota":2,"max":2,"status":"ok","titulo":"","desc":""},{"categoria":"Tangibilização","nota":2,"max":2,"status":"ok","titulo":"","desc":""},{"categoria":"Formato","nota":2,"max":2,"status":"ok","titulo":"","desc":""},{"categoria":"Oferta","nota":2,"max":2,"status":"ok","titulo":"","desc":""}]},"entregavel":{"titulo":"","intro":"","secoes":[{"titulo":"","conteudo":""}]}}`;
+const SYSTEM2=`Voce e especialista em criar conteudo de produtos digitais low ticket.
+Gere o entregavel completo do produto com 10 secoes detalhadas e praticas.
+Responda SOMENTE JSON valido zero texto fora zero markdown:
+{"titulo":"","intro":"","secoes":[{"titulo":"secao 1","conteudo":"conteudo completo"},{"titulo":"secao 2","conteudo":"conteudo"},{"titulo":"secao 3","conteudo":"conteudo"},{"titulo":"secao 4","conteudo":"conteudo"},{"titulo":"secao 5","conteudo":"conteudo"},{"titulo":"secao 6","conteudo":"conteudo"},{"titulo":"secao 7","conteudo":"conteudo"},{"titulo":"secao 8","conteudo":"conteudo"},{"titulo":"secao 9","conteudo":"conteudo"},{"titulo":"secao 10","conteudo":"conteudo"}]}`;
 
 let cfg={},currentUser=null,dadosGerados=null;
 
@@ -399,7 +382,7 @@ function goTab(id){
 
 async function gerar(){
   const apiKey=cfg.apiKey||DEFAULT_CONFIG.apiKey;
-  if(!apiKey||!apiKey.startsWith('sk-ant')){showErr('API key não configurada. Acesse Config como administrador.');return}
+  if(!apiKey||!apiKey.startsWith('sk-ant')){showErr('API key nao configurada. Acesse Config.');return}
   const nicho=document.getElementById('i-nicho-custom').value.trim()||document.getElementById('i-nicho').value;
   if(!nicho){showErr('Selecione ou escreva um nicho.');return}
   const formato=document.getElementById('i-formato').value;
@@ -412,37 +395,52 @@ async function gerar(){
   hideErr();
   document.getElementById('btn-gerar').disabled=true;
   document.getElementById('prog-wrap').classList.add('active');
-  const steps=[[10,'Identificando ruminação mental...'],[22,'Criando nome e produto tangível...'],[35,'Estruturando oferta e bumps...'],[48,'Gerando ganchos e script do criativo...'],[60,'Escrevendo as 12 dobras da página...'],[72,'Calculando score do produto...'],[85,'Gerando entregável completo...'],[93,'Montando plano de tráfego...']];
-  let si=0;
-  const iv=setInterval(()=>{if(si<steps.length){setP(steps[si][0],steps[si][1]);si++}},1500);
-  const userMsg=`Nicho: ${nicho}\nFormato: ${formato}\nTicket: R$${ticket}\nVerba: R$${verba}/dia\nPlataforma: ${plataforma}\n${publico?'Público: '+publico:''}\nExpert: ${expert}${credencial?' — '+credencial:''}\n\nGere o funil completo. No entregável, gere no máximo 8 seções objetivas e diretas. Priorize qualidade sobre quantidade. O JSON deve estar completo e válido.`;
-  try{
-    let res, tentativa=0, maxTentativas=4;
-    while(tentativa<maxTentativas){
-      tentativa++;
-      if(tentativa>1){
-        const espera=tentativa*8000;
-        setP(Math.min(si*12,88),`Servidor ocupado — tentando novamente (${tentativa}/${maxTentativas})... aguarde ${espera/1000}s`);
-        await new Promise(r=>setTimeout(r,espera));
-      }
-      res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:8000,system:SYSTEM,messages:[{role:'user',content:userMsg}]})});
-      if(res.status!==529&&res.status!==529){break}
-      const eBody=await res.json().catch(()=>({}));
-      if(eBody?.error?.type!=='overloaded_error'&&res.status!==529)break;
-      if(tentativa===maxTentativas)throw new Error('Servidor sobrecarregado. Tente em alguns minutos.');
+
+  async function chamarAPI(sys, msg, maxTok){
+    let res, t=0;
+    while(t<4){
+      t++;
+      if(t>1){setP(null,'Servidor ocupado — tentando novamente ('+t+'/4)...');await new Promise(r=>setTimeout(r,t*8000));}
+      res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:maxTok,system:sys,messages:[{role:'user',content:msg}]})});
+      if(res.ok)break;
+      const eb=await res.json().catch(()=>({}));
+      if(eb?.error?.type==='overloaded_error'||res.status===529){if(t===4)throw new Error('Servidor sobrecarregado. Aguarde e tente novamente.');continue;}
+      throw new Error(eb?.error?.message||'Erro '+res.status);
     }
-    clearInterval(iv);
-    if(!res.ok){const e=await res.json().catch(()=>({}));throw new Error(e.error?.message||'Erro '+res.status)}
     const data=await res.json();
     const raw=data.content.map(b=>b.text||'').join('');
     const clean=raw.replace(/```json|```/g,'').trim();
-    let p;try{p=JSON.parse(clean)}catch(e){const s=clean.indexOf('{');const e2=clean.lastIndexOf('}');if(s!==-1&&e2!==-1){try{p=JSON.parse(clean.slice(s,e2+1))}catch(e3){throw new Error('Resposta incompleta. Tente novamente.')}}else{throw new Error('Resposta inválida. Tente novamente.')}}
-    dadosGerados={p,nicho,expert,ticket,data:new Date().toLocaleDateString('pt-BR')};
+    try{return JSON.parse(clean)}catch(e){
+      const s=clean.indexOf('{'),e2=clean.lastIndexOf('}');
+      if(s!==-1&&e2!==-1){try{return JSON.parse(clean.slice(s,e2+1))}catch(e3){throw new Error('Resposta incompleta. Tente novamente.');}}
+      throw new Error('Resposta invalida. Tente novamente.');
+    }
+  }
+
+  try{
+    const msg1='Nicho: '+nicho+'\nFormato: '+formato+'\nTicket: R$'+ticket+'\nVerba: R$'+verba+'/dia\nPlataforma: '+plataforma+(publico?'\nPublico: '+publico:'')+'\nExpert: '+expert+(credencial?' - '+credencial:'')+'\n\nGere o funil completo com pagina de vendas, criativos e score.';
+
+    setP(8,'Identificando ruminacao mental...');
+    const t1=setTimeout(()=>setP(22,'Criando nome e produto tangivel...'),2500);
+    const t2=setTimeout(()=>setP(38,'Gerando ganchos e script...'),5000);
+    const t3=setTimeout(()=>setP(54,'Escrevendo as 12 dobras...'),8000);
+    const t4=setTimeout(()=>setP(68,'Calculando score...'),11000);
+
+    const p=await chamarAPI(SYSTEM,msg1,5000);
+    clearTimeout(t1);clearTimeout(t2);clearTimeout(t3);clearTimeout(t4);
+
+    setP(75,'Gerando entregavel do produto...');
+
+    const msg2='Produto: '+p.nome+'\nFormato: '+p.formato+'\nNicho: '+nicho+'\nRuminacao: '+p.ruminacao+'\n\nGere o entregavel completo com 10 secoes praticas e detalhadas para este produto especifico.';
+    const entregavel=await chamarAPI(SYSTEM2,msg2,3000);
+    p.entregavel=entregavel;
+
     setP(100,'Funil gerado com sucesso!');
+    dadosGerados={p,nicho,expert,ticket,data:new Date().toLocaleDateString('pt-BR')};
     renderFunil(p);renderPagina(p,expert);renderTrafego(p);renderScore(p);renderEntregavel(p);
     salvarNoHistorico(dadosGerados);
     setTimeout(()=>{document.getElementById('prog-wrap').classList.remove('active');goTab('funil')},600);
-  }catch(e){clearInterval(iv);document.getElementById('prog-wrap').classList.remove('active');showErr('Erro: '+e.message)}
+  }catch(e){document.getElementById('prog-wrap').classList.remove('active');showErr('Erro: '+e.message);}
   document.getElementById('btn-gerar').disabled=false;
 }
 
