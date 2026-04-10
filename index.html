@@ -303,24 +303,22 @@ main{max-width:820px;margin:0 auto;padding:2rem 1.5rem 5rem}
 <script>
 const DEFAULT_CONFIG={apiKey:'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',adminPass:'admin',passes:['socio1','socio2','socio3']};
 
-const SYSTEM=`Voce e o maior especialista em produtos low ticket do Brasil, aplicando a Metodologia GiJo.
+const SYS_FUNIL=`Especialista em low ticket Metodologia GiJo. Responda SOMENTE JSON valido zero texto fora:
+{"nome":"","formato":"","preco":"R$67","ruminacao":"frase exata 1a pessoa","tangibilizacao":"instrucao exata dedo na tela","bump_nome":"","bump_desc":"","upsell_nome":"","upsell_desc":"","ganchos":["","","","",""],"script_criativo":"script 60s com marcacoes de tempo"}
+REGRAS: nome=dadinho de tapioca simples irresistivel NUNCA metodo formula programa. ruminacao=dor que persona pensa todo dia. tangibilizacao=como mostrar fisicamente no criativo.`;
 
-PRINCIPIOS: 1.TANGIBILIZACAO: NUNCA e-book ou curso. Sempre: cartilha, kit, rotina, protocolo, planilha, pack, calendario. 2.RUMINACAO MENTAL: dor que a persona rumina TODOS OS DIAS. 3.NO-BRAIN PURCHASE: compra sem pensar. 4.DEDO NA TELA: criativo mostra produto sendo usado. 5.NOME TIPO DADINHO DE TAPIOCA: simples, autoexplicativo. NUNCA metodo, formula, programa, sigla. 6.UMA UNICA DOR. 7.ORDER BUMP: so apos ROAS 2.0. 8.PRODUTO INSTANTANEO: consumido em ate 48h. 9.FUNIL: R$67 → Bump R$21,90 → Upsell R$197.
+const SYS_PAGINA=`Especialista em copywriting low ticket Metodologia GiJo. Responda SOMENTE JSON valido zero texto fora:
+{"d1":"promessa+subtitulo","d2":"prova social como apresentar","d3":"vozes na cabeca voce ja se pegou pensando...","d4":"5 motivos externos culpa nao e da persona","d5":"3 passos simples","d6":"lista completa do que vai receber","d7":"e pra voce que... nao e pra voce que...","d8":"recapitulacao tudo isso por apenas","d9":"preco CTA garantia","d10":"custo de nao resolver","d11":"mini bio expert resultados","d12":"faq 5 perguntas respostas rodape"}
+REGRA: preco SO aparece na d9. d3 usa palavras exatas da persona.`;
 
-TRAFEGO: Fase1=ABO 1x1x1(10 conjuntos,1 criativo,40% ticket/dia,3 dias,meta 4 criativos ROAS 2.5+). Fase2=ABO Gramado(5 campanhas iguais,cluster pocket,5 dias). Fase3=Escala+regra 20%(10x ticket/dia). Campanhas ruins: EXCLUIR.
+const SYS_SCORE=`Especialista em validacao de produtos low ticket Metodologia GiJo. Responda SOMENTE JSON valido zero texto fora:
+{"score":{"total":8,"status":"","resumo":"","itens":[{"categoria":"Nome","nota":2,"max":2,"status":"ok","titulo":"","desc":""},{"categoria":"Ruminacao","nota":2,"max":2,"status":"ok","titulo":"","desc":""},{"categoria":"Tangibilizacao","nota":2,"max":2,"status":"ok","titulo":"","desc":""},{"categoria":"Formato","nota":2,"max":2,"status":"ok","titulo":"","desc":""},{"categoria":"Oferta","nota":2,"max":2,"status":"ok","titulo":"","desc":""}]},"trafego":{"fase1":"instrucao completa fase1 ABO 1x1x1 para este nicho","fase2":"instrucao fase2 ABO Gramado","fase3":"instrucao fase3 escala regra 20%"}}
+SCORE: Nome(0-2)=dadinho tapioca?, Ruminacao(0-2)=dor real diaria?, Tangibilizacao(0-2)=dedo na tela?, Formato(0-2)=48h sem curva?, Oferta(0-2)=bump upsell complementam?
+TRAFEGO: Fase1=ABO 1x1x1(10 conjuntos,1 criativo,40% ticket/dia,3 dias,meta ROAS 2.5+). Fase2=ABO Gramado(5 campanhas iguais,cluster pocket). Fase3=Escala+20% criativo,10x ticket/dia.`;
 
-PAGINA 12 DOBRAS(preco SO dobra 9): D1=Promessa,D2=Prova social,D3=Apertar pedra,D4=Transicao,D5=Passo a passo,D6=O que recebe,D7=Para quem,D8=Ancoragem,D9=Preco+CTA,D10=Conversa seria,D11=Autoridade,D12=Repeticao+FAQ.
-
-SCORE(0-10): Nome(0-2),Ruminacao(0-2),Tangibilizacao(0-2),Formato(0-2),Oferta(0-2).
-SCRIPT CRIATIVO 60s: abertura 0-5s gancho, problema 5-20s ruminacao, solucao 20-45s dedo na tela, CTA 45-60s.
-
-Responda SOMENTE JSON valido zero texto fora zero markdown:
-{"nome":"","formato":"","preco":"R$67","ruminacao":"","tangibilizacao":"","bump_nome":"","bump_desc":"","upsell_nome":"","upsell_desc":"","ganchos":["","","","",""],"script_criativo":"","pagina":{"d1":"","d2":"","d3":"","d4":"","d5":"","d6":"","d7":"","d8":"","d9":"","d10":"","d11":"","d12":""},"trafego":{"fase1":"","fase2":"","fase3":""},"score":{"total":8,"status":"","resumo":"","itens":[{"categoria":"Nome","nota":2,"max":2,"status":"ok","titulo":"","desc":""},{"categoria":"Ruminacao","nota":2,"max":2,"status":"ok","titulo":"","desc":""},{"categoria":"Tangibilizacao","nota":2,"max":2,"status":"ok","titulo":"","desc":""},{"categoria":"Formato","nota":2,"max":2,"status":"ok","titulo":"","desc":""},{"categoria":"Oferta","nota":2,"max":2,"status":"ok","titulo":"","desc":""}]}}`;
-
-const SYSTEM2=`Voce e especialista em criar conteudo de produtos digitais low ticket.
-Gere o entregavel completo do produto com 10 secoes detalhadas e praticas.
-Responda SOMENTE JSON valido zero texto fora zero markdown:
-{"titulo":"","intro":"","secoes":[{"titulo":"secao 1","conteudo":"conteudo completo"},{"titulo":"secao 2","conteudo":"conteudo"},{"titulo":"secao 3","conteudo":"conteudo"},{"titulo":"secao 4","conteudo":"conteudo"},{"titulo":"secao 5","conteudo":"conteudo"},{"titulo":"secao 6","conteudo":"conteudo"},{"titulo":"secao 7","conteudo":"conteudo"},{"titulo":"secao 8","conteudo":"conteudo"},{"titulo":"secao 9","conteudo":"conteudo"},{"titulo":"secao 10","conteudo":"conteudo"}]}`;
+const SYS_ENTREGAVEL=`Especialista em criar conteudo de produtos digitais. Responda SOMENTE JSON valido zero texto fora:
+{"titulo":"","intro":"","secoes":[{"titulo":"","conteudo":""},{"titulo":"","conteudo":""},{"titulo":"","conteudo":""},{"titulo":"","conteudo":""},{"titulo":"","conteudo":""},{"titulo":"","conteudo":""},{"titulo":"","conteudo":""},{"titulo":"","conteudo":""}]}
+Gere 8 secoes com conteudo real e aplicavel para o produto especificado.`;
 
 let cfg={},currentUser=null,dadosGerados=null;
 
@@ -337,7 +335,7 @@ function doLogin(){
     document.getElementById('login-error').classList.remove('show');
     document.getElementById('login-screen').style.display='none';
     document.getElementById('app').classList.add('visible');
-    document.getElementById('user-badge').textContent=val===(cfg.adminPass||DEFAULT_CONFIG.adminPass)?'admin':'sócio';
+    document.getElementById('user-badge').textContent=val===(cfg.adminPass||DEFAULT_CONFIG.adminPass)?'admin':'socio';
     if(val===(cfg.adminPass||DEFAULT_CONFIG.adminPass))loadConfigScreen();
     atualizarHistBadge();
   }else{
@@ -380,6 +378,35 @@ function goTab(id){
   if(id==='historico')renderHistorico();
 }
 
+async function chamarAPI(sys,msg,maxTok){
+  const apiKey=cfg.apiKey||DEFAULT_CONFIG.apiKey;
+  let res,t=0;
+  while(t<4){
+    t++;
+    if(t>1){setP(null,'Servidor ocupado — tentando novamente ('+t+'/4)...');await new Promise(r=>setTimeout(r,t*7000));}
+    res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:maxTok,system:sys,messages:[{role:'user',content:msg}]})
+    });
+    if(res.ok)break;
+    const eb=await res.json().catch(()=>({}));
+    if(eb?.error?.type==='overloaded_error'||res.status===529){
+      if(t===4)throw new Error('Servidor sobrecarregado. Aguarde alguns minutos e tente novamente.');
+      continue;
+    }
+    throw new Error(eb?.error?.message||'Erro '+res.status);
+  }
+  const data=await res.json();
+  const raw=data.content.map(b=>b.text||'').join('');
+  const clean=raw.replace(/```json|```/g,'').trim();
+  try{return JSON.parse(clean)}catch(e){
+    const s=clean.indexOf('{'),e2=clean.lastIndexOf('}');
+    if(s!==-1&&e2!==-1){try{return JSON.parse(clean.slice(s,e2+1))}catch(e3){throw new Error('Resposta truncada. Tente novamente.');}}
+    throw new Error('Resposta invalida. Tente novamente.');
+  }
+}
+
 async function gerar(){
   const apiKey=cfg.apiKey||DEFAULT_CONFIG.apiKey;
   if(!apiKey||!apiKey.startsWith('sk-ant')){showErr('API key nao configurada. Acesse Config.');return}
@@ -396,45 +423,22 @@ async function gerar(){
   document.getElementById('btn-gerar').disabled=true;
   document.getElementById('prog-wrap').classList.add('active');
 
-  async function chamarAPI(sys, msg, maxTok){
-    let res, t=0;
-    while(t<4){
-      t++;
-      if(t>1){setP(null,'Servidor ocupado — tentando novamente ('+t+'/4)...');await new Promise(r=>setTimeout(r,t*8000));}
-      res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:maxTok,system:sys,messages:[{role:'user',content:msg}]})});
-      if(res.ok)break;
-      const eb=await res.json().catch(()=>({}));
-      if(eb?.error?.type==='overloaded_error'||res.status===529){if(t===4)throw new Error('Servidor sobrecarregado. Aguarde e tente novamente.');continue;}
-      throw new Error(eb?.error?.message||'Erro '+res.status);
-    }
-    const data=await res.json();
-    const raw=data.content.map(b=>b.text||'').join('');
-    const clean=raw.replace(/```json|```/g,'').trim();
-    try{return JSON.parse(clean)}catch(e){
-      const s=clean.indexOf('{'),e2=clean.lastIndexOf('}');
-      if(s!==-1&&e2!==-1){try{return JSON.parse(clean.slice(s,e2+1))}catch(e3){throw new Error('Resposta incompleta. Tente novamente.');}}
-      throw new Error('Resposta invalida. Tente novamente.');
-    }
-  }
+  const ctx='Nicho: '+nicho+' | Formato: '+formato+' | Ticket: R$'+ticket+' | Verba: R$'+verba+'/dia | Plataforma: '+plataforma+(publico?' | Publico: '+publico:'')+' | Expert: '+expert+(credencial?' - '+credencial:'');
 
   try{
-    const msg1='Nicho: '+nicho+'\nFormato: '+formato+'\nTicket: R$'+ticket+'\nVerba: R$'+verba+'/dia\nPlataforma: '+plataforma+(publico?'\nPublico: '+publico:'')+'\nExpert: '+expert+(credencial?' - '+credencial:'')+'\n\nGere o funil completo com pagina de vendas, criativos e score.';
+    setP(8,'Criando produto e criativos...');
+    const r1=await chamarAPI(SYS_FUNIL, ctx+' Gere o produto, ganchos e script criativo.', 1500);
 
-    setP(8,'Identificando ruminacao mental...');
-    const t1=setTimeout(()=>setP(22,'Criando nome e produto tangivel...'),2500);
-    const t2=setTimeout(()=>setP(38,'Gerando ganchos e script...'),5000);
-    const t3=setTimeout(()=>setP(54,'Escrevendo as 12 dobras...'),8000);
-    const t4=setTimeout(()=>setP(68,'Calculando score...'),11000);
+    setP(35,'Escrevendo pagina de vendas...');
+    const r2=await chamarAPI(SYS_PAGINA, ctx+' Produto: '+r1.nome+' Ruminacao: '+r1.ruminacao+' Gere as 12 dobras da pagina de vendas.', 2500);
 
-    const p=await chamarAPI(SYSTEM,msg1,5000);
-    clearTimeout(t1);clearTimeout(t2);clearTimeout(t3);clearTimeout(t4);
+    setP(62,'Calculando score e trafego...');
+    const r3=await chamarAPI(SYS_SCORE, ctx+' Produto: '+r1.nome+' Formato: '+r1.formato+' Ruminacao: '+r1.ruminacao+' Bump: '+r1.bump_nome+' Avalie o score e gere o plano de trafego.', 1500);
 
-    setP(75,'Gerando entregavel do produto...');
+    setP(82,'Gerando entregavel do produto...');
+    const r4=await chamarAPI(SYS_ENTREGAVEL, 'Produto: '+r1.nome+' Formato: '+r1.formato+' Nicho: '+nicho+' Ruminacao: '+r1.ruminacao+' Gere o entregavel completo com 8 secoes praticas.', 2500);
 
-    const msg2='Produto: '+p.nome+'\nFormato: '+p.formato+'\nNicho: '+nicho+'\nRuminacao: '+p.ruminacao+'\n\nGere o entregavel completo com 10 secoes praticas e detalhadas para este produto especifico.';
-    const entregavel=await chamarAPI(SYSTEM2,msg2,3000);
-    p.entregavel=entregavel;
-
+    const p={...r1, pagina:r2, ...r3, entregavel:r4};
     setP(100,'Funil gerado com sucesso!');
     dadosGerados={p,nicho,expert,ticket,data:new Date().toLocaleDateString('pt-BR')};
     renderFunil(p);renderPagina(p,expert);renderTrafego(p);renderScore(p);renderEntregavel(p);
@@ -444,9 +448,9 @@ async function gerar(){
   document.getElementById('btn-gerar').disabled=false;
 }
 
-function setP(pct,msg){document.getElementById('prog-fill').style.width=pct+'%';document.getElementById('prog-msg').textContent=msg}
-function showErr(msg){const el=document.getElementById('err-msg');el.textContent=msg;el.style.display='block'}
-function hideErr(){document.getElementById('err-msg').style.display='none'}
+function setP(pct,msg){if(pct!==null)document.getElementById('prog-fill').style.width=pct+'%';document.getElementById('prog-msg').textContent=msg;}
+function showErr(msg){const el=document.getElementById('err-msg');el.textContent=msg;el.style.display='block';}
+function hideErr(){document.getElementById('err-msg').style.display='none';}
 
 function renderFunil(p){
   document.getElementById('r-nome').textContent=p.nome||'';
@@ -454,22 +458,22 @@ function renderFunil(p){
   document.getElementById('r-preco').textContent=p.preco||'R$67';
   document.getElementById('r-rum').textContent='"'+(p.ruminacao||'')+'"';
   document.getElementById('r-tang').textContent=p.tangibilizacao||'';
-  document.getElementById('r-bump').textContent=(p.bump_nome||'')+' — '+(p.bump_desc||'');
-  document.getElementById('r-upsell').textContent=(p.upsell_nome||'')+' — '+(p.upsell_desc||'');
+  document.getElementById('r-bump').textContent=(p.bump_nome||'')+' - '+(p.bump_desc||'');
+  document.getElementById('r-upsell').textContent=(p.upsell_nome||'')+' - '+(p.upsell_desc||'');
   document.getElementById('r-script').textContent=p.script_criativo||'';
   const gc=document.getElementById('r-ganchos');gc.innerHTML='';
-  (p.ganchos||[]).forEach((g,i)=>{const d=document.createElement('div');d.className='gancho';d.innerHTML=`<span class="gancho-n">${i+1}</span><span>${g}</span>`;d.onclick=()=>{navigator.clipboard.writeText(g);toast('Gancho copiado!')};gc.appendChild(d)});
+  (p.ganchos||[]).forEach((g,i)=>{const d=document.createElement('div');d.className='gancho';d.innerHTML='<span class="gancho-n">'+(i+1)+'</span><span>'+g+'</span>';d.onclick=()=>{navigator.clipboard.writeText(g);toast('Gancho copiado!')};gc.appendChild(d)});
 }
 
 function renderPagina(p,expert){
   const pg=p.pagina||{};
-  const dobras=[{n:'Dobra 1',t:'Promessa principal',body:pg.d1},{n:'Dobra 2',t:'Prova social',body:pg.d2},{n:'Dobra 3',t:'Apertar na pedra — vozes na cabeça',body:pg.d3},{n:'Dobra 4',t:'Transição dor → solução',body:pg.d4},{n:'Dobra 5',t:'Passo a passo',body:pg.d5},{n:'Dobra 6',t:'Tudo que vai receber',body:pg.d6},{n:'Dobra 7',t:'Para quem serve',body:pg.d7},{n:'Dobra 8',t:'Ancoragem',body:pg.d8},{n:'Dobra 9',t:'Preço + botão (primeira aparição)',body:pg.d9},{n:'Dobra 10',t:'Conversa séria',body:pg.d10},{n:'Dobra 11',t:'Autoridade — '+expert,body:pg.d11},{n:'Dobra 12',t:'Repetição + FAQ',body:pg.d12}];
-  document.getElementById('pv-dobras').innerHTML=dobras.map(d=>`<div class="dobra"><div class="dobra-num">${d.n}</div><div class="dobra-title">${d.t}</div><div class="dobra-body">${d.body||''}</div></div>`).join('');
+  const dobras=[{n:'Dobra 1',t:'Promessa principal',body:pg.d1},{n:'Dobra 2',t:'Prova social',body:pg.d2},{n:'Dobra 3',t:'Apertar na pedra',body:pg.d3},{n:'Dobra 4',t:'Transicao dor solucao',body:pg.d4},{n:'Dobra 5',t:'Passo a passo',body:pg.d5},{n:'Dobra 6',t:'Tudo que vai receber',body:pg.d6},{n:'Dobra 7',t:'Para quem serve',body:pg.d7},{n:'Dobra 8',t:'Ancoragem',body:pg.d8},{n:'Dobra 9',t:'Preco + botao primeira aparicao',body:pg.d9},{n:'Dobra 10',t:'Conversa seria',body:pg.d10},{n:'Dobra 11',t:'Autoridade - '+expert,body:pg.d11},{n:'Dobra 12',t:'Repeticao + FAQ',body:pg.d12}];
+  document.getElementById('pv-dobras').innerHTML=dobras.map(d=>'<div class="dobra"><div class="dobra-num">'+d.n+'</div><div class="dobra-title">'+d.t+'</div><div class="dobra-body">'+(d.body||'')+'</div></div>').join('');
 }
 
 function renderTrafego(p){
   const tf=p.trafego||{};
-  document.getElementById('r-trafego').innerHTML=[{n:1,t:'Fase 1 — Teste de criativo (ABO 1×1×1)',d:tf.fase1},{n:2,t:'Fase 2 — Teste de estrutura (ABO Gramado)',d:tf.fase2},{n:3,t:'Fase 3 — Escala + regra dos 20%',d:tf.fase3}].map(f=>`<div class="fase"><div class="fase-n">${f.n}</div><div><div class="fase-title">${f.t}</div><div class="fase-desc">${f.d||''}</div></div></div>`).join('');
+  document.getElementById('r-trafego').innerHTML=[{n:1,t:'Fase 1 - Teste de criativo (ABO 1x1x1)',d:tf.fase1},{n:2,t:'Fase 2 - Teste de estrutura (ABO Gramado)',d:tf.fase2},{n:3,t:'Fase 3 - Escala + regra dos 20%',d:tf.fase3}].map(f=>'<div class="fase"><div class="fase-n">'+f.n+'</div><div><div class="fase-title">'+f.t+'</div><div class="fase-desc">'+(f.d||'')+'</div></div></div>').join('');
 }
 
 function renderScore(p){
@@ -483,29 +487,16 @@ function renderScore(p){
   const bar=document.getElementById('score-bar');
   bar.style.width=(total/10*100)+'%';
   bar.style.background=total>=8?'var(--accent)':total>=5?'var(--warn)':'var(--danger)';
-  const iconMap={ok:'✓',warn:'!',bad:'×'};
+  const iconMap={ok:'v',warn:'!',bad:'x'};
   const classMap={ok:'si-ok',warn:'si-warn',bad:'si-bad'};
-  document.getElementById('score-itens').innerHTML=(sc.itens||[]).map(it=>`
-    <div class="score-item">
-      <div class="score-icon ${classMap[it.status]||'si-warn'}">${iconMap[it.status]||'!'}</div>
-      <div style="flex:1">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px">
-          <div class="score-item-title">${it.titulo||it.categoria}</div>
-          <div style="font-size:12px;font-weight:500;color:${it.nota===it.max?'var(--accent)':it.nota>0?'var(--warn)':'var(--danger)'}">${it.nota}/${it.max}</div>
-        </div>
-        <div class="score-item-desc">${it.desc||''}</div>
-      </div>
-    </div>`).join('');
+  document.getElementById('score-itens').innerHTML=(sc.itens||[]).map(it=>'<div class="score-item"><div class="score-icon '+(classMap[it.status]||'si-warn')+'">'+(iconMap[it.status]||'!')+'</div><div style="flex:1"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px"><div class="score-item-title">'+(it.titulo||it.categoria)+'</div><div style="font-size:12px;font-weight:500;color:'+(it.nota===it.max?'var(--accent)':it.nota>0?'var(--warn)':'var(--danger)')+'">'+it.nota+'/'+it.max+'</div></div><div class="score-item-desc">'+(it.desc||'')+'</div></div></div>').join('');
 }
 
 function renderEntregavel(p){
   const en=p.entregavel||{};
   const container=document.getElementById('entregavel-container');
-  if(!en.titulo&&!(en.secoes&&en.secoes.length)){container.innerHTML='<p style="text-align:center;color:var(--dim);font-size:13px;padding:3rem 0">Entregável não gerado. Tente novamente.</p>';return}
-  container.innerHTML=`
-    <div class="entregavel-section"><div class="entregavel-title">Título</div><div class="entregavel-body" style="font-size:16px;font-weight:500;color:var(--accent)">${en.titulo||''}</div></div>
-    <div class="entregavel-section"><div class="entregavel-title">Introdução</div><div class="entregavel-body">${en.intro||''}</div></div>
-    ${(en.secoes||[]).map((s,i)=>`<div class="entregavel-section"><div class="entregavel-title">Seção ${i+1} — ${s.titulo||''}</div><div class="entregavel-body">${s.conteudo||''}</div></div>`).join('')}`;
+  if(!en.titulo&&!(en.secoes&&en.secoes.length)){container.innerHTML='<p style="text-align:center;color:var(--dim);font-size:13px;padding:3rem 0">Entregavel nao gerado.</p>';return}
+  container.innerHTML='<div class="entregavel-section"><div class="entregavel-title">Titulo</div><div class="entregavel-body" style="font-size:16px;font-weight:500;color:var(--accent)">'+(en.titulo||'')+'</div></div><div class="entregavel-section"><div class="entregavel-title">Introducao</div><div class="entregavel-body">'+(en.intro||'')+'</div></div>'+(en.secoes||[]).map((s,i)=>'<div class="entregavel-section"><div class="entregavel-title">Secao '+(i+1)+' - '+(s.titulo||'')+'</div><div class="entregavel-body">'+(s.conteudo||'')+'</div></div>').join('');
   document.getElementById('entregavel-btns').style.display='flex';
 }
 
@@ -527,20 +518,8 @@ function renderHistorico(){
   try{
     const hist=JSON.parse(localStorage.getItem('lt_hist')||'[]');
     const lista=document.getElementById('hist-lista');
-    if(!hist.length){lista.innerHTML='<div class="hist-empty">Nenhum funil gerado ainda.<br>Gere seu primeiro funil para ver o histórico.</div>';return}
-    lista.innerHTML=hist.map(h=>`
-      <div class="hist-item" onclick="carregarDoHistorico(${h.id})">
-        <div class="hist-header">
-          <div class="hist-nome">${h.nome||'Sem nome'}</div>
-          <div class="hist-data">${h.data||''}</div>
-        </div>
-        <div class="hist-meta">
-          <span class="hist-tag">${h.nicho||''}</span>
-          <span class="hist-tag">${h.formato||''}</span>
-          <span class="hist-tag">${h.preco||''}</span>
-          <span class="hist-tag" style="color:${(h.score||0)>=8?'var(--accent)':(h.score||0)>=5?'var(--warn)':'var(--danger)'}">Score: ${h.score||0}/10</span>
-        </div>
-      </div>`).join('');
+    if(!hist.length){lista.innerHTML='<div class="hist-empty">Nenhum funil gerado ainda.</div>';return}
+    lista.innerHTML=hist.map(h=>'<div class="hist-item" onclick="carregarDoHistorico('+h.id+')"><div class="hist-header"><div class="hist-nome">'+(h.nome||'Sem nome')+'</div><div class="hist-data">'+(h.data||'')+'</div></div><div class="hist-meta"><span class="hist-tag">'+(h.nicho||'')+'</span><span class="hist-tag">'+(h.formato||'')+'</span><span class="hist-tag">'+(h.preco||'')+'</span><span class="hist-tag" style="color:'+((h.score||0)>=8?'var(--accent)':(h.score||0)>=5?'var(--warn)':'var(--danger)')+'">Score: '+(h.score||0)+'/10</span></div></div>').join('');
   }catch(e){}
 }
 
@@ -551,37 +530,15 @@ function carregarDoHistorico(id){
     if(!item)return;
     dadosGerados={p:item.dados,nicho:item.nicho,expert:'o especialista',ticket:'67',data:item.data};
     renderFunil(item.dados);renderPagina(item.dados,'o especialista');renderTrafego(item.dados);renderScore(item.dados);renderEntregavel(item.dados);
-    goTab('funil');toast('Funil carregado do histórico!');
+    goTab('funil');toast('Funil carregado do historico!');
   }catch(e){}
 }
 
 function limparHistorico(){
-  if(confirm('Limpar todo o histórico?')){localStorage.removeItem('lt_hist');atualizarHistBadge();renderHistorico();toast('Histórico limpo!')}
+  if(confirm('Limpar todo o historico?')){localStorage.removeItem('lt_hist');atualizarHistBadge();renderHistorico();toast('Historico limpo!')}
 }
 
-function copiarFunil(){
-  if(!dadosGerados)return;
-  const p=dadosGerados.p;
-  navigator.clipboard.writeText(`FUNIL — ${p.nome}\n${'─'.repeat(40)}\nFormato: ${p.formato} | Preço: ${p.preco}\nRuminação: "${p.ruminacao}"\nTangibilização: ${p.tangibilizacao}\nBump: ${p.bump_nome} — ${p.bump_desc}\nUpsell: ${p.upsell_nome} — ${p.upsell_desc}\n\nGANCHOS\n${(p.ganchos||[]).map((g,i)=>`${i+1}. ${g}`).join('\n')}\n\nSCRIPT CRIATIVO\n${p.script_criativo||''}`).then(()=>toast('Funil copiado!'));
-}
-
-function copiarPagina(){
-  if(!dadosGerados)return;
-  const pg=dadosGerados.p.pagina||{};
-  navigator.clipboard.writeText(`PÁGINA — ${dadosGerados.p.nome}\n${'─'.repeat(40)}\nD1: ${pg.d1}\nD2: ${pg.d2}\nD3: ${pg.d3}\nD4: ${pg.d4}\nD5: ${pg.d5}\nD6: ${pg.d6}\nD7: ${pg.d7}\nD8: ${pg.d8}\nD9: ${pg.d9}\nD10: ${pg.d10}\nD11: ${pg.d11}\nD12: ${pg.d12}`).then(()=>toast('Página copiada!'));
-}
-
-function copiarEntregavel(){
-  if(!dadosGerados)return;
-  const en=dadosGerados.p.entregavel||{};
-  navigator.clipboard.writeText(`${en.titulo||''}\n${'═'.repeat(40)}\n${en.intro||''}\n\n${(en.secoes||[]).map((s,i)=>`SEÇÃO ${i+1}: ${s.titulo}\n${'─'.repeat(30)}\n${s.conteudo}`).join('\n\n')}`).then(()=>toast('Entregável copiado!'));
-}
-
-function copiarTudo(){
-  if(!dadosGerados)return;
-  const p=dadosGerados.p;const pg=p.pagina||{};const tf=p.trafego||{};const en=p.entregavel||{};
-  navigator.clipboard.writeText(`FUNIL COMPLETO — ${p.nome}\n${'═'.repeat(40)}\n${p.nome} | ${p.formato} | ${p.preco}\nScore: ${p.score?.total||0}/10\nRuminação: "${p.ruminacao}"\nTangibilização: ${p.tangibilizacao}\nBump: ${p.bump_nome} — ${p.bump_desc}\nUpsell: ${p.upsell_nome} — ${p.upsell_desc}\n\nGANCHOS\n${(p.ganchos||[]).map((g,i)=>`${i+1}. ${g}`).join('\n')}\n\nSCRIPT\n${p.script_criativo||''}\n\nPÁGINA\nD1: ${pg.d1}\nD2: ${pg.d2}\nD3: ${pg.d3}\nD4: ${pg.d4}\nD5: ${pg.d5}\nD6: ${pg.d6}\nD7: ${pg.d7}\nD8: ${pg.d8}\nD9: ${pg.d9}\nD10: ${pg.d10}\nD11: ${pg.d11}\nD12: ${pg.d12}\n\nTRÁFEGO\nFase1: ${tf.fase1}\nFase2: ${tf.fase2}\nFase3: ${tf.fase3}\n\nENTREGÁVEL\n${en.titulo||''}\n${en.intro||''}\n${(en.secoes||[]).map((s,i)=>`\nSEÇÃO ${i+1}: ${s.titulo}\n${s.conteudo}`).join('')}`).then(()=>toast('Tudo copiado!'));
-}
+function copiarFunil(){if(!dadosGerados)return;const p=dadosGerados.p;const nl=String.fromCharCode(10);const txt=["FUNIL - "+p.nome,"Formato: "+p.formato+" | Preco: "+p.preco,"Ruminacao: "+p.ruminacao,"Tangibilizacao: "+p.tangibilizacao,"Bump: "+p.bump_nome+" - "+p.bump_desc,"Upsell: "+p.upsell_nome+" - "+p.upsell_desc,"","GANCHOS",...(p.ganchos||[]).map((g,i)=>(i+1)+". "+g),"","SCRIPT CRIATIVO",p.script_criativo||""].join(nl);navigator.clipboard.writeText(txt).then(()=>toast("Funil copiado!"));}function copiarPagina(){if(!dadosGerados)return;const pg=dadosGerados.p.pagina||{};const nl=String.fromCharCode(10);const txt=["PAGINA - "+dadosGerados.p.nome,"D1: "+pg.d1,"D2: "+pg.d2,"D3: "+pg.d3,"D4: "+pg.d4,"D5: "+pg.d5,"D6: "+pg.d6,"D7: "+pg.d7,"D8: "+pg.d8,"D9: "+pg.d9,"D10: "+pg.d10,"D11: "+pg.d11,"D12: "+pg.d12].join(nl);navigator.clipboard.writeText(txt).then(()=>toast("Pagina copiada!"));}function copiarEntregavel(){if(!dadosGerados)return;const en=dadosGerados.p.entregavel||{};const nl=String.fromCharCode(10);const secoes=(en.secoes||[]).map((s,i)=>"SECAO "+(i+1)+": "+s.titulo+nl+s.conteudo).join(nl+nl);const txt=[(en.titulo||""),(en.intro||""),(secoes)].join(nl+nl);navigator.clipboard.writeText(txt).then(()=>toast("Entregavel copiado!"));}function copiarTudo(){if(!dadosGerados)return;const p=dadosGerados.p;const pg=p.pagina||{};const tf=p.trafego||{};const en=p.entregavel||{};const nl=String.fromCharCode(10);const partes=["FUNIL COMPLETO - "+p.nome,"Score: "+(p.score&&p.score.total||0)+"/10","Produto: "+p.nome+" | "+p.formato+" | "+p.preco,"Ruminacao: "+p.ruminacao,"Bump: "+p.bump_nome,"Upsell: "+p.upsell_nome,"","GANCHOS",...(p.ganchos||[]).map((g,i)=>(i+1)+". "+g),"","SCRIPT",p.script_criativo||"","","PAGINA","D1: "+pg.d1,"D2: "+pg.d2,"D3: "+pg.d3,"D4: "+pg.d4,"D5: "+pg.d5,"D6: "+pg.d6,"D7: "+pg.d7,"D8: "+pg.d8,"D9: "+pg.d9,"D10: "+pg.d10,"D11: "+pg.d11,"D12: "+pg.d12,"","TRAFEGO","Fase1: "+tf.fase1,"Fase2: "+tf.fase2,"Fase3: "+tf.fase3,"","ENTREGAVEL",(en.titulo||""),(en.intro||"")];const txt=partes.join(nl);navigator.clipboard.writeText(txt).then(()=>toast("Tudo copiado!"));}
 
 function novoFunil(){
   dadosGerados=null;goTab('gerar');
