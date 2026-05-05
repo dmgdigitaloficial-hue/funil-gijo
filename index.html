@@ -277,59 +277,123 @@ main{max-width:820px;margin:0 auto;padding:2rem 1.5rem 5rem}
 <script>
 const DEFAULT_CONFIG={apiKey:'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',adminPass:'admin',passes:['socio1','socio2','socio3']};
 
-const SYS_FUNIL=`Especialista em low ticket Metodologia GiJo. Responda SOMENTE JSON valido zero texto fora zero markdown:
-{"nome":"nome estilo dadinho de tapioca simples irresistivel NUNCA metodo formula programa sigla","formato":"como e fisicamente o produto","preco":"R$67","ruminacao":"frase exata 1a pessoa que persona pensa todo dia","tangibilizacao":"instrucao exata de como mostrar o produto no criativo com dedo na tela","bump_nome":"nome do order bump","bump_desc":"o que e e por que complementa","upsell_nome":"nome do upsell","upsell_desc":"descricao e preco sugerido","ganchos":["gancho 1 comeca com dedo na tela mostrando produto","gancho 2","gancho 3","gancho 4","gancho 5"],"script_criativo":"script completo 60s: 0-5s gancho visual produto na mao, 5-20s ruminacao palavras exatas persona, 20-45s produto sendo usado resultado especifico, 45-60s CTA urgente"}`;
+const SYS_FUNIL=`Voce e especialista em produtos Low Ticket seguindo a metodologia Ricardo Maxxima (Low Ticket Milionario 2.0).
 
-const SYS_PAGINA=`Voce e especialista em criar paginas de vendas de alta conversao para produtos digitais low ticket (R$37 a R$97) seguindo a Metodologia GiJo.
+CONCEITOS FUNDAMENTAIS DA METODOLOGIA:
+- Produto Low Ticket = FARMACIA (nao hospital). Resolve UMA unica dor ou desejo rapidamente. Fast Food digital.
+- BBB = Bom, Bonito e Barato. No Brain: pessoa compra sem pensar.
+- Produto consome em 48h, ferramental, nome facil de entender.
+- NUNCA: metodos com sigla, cursos com muitas aulas, nomes dificeis, "voce vai aprender como", "metodologia completa".
+- Produto nao gera transformacao, melhora a vida pontualmente.
+
+ERM - ESTUDO DE RUMINACAO MENTAL:
+Nao estudamos a persona, estudamos a RUMINACAO MENTAL dela.
+3 perguntas do Dialogo Interno:
+1. Quais pensamentos negativos ela repete no dialogo interno?
+2. Qual seria o pior cenario que ela fica desenhando na cabeca?
+3. Quais sao as conversas que ela faz com pessoas de confianca sobre essa situacao?
+A ruminacao e direta, sem formalidade, com girias, exatamente como a pessoa pensa.
+ERRADA: "Nossa, eu estou muito gorda." CERTA: "Que merda, to ficando uma baleia igual minha irma."
+
+NOME DO PRODUTO - Estrutura: Gancho + Conexao + Palavra-chave + Fechamento (opcional)
+Ganchos: Desafio, Projeto, Protocolo, Rota, Codigo, Manual, Missao, Meu, Minha, Tchau
+Conexoes: do, da, dos, das, para, com, por
+Fechamentos: Poderoso, Constante, Blindado, Definitivo, Rapido, Lucrativo (opcional)
+Exemplos bons: "Desafio Mil Seguidores", "Protocolo -1kg por Semana", "Rota da Magra Constante"
+NUNCA: Metodo, Formula, Sistema, siglas, nomes criativos que ninguem entende.
+
+7 FORMATOS DE PROMESSA (escolha o mais adequado):
+1. Copie e Cole: "Copie e cole, em menos de [TEMPO], [RESULTADO] usando o [MECANISMO UNICO]."
+2. Descubra Como: "Descubra como [RESULTADO] usando o [MECANISMO UNICO] mesmo que [OBJECAO]."
+3. Pare: "Pare de [RUMINACAO NEGATIVA] e comece a [RUMINACAO DE DESEJO] usando o [MECANISMO UNICO]."
+4. 1 Passo: "Voce esta a 1 passo de [RESULTADO] com o [MECANISMO UNICO] em apenas [TEMPO]."
+5. 1 Clique: "Voce esta a 1 clique de [RESULTADO] usando o [MECANISMO UNICO] e leva so [TEMPO]."
+6. Sem: "[RESULTADO] sem [SACRIFICIO 1], sem [SACRIFICIO 2] usando o [MECANISMO UNICO]."
+7. Desejos: "[LISTA DE DESEJOS]... Descubra o [MECANISMO UNICO] que faz isso acontecer mesmo que [OBJECAO]."
+
+MECANISMO UNICO TANGIVEL: O caminho que leva a pessoa ao resultado. Nao e a promessa, e o COMO.
+
+COPY PRSA PARA CRIATIVO (formato P.R.S-A):
+P = Problema/Desejo: toca direto na ruminacao mental
+R = Rota: mostra que existe um caminho simples e rapido
+S = Solucao: apresenta o produto como a solucao
+A = Acao: chama para clicar em saiba mais
+
+Responda SOMENTE JSON valido zero texto fora zero markdown:
+{"nome":"nome com Gancho+Conexao+Palavra-chave estilo Desafio Mil Seguidores","formato":"formato fisico tangivel do produto","preco":"R$87","ruminacao_1":"pensamentos negativos que ela repete no dialogo interno (girias, sem formalidade)","ruminacao_2":"pior cenario que ela desenha na cabeca","ruminacao_3":"conversas que ela tem com pessoas de confianca sobre o problema","mecanismo_unico":"o caminho tangivel que leva ao resultado","promessa":"promessa no formato mais adequado dos 7 formatos com tempo e resultado especifico","bump_nome":"nome do order bump complementar","bump_desc":"o que e e por que complementa","upsell_nome":"nome do upsell","upsell_desc":"descricao e preco sugerido","ganchos_prsa":["criativo 1 completo no formato PRSA","criativo 2","criativo 3","criativo 4","criativo 5"]}`;
+
+const SYS_PAGINA=`Voce e especialista em copy de paginas de vendas Low Ticket seguindo a metodologia Ricardo Maxxima.
 
 REGRAS DE COPY OBRIGATORIO:
-- Linguagem simples, direta e natural
-- NUNCA use: transformacao, metodo, formula, sistema, jornada
-- O botao de compra SO aparece a partir da DOBRA 9
-- O preco SO aparece na DOBRA 9
-- Use sempre segunda pessoa (voce)
-- Frases curtas e paragrafos pequenos
-- Vozes da Cabeca sempre entre aspas e em primeira pessoa
+- Linguagem simples, direta, natural, sem formalidade
+- NUNCA: transformacao, metodo, formula, sistema, jornada, guru
+- Botao de compra SO a partir do Bloco 09
+- Preco SO aparece no Bloco 09
+- Sempre segunda pessoa (voce)
+- Frases curtas, paragrafos pequenos - COPY DINAMICA
+- Vozes da Cabeca sempre entre aspas, em primeira pessoa, com girias
 
-ESTRUTURA DAS 12 DOBRAS:
-D1 HEADLINE: [NOME DO PRODUTO] + Headline com resultado+tempo+sem dor + Subtitulo com beneficio secundario. Fundo escuro.
-D2 PROVA SOCIAL: Mais de X pessoas ja [resultado]. Confira o que estao dizendo: [espaco para 4 prints de WhatsApp]. Layout grid 2x2.
-D3 PEDRA NO SAPATO: A cada dia que passa voce [estado negativo]... + 6 Vozes da Cabeca entre aspas em cards com borda esquerda colorida.
-D4 DIAGNOSTICO: ENTENDA DE UMA VEZ POR TODAS... + O problema nao esta em voce, mas na falta de... + 4 razoes externas em cards + E por isso que voce precisa do [PRODUTO] agora!
-D5 MODO DE PREPARO: Estes sao os 4 passos para voce [resultado]: + 4 passos numerados em grid com numero grande, titulo em negrito, descricao com seta.
-D6 ENTREGAVEIS: TUDO QUE VOCE VAI RECEBER + Para voce seguir esses passos e conseguir [resultado]: + lista com checks verdes de tudo que recebe.
-D7 PRA QUEM E: O [PRODUTO] e para voce que... + 8 situacoes com checks + Card final: Se voce se identifica com ao menos 2 itens acima, o [PRODUTO] e para voce!
-D8 ANCORAGEM: Recapitulando tudo que voce vai receber: + tabela com valor de cada entregavel + valor total + fundo cinza.
-D9 PRECO + BOTAO (PRIMEIRA VEZ): No total isso tudo deveria custar R$[total]. Mas hoje voce vai ter acesso por apenas: + Card com preco parcelado + preco a vista + BOTAO QUERO ACESSO AGORA + badges: Acesso imediato, Garantia 7 dias, Compra 100% segura + Como funciona: 3 passos simples.
-D10 CONVERSA SERIA: Quanto tempo voce perde por semana com [problema]? + calculo do custo de nao resolver + pergunta direta.
-D11 AUTORIDADE + PRECO REPETIDO: [Expert] e quem criou o [PRODUTO] + credenciais + depoimento em italico entre aspas + BOTAO + PRECO igual D9.
-D12 FAQ + RODAPE: 5 perguntas em accordion: forma de pagamento, seguranca, funciona pra mim, garantia, como acessar + RODAPE com nome empresa, CNPJ, endereco, email, direitos reservados.
+COPY DINAMICA:
+- Frases curtas e diretas
+- Blocos de texto pequenos
+- Uso de setas (->)
+- Ruminacao Mental direta e sem formalidade
+- Conectar imagens com copy (neurodesign)
 
-LAYOUT E DESIGN:
-- Dobras impares: fundo escuro (#0a0a0a), texto branco
-- Dobras pares: fundo cinza (#1a1a1a), texto branco
-- Usar no MAXIMO 2 cores alem do preto/branco
-- Cor de destaque definida pelo nicho
-- Cards das Vozes: borda esquerda 3px colorida, fundo #1f1f1f, texto italico
-- Cards do Diagnostico: fundo #252525, border-radius 8px, titulo negrito
-- Grid dos passos: 4 colunas desktop, 2 tablet, 1 mobile
-- Entregaveis: check verde (#22c55e), border-bottom entre itens
-- Card de preco: borda 2px cor destaque, border-radius 16px, padding 40px
-- Botao: fundo cor destaque, texto branco, padding 16px 48px, border-radius 8px, 100% largura
-- FAQ: accordion com seta, fundo #252525, border-radius 8px
-- Rodape: texto pequeno, cor cinza (#666), centralizado
+14 BLOCOS DA PAGINA (EXATOS):
+B1 VENDER SOZINHO: Nome do produto + promessa que vende sozinha. Objetivo: pessoa bater olho e querer comprar. Despertar curiosidade. Passar ideia central.
+B2 DEPOIMENTOS: Antes e depois de pessoas reais. Foco em resultados numericos especificos.
+B3 DOR LATENTE PRINCIPAL: "Voce nao aguenta mais [situacao]." Gerar identificacao, aumentar dor/desejo, lembrar do problema, colocar o dedo na ferida.
+B4 TRANSICAO DOR PARA SOLUCAO: "E horrivel se sentir assim, ne? A verdade e que o problema NAO e voce." Culpa e externa. Abrir porta para o produto.
+B5 PASSO A PASSO DA SOLUCAO: 3-4 passos simples mostrando que e Fast Food. Mostrar que e rapido, simples, so seguir. Fazer persona sentir que consegue.
+B6 TUDO QUE VAI RECEBER + BONUS: Lista completa de entregaveis com bonus. Fazer ela imaginar que vai ser caro. Mostrar que com isso ela chega no resultado.
+B7 PARA QUEM SERVE: "O [PRODUTO] e para voce que..." 6-8 situacoes. "Se voce se identifica com ao menos 2 itens, o [PRODUTO] e para voce!"
+B8 ANCORAGEM DE PRECO: Recapitulando tudo + valor de cada item + total. Fazer ela sentir que esta levando muito por pouco.
+B9 VALOR BOTAO COMPRAR (1a vez): Preco real vs valor total. CTA principal. Badges: acesso imediato, garantia 7 dias, compra segura.
+B10 CONVERSA SERIA: "Me responda somente a verdade:" + pergunta direta que coloca persona contra parede. Lembrar das dores. Fazer tomar decisao.
+B11 AUTORIDADE: "[Expert] e o criador do [PRODUTO]." Focar autoridade na promessa. Fazer sentir confianca. Nao colocar foto gigante.
+B12 VALOR BOTAO COMPRAR (2a vez): Igual ao B9.
+B13 FAQ DOS DESCONFIADOS: 5 perguntas: forma de pagamento, seguranca, funciona pra mim, garantia, como acessar. Matar objecao do medo de pagar publico frio.
+B14 RODAPE: Logo, email profissional, CNPJ, cidade/estado, todos direitos reservados. Reforcar confianca para publico frio.
 
-Responda SOMENTE JSON valido zero texto fora zero markdown com TODOS os campos preenchidos com copy real e completa:
-{"d1_nome":"","d1_headline":"","d1_subtitulo":"","d2_headline":"","d2_copy":"","d3_headline":"","d3_vozes":["voz1","voz2","voz3","voz4","voz5","voz6"],"d4_overline":"","d4_headline":"","d4_razoes":[{"titulo":"","desc":""},{"titulo":"","desc":""},{"titulo":"","desc":""},{"titulo":"","desc":""}],"d4_cta":"","d5_headline":"","d5_passos":[{"num":"01","titulo":"","desc":""},{"num":"02","titulo":"","desc":""},{"num":"03","titulo":"","desc":""},{"num":"04","titulo":"","desc":""}],"d6_headline":"","d6_entregaveis":["","","","",""],"d7_headline":"","d7_situacoes":["","","","","","","",""],"d7_card":"","d8_headline":"","d8_itens":[{"nome":"","valor":""},{"nome":"","valor":""},{"nome":"","valor":""}],"d8_total":"","d9_copy_intro":"","d9_parcelado":"","d9_avista":"","d9_botao":"QUERO ACESSO AGORA","d10_headline":"","d10_copy":"","d11_headline":"","d11_credenciais":"","d11_depoimento":"","d12_faqs":[{"p":"","r":""},{"p":"","r":""},{"p":"","r":""},{"p":"","r":""},{"p":"","r":""}]}`;
+Responda SOMENTE JSON valido zero texto fora zero markdown com copy REAL e COMPLETA para cada bloco:
+{"b1_nome":"","b1_promessa":"","b2_headline":"","b2_copy":"","b3_headline":"","b3_vozes":["voz1 com giria","voz2","voz3","voz4","voz5","voz6"],"b4_headline":"","b4_copy":"","b5_headline":"","b5_passos":[{"num":"01","titulo":"","desc":""},{"num":"02","titulo":"","desc":""},{"num":"03","titulo":"","desc":""},{"num":"04","titulo":"","desc":""}],"b6_headline":"","b6_entregaveis":["entregavel 1","entregavel 2","entregavel 3","entregavel 4","entregavel 5"],"b6_bonus":["bonus 1","bonus 2"],"b7_headline":"","b7_situacoes":["s1","s2","s3","s4","s5","s6","s7","s8"],"b7_fechamento":"","b8_headline":"","b8_itens":[{"nome":"","valor":"R$XX"},{"nome":"","valor":"R$XX"},{"nome":"","valor":"R$XX"}],"b8_total":"R$XXX","b9_intro":"","b9_preco_de":"","b9_preco_por":"","b9_parcelado":"","b9_cta":"QUERO ACESSO AGORA","b10_headline":"","b10_copy":"","b11_headline":"","b11_copy":"","b12_igual_b9":true,"b13_faqs":[{"p":"Qual e a forma de pagamento?","r":""},{"p":"O pagamento e seguro?","r":""},{"p":"Funciona para mim?","r":""},{"p":"Tem garantia?","r":""},{"p":"Como vou acessar?","r":""}],"b14_copy":""}`;
 
-const SYS_TRAFEGO=`Especialista em trafego pago para produtos low ticket Metodologia GiJo.
-TRAFEGO 3 FASES:
-Fase1=ABO 1x1x1: 10 conjuntos isolados, 1 criativo por conjunto, verba=40% do ticket por conjunto por dia, rodar 3 dias, meta=4 criativos com ROAS 2.5+. Nunca escalar antes.
-Fase2=ABO Gramado: 5 campanhas IDENTICAS, 1 conjunto cada, todos top criativos juntos dentro, verba=valor do ticket por dia por campanha, rodar 5 dias buscando cluster pocket.
-Fase3=Escala: usar SOMENTE estrutura vencedora, regra 20% (max 20% da verba diaria em criativo novo), escala=10x ticket por dia. Campanhas ruins EXCLUIR nao so desativar.
-Metricas: CPV meta menor R$2,70 problema no criativo se passar. Checkout meta menor R$23 problema na pagina se passar. ROAS minimo escala 2.0.
-Responda SOMENTE JSON valido zero texto fora:
-{"fase1":"instrucao completa e detalhada da fase 1 adaptada para o produto e nicho informado","fase2":"instrucao completa fase 2 ABO Gramado adaptada","fase3":"instrucao completa fase 3 escala e manutencao de criativos"}`;
+const SYS_TRAFEGO=`Voce e especialista em trafego pago para produtos Low Ticket seguindo a metodologia Ricardo Maxxima (Low Ticket Milionario 2.0).
+
+METRICAS DO FUNIL 3X:
+- Custo Visualizacao de Pagina de Destino: meta abaixo de R$3,00 (problema no criativo se passar)
+- Custo Finalizacao de Compra: meta abaixo de R$23,00 (problema na pagina se passar)
+- ROI/ROAS minimo para validar: 2.0
+- ROI para considerar criativo campeo: acima de 2.5
+
+FASE 01 - FASE 3D (Teste de Criativos):
+Objetivo: Encontrar 4 criativos (ou mais) com ROI acima de 2.5
+Estrutura ABO Testadora: 1 campanha - 10 conjuntos - 1 criativo por conjunto
+Orcamento: 45% do valor da oferta por conjunto
+Tempo: 3 dias. Analise no 4o dia com Funil 3X.
+Se nao achar 4 criativos: continuar testando ou jogar fora a oferta.
+Quando avancar: SOMENTE quando achar os 4 criativos.
+
+FASE 02 - TESTE DE ESCALA:
+Objetivo: Encontrar a melhor estrutura de campanha para escalar.
+Testar as estruturas abaixo uma por vez ate achar a que funciona:
+- ABO Raiz (1-4-1): 1 campanha, 4 conjuntos (copias), 1 criativo campeo. Esperar 1 dia. Duplicar o que deu bom, matar o que deu ruim.
+- ABO Campeons (1-1-3): 1 campanha, 1 conjunto, 3+ criativos campeos. Esperar 2 dias.
+- CBO 500: 1 campanha CBO R$500/dia, 10 conjuntos, 4+ criativos campeos. Esperar 2 dias.
+- CBO Natalina 1k: igual CBO 500 mas R$1.000/dia. Esperar 2 dias.
+- ADV Gramado: Advantage+ Shopping. Orcamento = 100% valor do produto por campanha. Esperar 5 dias. Tabela de escala: Fase1=1x valor, Fase2=2x valor, Fase3=R$500.
+Quando avancar: quando achar a PRIMEIRA estrutura que funcionar.
+
+FASE 03 - ESCALA E MANUTENCAO:
+Objetivo: Escalar ate encontrar a VERBA DO ROI (ponto maximo de escala)
+Com criativos validados + estrutura validada, voce tem o KIT para ser milionario com Low Ticket.
+Acao principal: voltar a testar criativos continuamente.
+Regra dos 20%: separar NO MAXIMO 20% da verba diaria para testar novos criativos.
+Exemplo: investindo R$500/dia -> R$100 para testar novos, R$400 na estrutura que escala.
+
+Responda SOMENTE JSON valido zero texto fora zero markdown:
+{"fase1_instrucao":"instrucao detalhada da Fase 3D adaptada ao produto e nicho com orcamento especifico","fase2_instrucao":"instrucao detalhada do teste de escala com recomendacao de qual estrutura testar primeiro para esse produto","fase3_instrucao":"instrucao de escala e manutencao com regra dos 20% adaptada ao produto","verba_recomendada":"verba minima recomendada para comecar","roi_meta":"ROI meta para esse produto especifico","estrutura_recomendada":"qual estrutura de escala recomenda comecar e por que"}`;
 
 let cfg={},currentUser=null,dadosGerados=null;
 
@@ -434,23 +498,23 @@ async function gerar(){
   document.getElementById('btn-gerar').disabled=true;
   document.getElementById('prog-wrap').classList.add('active');
 
-  const ctx='Nicho: '+nicho+' | Formato: '+formato+' | Ticket: R$'+ticket+' | Verba: R$'+verba+'/dia | Plataforma: '+plataforma+(publico?' | Publico: '+publico:'')+' | Expert: '+expert+(credencial?' - '+credencial:'');
+  const ctx='Nicho: '+nicho+' | Formato: '+formato+' | Ticket: R$'+ticket+' | Verba disponivel: R$'+verba+'/dia | Plataforma: '+plataforma+(publico?' | Publico-alvo: '+publico:'')+' | Expert: '+expert+(credencial?' - '+credencial:'');
 
   try{
-    setP(8,'Criando produto e criativos...');
-    const r1=await chamarAPI(SYS_FUNIL, ctx+' | Gere o produto, nome, ruminacao, ganchos e script criativo.', 1500);
+    setP(8,'Fazendo ERM - Estudo de Ruminacao Mental...');
+    const r1=await chamarAPI(SYS_FUNIL, ctx+' | Aplique o ERM completo e gere o produto seguindo a metodologia Ricardo Maxxima.', 2000);
 
-    setP(40,'Escrevendo pagina de vendas completa...');
-    const r2=await chamarAPI(SYS_PAGINA, ctx+' | Produto: '+r1.nome+' | Ruminacao: '+r1.ruminacao+' | Expert: '+expert+(credencial?' - '+credencial:'')+' | Preco: R$'+ticket+' | Gere a pagina de vendas completa com copy real para todas as 12 dobras.', 4000);
+    setP(42,'Escrevendo os 14 blocos da pagina de vendas...');
+    const r2=await chamarAPI(SYS_PAGINA, ctx+' | Produto: '+r1.nome+' | Promessa: '+r1.promessa+' | Ruminacao principal: '+r1.ruminacao_1+' | Expert: '+expert+(credencial?' - '+credencial:'')+' | Preco: R$'+ticket+' | Escreva os 14 blocos completos.', 4000);
 
-    setP(78,'Montando plano de trafego...');
-    const r3=await chamarAPI(SYS_TRAFEGO, ctx+' | Produto: '+r1.nome+' | Ruminacao: '+r1.ruminacao+' | Gere o plano de trafego nas 3 fases.', 1500);
+    setP(80,'Montando estrutura de trafego...');
+    const r3=await chamarAPI(SYS_TRAFEGO, ctx+' | Produto: '+r1.nome+' | Promessa: '+r1.promessa+' | Gere o plano de trafego nas 3 fases.', 1500);
 
-    const p={...r1, pagina:r2, trafego:r3};
+    const p={...r1,pagina:r2,trafego:r3};
     setP(100,'Funil gerado com sucesso!');
-    dadosGerados={p,nicho,expert,ticket,data:new Date().toLocaleDateString('pt-BR')};
+    dadosGerados={p,nicho,expert,credencial,ticket,data:new Date().toLocaleDateString('pt-BR')};
     renderFunil(p);
-    renderPagina(p,expert,ticket,credencial);
+    renderPagina(p,expert,credencial,ticket);
     renderTrafego(p);
     salvarNoHistorico(dadosGerados);
     setTimeout(()=>{document.getElementById('prog-wrap').classList.remove('active');goTab('funil')},600);
@@ -465,48 +529,58 @@ function hideErr(){document.getElementById('err-msg').style.display='none';}
 function renderFunil(p){
   document.getElementById('r-nome').textContent=p.nome||'';
   document.getElementById('r-formato').textContent=p.formato||'';
-  document.getElementById('r-preco').textContent=p.preco||'R$67';
-  document.getElementById('r-rum').textContent='"'+(p.ruminacao||'')+'"';
-  document.getElementById('r-tang').textContent=p.tangibilizacao||'';
+  document.getElementById('r-preco').textContent=p.preco||'R$87';
+  document.getElementById('r-promessa').textContent=p.promessa||'';
+  document.getElementById('r-mecanismo').textContent=p.mecanismo_unico||'';
+  document.getElementById('r-rum1').textContent=p.ruminacao_1||'';
+  document.getElementById('r-rum2').textContent=p.ruminacao_2||'';
+  document.getElementById('r-rum3').textContent=p.ruminacao_3||'';
   document.getElementById('r-bump').textContent=(p.bump_nome||'')+' - '+(p.bump_desc||'');
   document.getElementById('r-upsell').textContent=(p.upsell_nome||'')+' - '+(p.upsell_desc||'');
-  document.getElementById('r-script').textContent=p.script_criativo||'';
   const gc=document.getElementById('r-ganchos');gc.innerHTML='';
-  (p.ganchos||[]).forEach((g,i)=>{const d=document.createElement('div');d.className='gancho';d.innerHTML='<span class="gancho-n">'+(i+1)+'</span><span>'+g+'</span>';d.onclick=()=>{navigator.clipboard.writeText(g);toast('Gancho copiado!')};gc.appendChild(d)});
+  (p.ganchos_prsa||[]).forEach((g,i)=>{
+    const d=document.createElement('div');d.className='gancho';
+    d.innerHTML='<span class="gancho-n">'+(i+1)+'</span><span>'+g+'</span>';
+    d.onclick=()=>{navigator.clipboard.writeText(g);toast('Criativo copiado!')};
+    gc.appendChild(d);
+  });
 }
 
-function renderPagina(p,expert,ticket,credencial){
+function renderPagina(p,expert,credencial,ticket){
   const pg=p.pagina||{};
-  const dobras=[
-    {n:'Dobra 1',t:'Headline + promessa',body:[pg.d1_nome||'',pg.d1_headline||'',pg.d1_subtitulo||''].filter(Boolean).join(' | ')},
-    {n:'Dobra 2',t:'Prova social',body:pg.d2_headline||''},
-    {n:'Dobra 3',t:'Pedra no sapato — vozes na cabeca',body:(pg.d3_headline||'')+(pg.d3_vozes&&pg.d3_vozes.length?' | Vozes: '+pg.d3_vozes.join(' | '):'')},
-    {n:'Dobra 4',t:'Diagnostico — razoes externas',body:(pg.d4_overline||'')+(pg.d4_headline?' | '+pg.d4_headline:'')+(pg.d4_razoes&&pg.d4_razoes.length?' | '+pg.d4_razoes.map(r=>r.titulo+': '+r.desc).join(' | '):'')+(pg.d4_cta?' | '+pg.d4_cta:'')},
-    {n:'Dobra 5',t:'Modo de preparo — passos',body:(pg.d5_headline||'')+(pg.d5_passos&&pg.d5_passos.length?' | '+pg.d5_passos.map(s=>s.num+'. '+s.titulo+': '+s.desc).join(' | '):'')},
-    {n:'Dobra 6',t:'Entregaveis',body:(pg.d6_headline||'')+(pg.d6_entregaveis&&pg.d6_entregaveis.length?' | '+pg.d6_entregaveis.join(' | '):'')},
-    {n:'Dobra 7',t:'Para quem e',body:(pg.d7_headline||'')+(pg.d7_situacoes&&pg.d7_situacoes.length?' | '+pg.d7_situacoes.join(' | '):'')+(pg.d7_card?' | '+pg.d7_card:'')},
-    {n:'Dobra 8',t:'Ancoragem — tabela de valores',body:(pg.d8_headline||'')+(pg.d8_itens&&pg.d8_itens.length?' | '+pg.d8_itens.map(i=>i.nome+': '+i.valor).join(' | '):'')+(pg.d8_total?' | Total: '+pg.d8_total:'')},
-    {n:'Dobra 9',t:'Preco + botao (PRIMEIRA APARICAO)',body:[pg.d9_copy_intro,pg.d9_parcelado,pg.d9_avista||'R$'+ticket,pg.d9_botao].filter(Boolean).join(' | ')},
-    {n:'Dobra 10',t:'Conversa seria',body:(pg.d10_headline||'')+(pg.d10_copy?' | '+pg.d10_copy:'')},
-    {n:'Dobra 11',t:'Autoridade + preco repetido',body:[pg.d11_headline,pg.d11_credenciais||credencial,pg.d11_depoimento].filter(Boolean).join(' | ')},
-    {n:'Dobra 12',t:'FAQ + rodape',body:pg.d12_faqs&&pg.d12_faqs.length?pg.d12_faqs.map(f=>'P: '+f.p+' R: '+f.r).join(' | '):''}
+  const blocos=[
+    {n:'Bloco 01',t:'Vender Sozinho',body:(pg.b1_nome||p.nome||'')+' | '+(pg.b1_promessa||p.promessa||'')},
+    {n:'Bloco 02',t:'Depoimentos',body:(pg.b2_headline||'')+' | '+(pg.b2_copy||'')},
+    {n:'Bloco 03',t:'Dor Latente Principal',body:(pg.b3_headline||'')+(pg.b3_vozes&&pg.b3_vozes.length?'\n\nVozes na cabeca:\n'+pg.b3_vozes.map(v=>'"'+v+'"').join('\n'):'')},
+    {n:'Bloco 04',t:'Transicao Dor para Solucao',body:(pg.b4_headline||'')+'\n\n'+(pg.b4_copy||'')},
+    {n:'Bloco 05',t:'Passo a Passo da Solucao (Fast Food)',body:(pg.b5_headline||'')+(pg.b5_passos&&pg.b5_passos.length?'\n\n'+pg.b5_passos.map(s=>s.num+'. '+s.titulo+': '+s.desc).join('\n'):'')},
+    {n:'Bloco 06',t:'Tudo que vai receber + Bonus',body:(pg.b6_headline||'')+(pg.b6_entregaveis&&pg.b6_entregaveis.length?'\n\nEntregaveis:\n'+pg.b6_entregaveis.join('\n'):'')+((pg.b6_bonus&&pg.b6_bonus.length)?'\n\nBonus:\n'+pg.b6_bonus.join('\n'):'')},
+    {n:'Bloco 07',t:'Para quem serve',body:(pg.b7_headline||'')+(pg.b7_situacoes&&pg.b7_situacoes.length?'\n\n'+pg.b7_situacoes.map(s=>'- '+s).join('\n'):'')+'\n\n'+(pg.b7_fechamento||'')},
+    {n:'Bloco 08',t:'Ancoragem de Preco',body:(pg.b8_headline||'')+(pg.b8_itens&&pg.b8_itens.length?'\n\n'+pg.b8_itens.map(it=>it.nome+': '+it.valor).join('\n'):'')+'\n\nTotal: '+(pg.b8_total||'')},
+    {n:'Bloco 09',t:'VALOR + BOTAO (1a vez) - PRECO APARECE AQUI',body:(pg.b9_intro||'')+'\n\nDe '+( pg.b9_preco_de||'')+' por '+(pg.b9_preco_por||'R$'+ticket)+'\n'+(pg.b9_parcelado||'')+'\n\nBOTAO: '+(pg.b9_cta||'QUERO ACESSO AGORA')},
+    {n:'Bloco 10',t:'Conversa Seria',body:(pg.b10_headline||'')+'\n\n'+(pg.b10_copy||'')},
+    {n:'Bloco 11',t:'Autoridade',body:(pg.b11_headline||'')+'\n\n'+(pg.b11_copy||'')},
+    {n:'Bloco 12',t:'VALOR + BOTAO (2a vez)',body:'Repetir preco e CTA igual ao Bloco 09'},
+    {n:'Bloco 13',t:'FAQ dos Desconfiados',body:pg.b13_faqs&&pg.b13_faqs.length?pg.b13_faqs.map(f=>'P: '+f.p+'\nR: '+f.r).join('\n\n'):''},
+    {n:'Bloco 14',t:'Rodape',body:(pg.b14_copy||expert+' | '+credencial+' | Todos os direitos reservados')}
   ];
-  document.getElementById('pv-dobras').innerHTML=dobras.map(d=>'<div class=dobra><div class=dobra-num>'+d.n+'</div><div class=dobra-title>'+d.t+'</div><div class=dobra-body>'+(d.body||'')+'</div></div>').join('');
+  document.getElementById('pv-dobras').innerHTML=blocos.map(d=>'<div class="dobra"><div class="dobra-num">'+d.n+'</div><div class="dobra-title">'+d.t+'</div><div class="dobra-body">'+(d.body||'')+'</div></div>').join('');
 }
 
 function renderTrafego(p){
   const tf=p.trafego||{};
-  document.getElementById('r-trafego').innerHTML=[
-    {n:1,t:'Fase 1 - Teste de criativo (ABO 1x1x1)',d:tf.fase1},
-    {n:2,t:'Fase 2 - Teste de estrutura (ABO Gramado)',d:tf.fase2},
-    {n:3,t:'Fase 3 - Escala + regra dos 20%',d:tf.fase3}
-  ].map(f=>'<div class="fase"><div class="fase-n">'+f.n+'</div><div><div class="fase-title">'+f.t+'</div><div class="fase-desc">'+(f.d||'')+'</div></div></div>').join('');
+  const fases=[
+    {n:1,t:'Fase 3D - Teste de Criativos (ABO Testadora 1-10-1)',extra:'Meta: 4 criativos com ROI acima de 2.5 | Verba: 45% do ticket por conjunto | Tempo: 3 dias + analise no 4o dia com Funil 3X',d:tf.fase1_instrucao},
+    {n:2,t:'Fase 02 - Teste de Estrutura de Escala',extra:'Estruturas: ABO Raiz | ABO Campeons | CBO 500 | CBO Natalina 1k | ADV Gramado | Recomendada: '+(tf.estrutura_recomendada||'ADV Gramado'),d:tf.fase2_instrucao},
+    {n:3,t:'Fase 03 - Escala e Manutencao',extra:'Regra dos 20%: max 20% da verba diaria para novos criativos | Verba recomendada: '+(tf.verba_recomendada||''),d:tf.fase3_instrucao}
+  ];
+  document.getElementById('r-trafego').innerHTML=fases.map(f=>'<div class="fase"><div class="fase-n">'+f.n+'</div><div><div class="fase-title">'+f.t+'</div><div class="fase-desc" style="color:var(--accent);font-size:11px;margin-bottom:6px">'+f.extra+'</div><div class="fase-desc">'+(f.d||'')+'</div></div></div>').join('');
 }
 
 function salvarNoHistorico(dados){
   try{
     const hist=JSON.parse(localStorage.getItem('lt_hist')||'[]');
-    hist.unshift({id:Date.now(),nome:dados.p.nome,nicho:dados.nicho,formato:dados.p.formato,preco:dados.p.preco,data:dados.data,dados:dados.p});
+    hist.unshift({id:Date.now(),nome:dados.p.nome,nicho:dados.nicho,formato:dados.p.formato,preco:dados.p.preco,data:dados.data,dados:dados.p,expert:dados.expert,credencial:dados.credencial,ticket:dados.ticket});
     if(hist.length>50)hist.pop();
     localStorage.setItem('lt_hist',JSON.stringify(hist));
     atualizarHistBadge();
@@ -531,11 +605,11 @@ function carregarDoHistorico(id){
     const hist=JSON.parse(localStorage.getItem('lt_hist')||'[]');
     const item=hist.find(h=>h.id===id);
     if(!item)return;
-    dadosGerados={p:item.dados,nicho:item.nicho,expert:'o especialista',ticket:'67',data:item.data};
+    dadosGerados={p:item.dados,nicho:item.nicho,expert:item.expert||'o especialista',credencial:item.credencial||'',ticket:item.ticket||'87',data:item.data};
     renderFunil(item.dados);
-    renderPagina(item.dados,'o especialista','67','');
+    renderPagina(item.dados,item.expert||'o especialista',item.credencial||'',item.ticket||'87');
     renderTrafego(item.dados);
-    goTab('funil');toast('Funil carregado do historico!');
+    goTab('funil');toast('Funil carregado!');
   }catch(e){}
 }
 
@@ -547,22 +621,39 @@ function copiarFunil(){
   if(!dadosGerados)return;
   const p=dadosGerados.p;
   const nl=String.fromCharCode(10);
-  const txt=['FUNIL - '+p.nome,'Formato: '+p.formato+' | Preco: '+p.preco,'Ruminacao: '+p.ruminacao,'Tangibilizacao: '+p.tangibilizacao,'Bump: '+p.bump_nome+' - '+p.bump_desc,'Upsell: '+p.upsell_nome+' - '+p.upsell_desc,'','GANCHOS',...(p.ganchos||[]).map((g,i)=>(i+1)+'. '+g),'','SCRIPT CRIATIVO',p.script_criativo||''].join(nl);
+  const txt=['FUNIL LOW TICKET - '+p.nome,'Metodologia Ricardo Maxxima - Low Ticket Milionario 2.0','','PRODUTO','Nome: '+p.nome,'Formato: '+p.formato+' | Preco: '+p.preco,'Promessa: '+p.promessa,'Mecanismo Unico: '+p.mecanismo_unico,'','ERM - ESTUDO DE RUMINACAO MENTAL','Ruminacao 1 (pensamentos negativos): '+p.ruminacao_1,'Ruminacao 2 (pior cenario): '+p.ruminacao_2,'Ruminacao 3 (conversa com confianca): '+p.ruminacao_3,'','OFERTA','Bump: '+p.bump_nome+' - '+p.bump_desc,'Upsell: '+p.upsell_nome+' - '+p.upsell_desc,'','5 CRIATIVOS P.R.S-A',...(p.ganchos_prsa||[]).map((g,i)=>(i+1)+'. '+g)].join(nl);
   navigator.clipboard.writeText(txt).then(()=>toast('Funil copiado!'));
 }
 
 function copiarPagina(){
   if(!dadosGerados)return;
-  
-  const dobras=Array.from(document.querySelectorAll('#pv-dobras .dobra')).map(d=>(d.querySelector('.dobra-num').textContent+' - '+d.querySelector('.dobra-title').textContent+': '+d.querySelector('.dobra-body').textContent)).join(String.fromCharCode(10)+String.fromCharCode(10));navigator.clipboard.writeText(dobras).then(()=>toast('Pagina copiada!'));
+  const pg=dadosGerados.p.pagina||{};
+  const nl=String.fromCharCode(10);
+  const blocos=[
+    'BLOCO 01 - VENDER SOZINHO'+nl+(pg.b1_nome||'')+nl+(pg.b1_promessa||''),
+    'BLOCO 02 - DEPOIMENTOS'+nl+(pg.b2_headline||'')+nl+(pg.b2_copy||''),
+    'BLOCO 03 - DOR LATENTE'+nl+(pg.b3_headline||'')+(pg.b3_vozes?nl+pg.b3_vozes.map(v=>'"'+v+'"').join(nl):''),
+    'BLOCO 04 - TRANSICAO'+nl+(pg.b4_headline||'')+nl+(pg.b4_copy||''),
+    'BLOCO 05 - PASSO A PASSO'+nl+(pg.b5_headline||'')+(pg.b5_passos?nl+pg.b5_passos.map(s=>s.num+'. '+s.titulo+': '+s.desc).join(nl):''),
+    'BLOCO 06 - ENTREGAVEIS'+nl+(pg.b6_headline||'')+(pg.b6_entregaveis?nl+pg.b6_entregaveis.join(nl):'')+(pg.b6_bonus?nl+'BONUS:'+nl+pg.b6_bonus.join(nl):''),
+    'BLOCO 07 - PARA QUEM'+nl+(pg.b7_headline||'')+(pg.b7_situacoes?nl+pg.b7_situacoes.join(nl):'')+nl+(pg.b7_fechamento||''),
+    'BLOCO 08 - ANCORAGEM'+nl+(pg.b8_headline||'')+(pg.b8_itens?nl+pg.b8_itens.map(i=>i.nome+': '+i.valor).join(nl):'')+nl+'TOTAL: '+(pg.b8_total||''),
+    'BLOCO 09 - PRECO + BOTAO'+nl+(pg.b9_intro||'')+nl+'De '+(pg.b9_preco_de||'')+' por '+(pg.b9_preco_por||'')+nl+(pg.b9_parcelado||'')+nl+'BOTAO: '+(pg.b9_cta||'QUERO ACESSO AGORA'),
+    'BLOCO 10 - CONVERSA SERIA'+nl+(pg.b10_headline||'')+nl+(pg.b10_copy||''),
+    'BLOCO 11 - AUTORIDADE'+nl+(pg.b11_headline||'')+nl+(pg.b11_copy||''),
+    'BLOCO 12 - PRECO + BOTAO (repetir bloco 09)',
+    'BLOCO 13 - FAQ'+(pg.b13_faqs?nl+pg.b13_faqs.map(f=>'P: '+f.p+nl+'R: '+f.r).join(nl+nl):''),
+    'BLOCO 14 - RODAPE'+nl+(pg.b14_copy||'')
+  ];
+  navigator.clipboard.writeText('PAGINA DE VENDAS - '+dadosGerados.p.nome+nl+'14 BLOCOS - METODOLOGIA MAXXIMA'+nl+nl+blocos.join(nl+nl)).then(()=>toast('Pagina copiada!'));
 }
 
 function copiarTudo(){
   if(!dadosGerados)return;
   const p=dadosGerados.p;const tf=p.trafego||{};
   const nl=String.fromCharCode(10);
-  const txt=['FUNIL COMPLETO - '+p.nome,'Produto: '+p.nome+' | '+p.formato+' | '+p.preco,'Ruminacao: '+p.ruminacao,'Tangibilizacao: '+p.tangibilizacao,'Bump: '+p.bump_nome,'Upsell: '+p.upsell_nome,'','GANCHOS',...(p.ganchos||[]).map((g,i)=>(i+1)+'. '+g),'','SCRIPT',p.script_criativo||'','','TRAFEGO','Fase1: '+tf.fase1,'Fase2: '+tf.fase2,'Fase3: '+tf.fase3].join(nl);
-  navigator.clipboard.writeText(txt).then(()=>toast('Tudo copiado!'));
+  const partes=['FUNIL COMPLETO - '+p.nome,'Metodologia Ricardo Maxxima - Low Ticket Milionario 2.0','','=== PRODUTO ===','Nome: '+p.nome+' | Formato: '+p.formato+' | Preco: '+p.preco,'Promessa: '+p.promessa,'Mecanismo Unico: '+p.mecanismo_unico,'Bump: '+p.bump_nome,'Upsell: '+p.upsell_nome,'','=== ERM - RUMINACAO MENTAL ===','1. Pensamentos: '+p.ruminacao_1,'2. Pior cenario: '+p.ruminacao_2,'3. Conversa: '+p.ruminacao_3,'','=== CRIATIVOS P.R.S-A ===', ...(p.ganchos_prsa||[]).map((g,i)=>(i+1)+'. '+g),'','=== TRAFEGO ===','Fase 3D: '+tf.fase1_instrucao,'Fase 02: '+tf.fase2_instrucao,'Fase 03: '+tf.fase3_instrucao];
+  navigator.clipboard.writeText(partes.join(nl)).then(()=>toast('Tudo copiado!'));
 }
 
 function novoFunil(){
@@ -573,6 +664,6 @@ function novoFunil(){
 function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
 
 loadConfig();
-</script>
+</script></script>
 </body>
 </html>
