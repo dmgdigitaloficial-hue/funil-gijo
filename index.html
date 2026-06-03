@@ -111,29 +111,111 @@ main{max-width:820px;margin:0 auto;padding:2rem 1.5rem 5rem}
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--text);color:var(--bg);padding:10px 20px;border-radius:20px;font-size:13px;font-weight:500;transition:transform .25s ease;z-index:999;pointer-events:none;white-space:nowrap}
 .toast.show{transform:translateX(-50%) translateY(0)}
 @media(max-width:540px){.grid-2,.grid-3{grid-template-columns:1fr}main{padding:1.5rem 1rem 4rem}header{padding:0 1rem}}
+
+/* AUTH SCREENS */
+#auth-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem;background:var(--bg)}
+.auth-box{width:100%;max-width:400px;animation:fadeUp .4s ease both}
+.auth-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:22px;letter-spacing:-.03em;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.auth-sub{font-size:13px;color:var(--muted);margin-bottom:2rem}
+.auth-card{background:var(--s1);border:1px solid var(--border);border-radius:var(--r);padding:1.75rem}
+.auth-tabs{display:flex;gap:4px;background:var(--s2);padding:4px;border-radius:var(--r-sm);margin-bottom:1.5rem}
+.auth-tab{flex:1;padding:8px;border:none;background:transparent;border-radius:6px;font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;transition:all .15s;font-family:'DM Sans',sans-serif}
+.auth-tab.active{background:var(--s1);color:var(--text);border:0.5px solid var(--border)}
+.auth-label{font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;display:block;margin-top:12px}
+.auth-input{width:100%;background:var(--s2);border:1px solid var(--border);border-radius:var(--r-sm);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;padding:11px 14px;outline:none;transition:border-color .15s}
+.auth-input:focus{border-color:var(--accent)}
+.auth-input.error{border-color:var(--danger)}
+.auth-error{font-size:12px;color:var(--danger);margin-top:8px;display:none;line-height:1.4}
+.auth-error.show{display:block}
+.auth-success{font-size:12px;color:var(--accent);margin-top:8px;display:none;line-height:1.4}
+.auth-success.show{display:block}
+.btn-auth{width:100%;margin-top:16px;padding:13px;background:var(--accent);color:#000;border:none;border-radius:var(--r-sm);font-family:'Syne',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:opacity .15s,transform .1s}
+.btn-auth:hover{opacity:.88}
+.btn-auth:active{transform:scale(.98)}
+.btn-auth:disabled{opacity:.35;cursor:not-allowed}
+.auth-divider{text-align:center;font-size:12px;color:var(--dim);margin:16px 0}
+
+/* USER MENU */
+.user-menu{position:relative}
+.user-btn{display:flex;align-items:center;gap:8px;padding:5px 12px;border:1px solid var(--border2);border-radius:20px;background:transparent;color:var(--muted);font-size:12px;cursor:pointer;transition:all .15s;font-family:'DM Sans',sans-serif}
+.user-btn:hover{border-color:var(--border2);color:var(--text)}
+.user-avatar{width:24px;height:24px;border-radius:50%;background:var(--accent2);border:1px solid var(--accent3);color:var(--accent);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.user-dropdown{position:absolute;right:0;top:calc(100% + 8px);background:var(--s1);border:1px solid var(--border2);border-radius:var(--r-sm);padding:8px;min-width:180px;z-index:200;display:none}
+.user-dropdown.open{display:block}
+.user-dropdown-item{padding:8px 12px;border-radius:var(--r-xs);font-size:13px;color:var(--muted);cursor:pointer;transition:background .12s;display:block;width:100%;text-align:left;border:none;background:transparent;font-family:'DM Sans',sans-serif}
+.user-dropdown-item:hover{background:var(--s2);color:var(--text)}
+.user-dropdown-item.danger{color:var(--danger)}
+.user-email{font-size:11px;color:var(--dim);padding:4px 12px 8px;border-bottom:0.5px solid var(--border);margin-bottom:4px}
+
+/* MEUS FUNIS */
+.mf-empty{text-align:center;padding:3rem 1rem;color:var(--dim);font-size:13px;line-height:1.6}
+.mf-item{background:var(--s1);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px 16px;margin-bottom:8px;cursor:pointer;transition:border-color .15s;display:flex;justify-content:space-between;align-items:center}
+.mf-item:hover{border-color:var(--border2)}
+.mf-info{flex:1}
+.mf-nome{font-size:14px;font-weight:500;color:var(--accent);margin-bottom:4px}
+.mf-meta{display:flex;gap:8px;flex-wrap:wrap}
+.mf-tag{font-size:11px;padding:2px 8px;border-radius:20px;background:var(--s2);color:var(--muted);border:1px solid var(--border)}
+.mf-date{font-size:11px;color:var(--dim);flex-shrink:0;margin-left:12px}
+.mf-del{width:28px;height:28px;border-radius:50%;border:0.5px solid rgba(226,75,74,.3);background:transparent;color:var(--danger);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;margin-left:8px;transition:background .12s;flex-shrink:0}
+.mf-del:hover{background:var(--danger2)}
+.saving-badge{font-size:11px;color:var(--accent);opacity:0;transition:opacity .3s;display:flex;align-items:center;gap:4px}
+.saving-badge.show{opacity:1}
 </style>
-</head>
 <body>
 
-<div id="login-screen">
-  <div class="login-box">
-    <div class="login-logo"><span class="logo-dot"></span>Funil LT</div>
-    <p class="login-sub">Metodologia GiJo — acesso restrito</p>
-    <div class="login-card">
-      <label class="login-label">Senha de acesso</label>
-      <input class="login-input" type="password" id="login-input" placeholder="••••••••" autocomplete="off" onkeydown="if(event.key==='Enter')doLogin()"/>
-      <p class="login-error" id="login-error">Senha incorreta. Tente novamente.</p>
-      <button class="btn-login" onclick="doLogin()">Entrar</button>
+
+<div id="auth-screen">
+  <div class="auth-box">
+    <div class="auth-logo"><span class="logo-dot"></span>Funil LT</div>
+    <p class="auth-sub">Metodologia Ricardo Maxxima — Low Ticket Milionário 2.0</p>
+    <div class="auth-card">
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">Entrar</button>
+        <button class="auth-tab" id="tab-signup" onclick="switchAuthTab('signup')">Criar conta</button>
+      </div>
+      <div id="auth-login-form">
+        <label class="auth-label">E-mail</label>
+        <input class="auth-input" type="email" id="auth-email-login" placeholder="seu@email.com" onkeydown="if(event.key==='Enter')doLogin()"/>
+        <label class="auth-label">Senha</label>
+        <input class="auth-input" type="password" id="auth-pass-login" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"/>
+        <p class="auth-error" id="login-error"></p>
+        <button class="btn-auth" id="btn-login" onclick="doLogin()">Entrar</button>
+        <div class="auth-divider">ou</div>
+        <button class="btn-auth" style="background:var(--s2);color:var(--text);border:1px solid var(--border)" onclick="switchAuthTab('signup')">Criar conta grátis</button>
+      </div>
+      <div id="auth-signup-form" style="display:none">
+        <label class="auth-label">Nome</label>
+        <input class="auth-input" type="text" id="auth-name" placeholder="Seu nome"/>
+        <label class="auth-label">E-mail</label>
+        <input class="auth-input" type="email" id="auth-email-signup" placeholder="seu@email.com"/>
+        <label class="auth-label">Senha</label>
+        <input class="auth-input" type="password" id="auth-pass-signup" placeholder="mínimo 6 caracteres" onkeydown="if(event.key==='Enter')doSignup()"/>
+        <p class="auth-error" id="signup-error"></p>
+        <p class="auth-success" id="signup-success"></p>
+        <button class="btn-auth" id="btn-signup" onclick="doSignup()">Criar conta</button>
+      </div>
     </div>
   </div>
 </div>
 
-<div id="app">
-  <header>
+
+<div id="app" style="display:none"><header>
     <div class="header-logo"><span class="logo-dot"></span>Funil LT <span style="font-size:10px;color:var(--muted);margin-left:6px;font-family:'DM Sans',sans-serif;font-weight:400">v2.0</span></div>
     <div class="header-right">
-      <span class="user-badge" id="user-badge">usuário</span>
-      <button class="btn-logout" onclick="logout()">sair</button>
+      <div class="saving-badge" id="saving-badge"><span>●</span> salvando...</div>
+      <div class="user-menu" id="user-menu">
+        <button class="user-btn" onclick="toggleUserMenu()">
+          <div class="user-avatar" id="user-avatar">?</div>
+          <span id="user-name-header">...</span>
+          <span style="font-size:10px">▾</span>
+        </button>
+        <div class="user-dropdown" id="user-dropdown">
+          <div class="user-email" id="user-email-display"></div>
+          <button class="user-dropdown-item" onclick="goTab('meus-funis');toggleUserMenu()">📋 Meus Funis</button>
+          <button class="user-dropdown-item" onclick="goTab('config');toggleUserMenu()">⚙️ Config</button>
+          <button class="user-dropdown-item danger" onclick="doLogout()">← Sair</button>
+        </div>
+      </div>
     </div>
   </header>
   <div class="nav-wrap">
@@ -142,7 +224,7 @@ main{max-width:820px;margin:0 auto;padding:2rem 1.5rem 5rem}
     <button class="nav-tab" onclick="goTab('pagina')">Página</button>
     <button class="nav-tab" onclick="goTab('trafego')">Tráfego</button>
     
-    <button class="nav-tab" onclick="goTab('historico')">Histórico <span class="nav-badge" id="hist-count">0</span></button>
+    <button class="nav-tab" onclick="goTab('meus-funis')">Meus Funis <span class="nav-badge" id="mf-count">0</span></button>
     <button class="nav-tab" onclick="goTab('config')">Config</button>
   </div>
   <main>
@@ -247,12 +329,9 @@ main{max-width:820px;margin:0 auto;padding:2rem 1.5rem 5rem}
       </div>
     </div>
 
-    <div class="screen" id="screen-historico">
-      <div class="sep">Histórico de funis gerados</div>
-      <div id="hist-lista"></div>
-      <div class="btn-row" style="margin-top:8px">
-        <button class="btn-secondary" onclick="limparHistorico()" style="color:var(--danger);border-color:rgba(226,75,74,.3)">Limpar histórico</button>
-      </div>
+    <div class="screen" id="screen-meus-funis">
+      <div class="sep">Meus Funis salvos na nuvem</div>
+      <div id="mf-lista"></div>
     </div>
 
     <div class="screen" id="screen-config">
@@ -275,9 +354,194 @@ main{max-width:820px;margin:0 auto;padding:2rem 1.5rem 5rem}
   </main>
 </div>
 <div class="toast" id="toast"></div>
+</div>
+
+<div class="toast" id="toast"></div>
 
 <script>
-const DEFAULT_CONFIG={apiKey:'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',adminPass:'admin',passes:['socio1','socio2','socio3']};
+const SUPABASE_URL='https://wtazwukwmzfhekfaspsq.supabase.co';
+const SUPABASE_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind0YXp3dWt3bXpmaGVrZmFzcHNxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0OTYxOTksImV4cCI6MjA5NjA3MjE5OX0.A412pFxOx-3YBMT3kXqpPWV2HYD-Rnho6wdT90fyk9Q';
+
+async function sbFetch(path,opts){
+  opts=opts||{};
+  const tok=currentSession&&currentSession.access_token?currentSession.access_token:SUPABASE_ANON;
+  const baseHeaders={'Content-Type':'application/json','apikey':SUPABASE_ANON,'Authorization':'Bearer '+tok};
+  const headers=Object.assign({},baseHeaders,opts.headers||{});
+  const res=await fetch(SUPABASE_URL+path,Object.assign({},opts,{headers:headers}));
+  return res;
+}
+
+let currentSession=null;
+let currentUser=null;
+
+async function initAuth(){
+  try{
+    const stored=localStorage.getItem('sb_session');
+    if(stored){
+      const s=JSON.parse(stored);
+      if(s&&s.access_token&&s.expires_at*1000>Date.now()){
+        currentSession=s;currentUser=s.user;showApp();return;
+      }
+      if(s&&s.refresh_token){
+        const res=await fetch(SUPABASE_URL+'/auth/v1/token?grant_type=refresh_token',{method:'POST',headers:{'Content-Type':'application/json','apikey':SUPABASE_ANON},body:JSON.stringify({refresh_token:s.refresh_token})});
+        if(res.ok){
+          const data=await res.json();
+          if(data.access_token){currentSession=data;currentUser=data.user;localStorage.setItem('sb_session',JSON.stringify(data));showApp();return;}
+        }
+      }
+    }
+  }catch(e){}
+  showAuthScreen();
+}
+
+function showAuthScreen(){
+  document.getElementById('auth-screen').style.display='flex';
+  document.getElementById('app').style.display='none';
+}
+
+function showApp(){
+  document.getElementById('auth-screen').style.display='none';
+  document.getElementById('app').style.display='block';
+  const email=currentUser&&currentUser.email?currentUser.email:'';
+  const name=(currentUser&&currentUser.user_metadata&&currentUser.user_metadata.name)||email.split('@')[0]||'usuario';
+  const initial=name.charAt(0).toUpperCase();
+  document.getElementById('user-avatar').textContent=initial;
+  document.getElementById('user-name-header').textContent=name;
+  document.getElementById('user-email-display').textContent=email;
+  loadConfig();
+  carregarMeusFunis();
+}
+
+function switchAuthTab(tab){
+  document.getElementById('auth-login-form').style.display=tab==='login'?'block':'none';
+  document.getElementById('auth-signup-form').style.display=tab==='signup'?'block':'none';
+  document.getElementById('tab-login').classList.toggle('active',tab==='login');
+  document.getElementById('tab-signup').classList.toggle('active',tab==='signup');
+  document.getElementById('login-error').classList.remove('show');
+  document.getElementById('signup-error').classList.remove('show');
+  document.getElementById('signup-success').classList.remove('show');
+}
+
+async function doLogin(){
+  const email=document.getElementById('auth-email-login').value.trim();
+  const pass=document.getElementById('auth-pass-login').value;
+  const errEl=document.getElementById('login-error');
+  const btn=document.getElementById('btn-login');
+  errEl.classList.remove('show');
+  if(!email||!pass){errEl.textContent='Preencha e-mail e senha.';errEl.classList.add('show');return}
+  btn.disabled=true;btn.textContent='Entrando...';
+  try{
+    const res=await fetch(SUPABASE_URL+'/auth/v1/token?grant_type=password',{method:'POST',headers:{'Content-Type':'application/json','apikey':SUPABASE_ANON},body:JSON.stringify({email:email,password:pass})});
+    const data=await res.json();
+    if(!res.ok)throw new Error(data.error_description||data.msg||'E-mail ou senha incorretos.');
+    currentSession=data;currentUser=data.user;
+    localStorage.setItem('sb_session',JSON.stringify(data));
+    showApp();
+  }catch(e){errEl.textContent=e.message;errEl.classList.add('show');}
+  btn.disabled=false;btn.textContent='Entrar';
+}
+
+async function doSignup(){
+  const name=document.getElementById('auth-name').value.trim();
+  const email=document.getElementById('auth-email-signup').value.trim();
+  const pass=document.getElementById('auth-pass-signup').value;
+  const errEl=document.getElementById('signup-error');
+  const okEl=document.getElementById('signup-success');
+  const btn=document.getElementById('btn-signup');
+  errEl.classList.remove('show');okEl.classList.remove('show');
+  if(!name||!email||!pass){errEl.textContent='Preencha todos os campos.';errEl.classList.add('show');return}
+  if(pass.length<6){errEl.textContent='Senha deve ter no minimo 6 caracteres.';errEl.classList.add('show');return}
+  btn.disabled=true;btn.textContent='Criando conta...';
+  try{
+    const res=await fetch(SUPABASE_URL+'/auth/v1/signup',{method:'POST',headers:{'Content-Type':'application/json','apikey':SUPABASE_ANON},body:JSON.stringify({email:email,password:pass,data:{name:name}})});
+    const data=await res.json();
+    if(!res.ok)throw new Error(data.error_description||data.msg||'Erro ao criar conta.');
+    if(data.access_token){currentSession=data;currentUser=data.user;localStorage.setItem('sb_session',JSON.stringify(data));showApp();}
+    else{okEl.textContent='Conta criada! Verifique seu e-mail para confirmar o cadastro.';okEl.classList.add('show');}
+  }catch(e){errEl.textContent=e.message;errEl.classList.add('show');}
+  btn.disabled=false;btn.textContent='Criar conta';
+}
+
+function doLogout(){
+  currentSession=null;currentUser=null;
+  localStorage.removeItem('sb_session');
+  document.getElementById('user-dropdown').classList.remove('open');
+  showAuthScreen();
+}
+
+function toggleUserMenu(){
+  document.getElementById('user-dropdown').classList.toggle('open');
+}
+
+document.addEventListener('click',function(e){
+  const menu=document.getElementById('user-menu');
+  if(menu&&!menu.contains(e.target)){
+    document.getElementById('user-dropdown').classList.remove('open');
+  }
+});
+
+async function salvarFunilNuvem(dados){
+  if(!currentSession)return;
+  const badge=document.getElementById('saving-badge');
+  badge.classList.add('show');
+  try{
+    const body=JSON.stringify({user_id:currentUser.id,nicho:dados.nicho,nome_produto:dados.p.nome,dados:dados});
+    const res=await sbFetch('/rest/v1/funis',{method:'POST',body:body,headers:{'Prefer':'return=minimal'}});
+    if(res.ok){setTimeout(()=>badge.classList.remove('show'),1500);carregarMeusFunis();}
+    else{badge.classList.remove('show');}
+  }catch(e){badge.classList.remove('show');}
+}
+
+async function carregarMeusFunis(){
+  if(!currentSession)return;
+  try{
+    const res=await sbFetch('/rest/v1/funis?select=*&order=created_at.desc&limit=50');
+    if(!res.ok)return;
+    const funis=await res.json();
+    const el=document.getElementById('mf-count');
+    if(el)el.textContent=funis.length;
+    renderMeusFunis(funis);
+  }catch(e){}
+}
+
+function renderMeusFunis(funis){
+  const lista=document.getElementById('mf-lista');
+  if(!lista)return;
+  if(!funis||!funis.length){lista.innerHTML='<div class="mf-empty">Nenhum funil salvo ainda.<br>Gere seu primeiro funil para ele aparecer aqui!</div>';return;}
+  lista.innerHTML=funis.map(function(f){
+    const d=f.dados||{};
+    const data=new Date(f.created_at).toLocaleDateString('pt-BR');
+    return '<div class="mf-item"><div class="mf-info" onclick="carregarFunilNuvem(\"'+f.id+'\")"><div class="mf-nome">'+(f.nome_produto||'Sem nome')+'</div><div class="mf-meta"><span class="mf-tag">'+(f.nicho||'')+'</span><span class="mf-tag">'+(d.p&&d.p.formato?d.p.formato:'')+'</span><span class="mf-tag">'+(d.p&&d.p.preco?d.p.preco:'')+'</span></div></div><div class="mf-date">'+data+'</div><button class="mf-del" onclick="event.stopPropagation();deletarFunil(\"'+f.id+'\")">×</button></div>';
+  }).join('');
+}
+
+async function carregarFunilNuvem(id){
+  try{
+    const res=await sbFetch('/rest/v1/funis?id=eq.'+id+'&select=*');
+    if(!res.ok)return;
+    const arr=await res.json();
+    if(!arr||!arr.length)return;
+    const f=arr[0];const d=f.dados||{};
+    dadosGerados=Object.assign({},d);
+    if(d.p){
+      renderFunil(d.p);
+      renderPagina(d.p,d.expert||'o especialista',d.credencial||'',d.ticket||'87');
+      renderTrafego(d.p);
+    }
+    goTab('funil');toast('Funil carregado!');
+  }catch(e){toast('Erro ao carregar.');}
+}
+
+async function deletarFunil(id){
+  if(!confirm('Deletar este funil?'))return;
+  try{
+    await sbFetch('/rest/v1/funis?id=eq.'+id,{method:'DELETE'});
+    carregarMeusFunis();toast('Funil deletado!');
+  }catch(e){}
+}
+
+
+const DEFAULT_CONFIG={apiKey:'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'};
 
 const SYS_FUNIL=`Voce e especialista em produtos Low Ticket seguindo a metodologia Ricardo Maxxima (Low Ticket Milionario 2.0).
 
@@ -397,39 +661,14 @@ Exemplo: investindo R$500/dia -> R$100 para testar novos, R$400 na estrutura que
 Responda SOMENTE JSON valido zero texto fora zero markdown:
 {"fase1_instrucao":"instrucao detalhada da Fase 3D adaptada ao produto e nicho com orcamento especifico","fase2_instrucao":"instrucao detalhada do teste de escala com recomendacao de qual estrutura testar primeiro para esse produto","fase3_instrucao":"instrucao de escala e manutencao com regra dos 20% adaptada ao produto","verba_recomendada":"verba minima recomendada para comecar","roi_meta":"ROI meta para esse produto especifico","estrutura_recomendada":"qual estrutura de escala recomenda comecar e por que"}`;
 
-let cfg={},currentUser=null,dadosGerados=null;
+let cfg={},dadosGerados=null;
 
-function loadConfig(){try{const s=localStorage.getItem('lt_cfg');cfg=s?{...DEFAULT_CONFIG,...JSON.parse(s)}:{...DEFAULT_CONFIG}}catch(e){cfg={...DEFAULT_CONFIG}}}
-function saveConfig(){localStorage.setItem('lt_cfg',JSON.stringify(cfg))}
+function loadConfig(){try{const s=localStorage.getItem('lt_cfg_v2');cfg=s?{...DEFAULT_CONFIG,...JSON.parse(s)}:{...DEFAULT_CONFIG}}catch(e){cfg={...DEFAULT_CONFIG}}}
+function saveConfig(){localStorage.setItem('lt_cfg_v2',JSON.stringify(cfg))}
 
-function doLogin(){
-  loadConfig();
-  const val=document.getElementById('login-input').value.trim();
-  const allPasses=[cfg.adminPass||DEFAULT_CONFIG.adminPass,...(cfg.passes||DEFAULT_CONFIG.passes)].filter(Boolean);
-  if(allPasses.includes(val)){
-    currentUser=val;
-    document.getElementById('login-input').classList.remove('error');
-    document.getElementById('login-error').classList.remove('show');
-    document.getElementById('login-screen').style.display='none';
-    document.getElementById('app').classList.add('visible');
-    document.getElementById('user-badge').textContent=val===(cfg.adminPass||DEFAULT_CONFIG.adminPass)?'admin':'socio';
-    if(val===(cfg.adminPass||DEFAULT_CONFIG.adminPass))loadConfigScreen();
-    atualizarHistBadge();
-  }else{
-    document.getElementById('login-input').classList.add('error');
-    document.getElementById('login-error').classList.add('show');
-    document.getElementById('login-input').value='';
-  }
-}
+// doLogin substituido por Supabase Auth
 
-function logout(){
-  currentUser=null;
-  document.getElementById('app').classList.remove('visible');
-  document.getElementById('login-screen').style.display='flex';
-  document.getElementById('login-input').value='';
-  document.getElementById('login-input').classList.remove('error');
-  document.getElementById('login-error').classList.remove('show');
-}
+// logout substituido por Supabase Auth
 
 function loadConfigScreen(){
   document.getElementById('cfg-apikey').value=cfg.apiKey||'';
@@ -438,16 +677,9 @@ function loadConfigScreen(){
   for(let i=1;i<=5;i++){const el=document.getElementById('cfg-pass'+i);if(el)el.value=passes[i-1]||''}
 }
 
-function salvarConfig(){
-  const passes=[];
-  for(let i=1;i<=5;i++){const v=document.getElementById('cfg-pass'+i)?.value?.trim();if(v)passes.push(v)}
-  cfg.apiKey=document.getElementById('cfg-apikey').value.trim();
-  cfg.adminPass=document.getElementById('cfg-admin-pass').value.trim()||'admin';
-  cfg.passes=passes;saveConfig();
-  const b=document.getElementById('saved-badge');b.classList.add('show');setTimeout(()=>b.classList.remove('show'),2500);
-}
+function salvarConfig(){cfg.apiKey=(document.getElementById('cfg-apikey')||{}).value||'';saveConfig();const b=document.getElementById('saved-badge');if(b){b.classList.add('show');setTimeout(()=>b.classList.remove('show'),2500);}}
 
-const TABS=['gerar','funil','pagina','trafego','historico','config'];
+const TABS=['gerar','funil','pagina','trafego','meus-funis','config'];
 function goTab(id){
   document.querySelectorAll('.nav-tab').forEach((t,i)=>t.classList.toggle('active',TABS[i]===id));
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
@@ -579,28 +811,8 @@ function renderTrafego(p){
   document.getElementById('r-trafego').innerHTML=fases.map(f=>'<div class="fase"><div class="fase-n">'+f.n+'</div><div><div class="fase-title">'+f.t+'</div><div class="fase-desc" style="color:var(--accent);font-size:11px;margin-bottom:6px">'+f.extra+'</div><div class="fase-desc">'+(f.d||'')+'</div></div></div>').join('');
 }
 
-function salvarNoHistorico(dados){
-  try{
-    const hist=JSON.parse(localStorage.getItem('lt_hist')||'[]');
-    hist.unshift({id:Date.now(),nome:dados.p.nome,nicho:dados.nicho,formato:dados.p.formato,preco:dados.p.preco,data:dados.data,dados:dados.p,expert:dados.expert,credencial:dados.credencial,ticket:dados.ticket});
-    if(hist.length>50)hist.pop();
-    localStorage.setItem('lt_hist',JSON.stringify(hist));
-    atualizarHistBadge();
-  }catch(e){}
-}
+function salvarNoHistorico(dados){salvarFunilNuvem(dados);}
 
-function atualizarHistBadge(){
-  try{const hist=JSON.parse(localStorage.getItem('lt_hist')||'[]');document.getElementById('hist-count').textContent=hist.length}catch(e){}
-}
-
-function renderHistorico(){
-  try{
-    const hist=JSON.parse(localStorage.getItem('lt_hist')||'[]');
-    const lista=document.getElementById('hist-lista');
-    if(!hist.length){lista.innerHTML='<div class="hist-empty">Nenhum funil gerado ainda.</div>';return}
-    lista.innerHTML=hist.map(h=>'<div class="hist-item" onclick="carregarDoHistorico('+h.id+')"><div class="hist-header"><div class="hist-nome">'+(h.nome||'Sem nome')+'</div><div class="hist-data">'+(h.data||'')+'</div></div><div class="hist-meta"><span class="hist-tag">'+(h.nicho||'')+'</span><span class="hist-tag">'+(h.formato||'')+'</span><span class="hist-tag">'+(h.preco||'')+'</span></div></div>').join('');
-  }catch(e){}
-}
 
 function carregarDoHistorico(id){
   try{
@@ -613,10 +825,6 @@ function carregarDoHistorico(id){
     renderTrafego(item.dados);
     goTab('funil');toast('Funil carregado!');
   }catch(e){}
-}
-
-function limparHistorico(){
-  if(confirm('Limpar todo o historico?')){localStorage.removeItem('lt_hist');atualizarHistBadge();renderHistorico();toast('Historico limpo!')}
 }
 
 function copiarFunil(){
@@ -665,7 +873,8 @@ function novoFunil(){
 
 function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
 
-loadConfig();
-</script></script>
+initAuth();
+
+</script>
 </body>
 </html>
