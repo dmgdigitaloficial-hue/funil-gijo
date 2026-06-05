@@ -167,7 +167,7 @@ main{max-width:820px;margin:0 auto;padding:2rem 1.5rem 5rem}
 <div id="auth-screen">
   <div class="auth-box">
     <div class="auth-logo"><span class="logo-dot"></span>Funil LT</div>
-    <p class="auth-sub">Metodologia Ricardo Maxxima — Low Ticket Milionário 2.0</p>
+    <p class="auth-sub">Gerador de Funil Low Ticket</p>
     <div class="auth-card">
       <div class="auth-tabs">
         <button class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">Entrar</button>
@@ -281,7 +281,7 @@ main{max-width:820px;margin:0 auto;padding:2rem 1.5rem 5rem}
     </div>
 
     <div class="screen" id="screen-funil">
-      <div class="sep">Produto — Metodologia Ricardo Maxxima</div>
+      <div class="sep">Produto</div>
       <div class="rblock"><div class="rblock-lbl">Nome (Gancho + Conexão + Palavra-chave)</div><div class="rblock-val hero" id="r-nome"></div></div>
       <div class="grid-2">
         <div class="rblock"><div class="rblock-lbl">Formato tangível</div><div class="rblock-val" id="r-formato"></div></div>
@@ -831,7 +831,7 @@ function copiarFunil(){
   if(!dadosGerados)return;
   const p=dadosGerados.p;
   const nl=String.fromCharCode(10);
-  const txt=['FUNIL LOW TICKET - '+p.nome,'Metodologia Ricardo Maxxima - Low Ticket Milionario 2.0','','PRODUTO','Nome: '+p.nome,'Formato: '+p.formato+' | Preco: '+p.preco,'Promessa: '+p.promessa,'Mecanismo Unico: '+p.mecanismo_unico,'','ERM - ESTUDO DE RUMINACAO MENTAL','Ruminacao 1 (pensamentos negativos): '+p.ruminacao_1,'Ruminacao 2 (pior cenario): '+p.ruminacao_2,'Ruminacao 3 (conversa com confianca): '+p.ruminacao_3,'','OFERTA','Bump: '+p.bump_nome+' - '+p.bump_desc,'Upsell: '+p.upsell_nome+' - '+p.upsell_desc,'','5 CRIATIVOS P.R.S-A',...(p.ganchos_prsa||[]).map((g,i)=>(i+1)+'. '+g)].join(nl);
+  const txt=['FUNIL LOW TICKET - '+p.nome,'','','PRODUTO','Nome: '+p.nome,'Formato: '+p.formato+' | Preco: '+p.preco,'Promessa: '+p.promessa,'Mecanismo Unico: '+p.mecanismo_unico,'','ERM - ESTUDO DE RUMINACAO MENTAL','Ruminacao 1 (pensamentos negativos): '+p.ruminacao_1,'Ruminacao 2 (pior cenario): '+p.ruminacao_2,'Ruminacao 3 (conversa com confianca): '+p.ruminacao_3,'','OFERTA','Bump: '+p.bump_nome+' - '+p.bump_desc,'Upsell: '+p.upsell_nome+' - '+p.upsell_desc,'','5 CRIATIVOS P.R.S-A',...(p.ganchos_prsa||[]).map((g,i)=>(i+1)+'. '+g)].join(nl);
   navigator.clipboard.writeText(txt).then(()=>toast('Funil copiado!'));
 }
 
@@ -862,7 +862,7 @@ function copiarTudo(){
   if(!dadosGerados)return;
   const p=dadosGerados.p;const tf=p.trafego||{};
   const nl=String.fromCharCode(10);
-  const partes=['FUNIL COMPLETO - '+p.nome,'Metodologia Ricardo Maxxima - Low Ticket Milionario 2.0','','=== PRODUTO ===','Nome: '+p.nome+' | Formato: '+p.formato+' | Preco: '+p.preco,'Promessa: '+p.promessa,'Mecanismo Unico: '+p.mecanismo_unico,'Bump: '+p.bump_nome,'Upsell: '+p.upsell_nome,'','=== ERM - RUMINACAO MENTAL ===','1. Pensamentos: '+p.ruminacao_1,'2. Pior cenario: '+p.ruminacao_2,'3. Conversa: '+p.ruminacao_3,'','=== CRIATIVOS P.R.S-A ===', ...(p.ganchos_prsa||[]).map((g,i)=>(i+1)+'. '+g),'','=== TRAFEGO ===','Fase 3D: '+tf.fase1_instrucao,'Fase 02: '+tf.fase2_instrucao,'Fase 03: '+tf.fase3_instrucao];
+  const partes=['FUNIL COMPLETO - '+p.nome,'','','=== PRODUTO ===','Nome: '+p.nome+' | Formato: '+p.formato+' | Preco: '+p.preco,'Promessa: '+p.promessa,'Mecanismo Unico: '+p.mecanismo_unico,'Bump: '+p.bump_nome,'Upsell: '+p.upsell_nome,'','=== ERM - RUMINACAO MENTAL ===','1. Pensamentos: '+p.ruminacao_1,'2. Pior cenario: '+p.ruminacao_2,'3. Conversa: '+p.ruminacao_3,'','=== CRIATIVOS P.R.S-A ===', ...(p.ganchos_prsa||[]).map((g,i)=>(i+1)+'. '+g),'','=== TRAFEGO ===','Fase 3D: '+tf.fase1_instrucao,'Fase 02: '+tf.fase2_instrucao,'Fase 03: '+tf.fase3_instrucao];
   navigator.clipboard.writeText(partes.join(nl)).then(()=>toast('Tudo copiado!'));
 }
 
